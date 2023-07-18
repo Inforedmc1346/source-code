@@ -13779,22 +13779,6 @@ end)
         end
     end)
     
-    Misc:AddToggle("Awakening Race",true,function(value)
-     AutoAwakeningRace = value
-    end)
- 
-    spawn(function()
-        while wait() do
-		    pcall(function()
-			    if AutoAwakeningRace then
-				    game:GetService("VirtualInputManager"):SendKeyEvent(true,"Y",false,game)
-				    wait(0.1)
-                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"Y",false,game)
-			    end
-		    end)
-        end
-    end)
-    
     Misc:AddToggle("Infinite Obversation Range",getgenv().InfiniteObRange,function(value)
         getgenv().InfiniteObRange = value
         local VS = game:GetService("Players").LocalPlayer.VisionRadius.Value
