@@ -13931,10 +13931,3 @@ game.StarterGui:SetCore("SendNotification", {
       Title = "Hirimi Hub", 
       Text = "Welcome To Script!!";
 })
-wait(3)
-game.StarterGui:SetCore("SendNotification", {
-      Icon = "rbxassetid://13918363155";
-      Title = "Hirimi Hub", 
-      Text = "Join For Discord";
-})
-   
