@@ -3625,7 +3625,7 @@ local Library = Update:Window("Domadic HUB","",Enum.KeyCode.RightControl);
 
 local H = Library:AddTab("Home","12950870585")
 local Main = Library:AddTab("Main","6026568198")
-local M = Library:AddTab("Auto Item Quest","9606626859")
+local M = Library:AddTab("Item","9606626859")
 local Ss = Library:AddTab("Stats","7040410130")
 local RaceV4 = Library:AddTab("RaceV4","11162889532")
 local P = Library:AddTab("Player","7251993295")
