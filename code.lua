@@ -13927,13 +13927,13 @@ spawn(function()
 
 
 game.StarterGui:SetCore("SendNotification", {
-      Icon = " rbxassetid://13918363155";
+      Icon = "rbxassetid://13918363155";
       Title = "Hirimi Hub", 
       Text = "Welcome To Script!!";
 })
 wait(3)
 game.StarterGui:SetCore("SendNotification", {
-      Icon = "http://www.roblox.com/asset/?id=12523036534";
+      Icon = "rbxassetid://13918363155";
       Title = "Hirimi Hub", 
       Text = "Join For Discord";
 })
