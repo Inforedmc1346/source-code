@@ -5019,12 +5019,12 @@ Main:AddToggle("Farm Farm Chest Hop",_G.AutoFarmChest_Hop,function(value)
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner",value)
     end)
     
-    Main:AddToggle("Summon&Kill Dough King", _G.Autodoughking,function(value)
+    Main:AddToggle("Summon&Kill Dough Boss", _G.Autodoughking,function(value)
          _G.Autodoughking = value
         StopTween( _G.Autodoughking)
     end)
     
-    Main:AddToggle("Summon&Kil Dough King Hop", _G.AutodoughkingHop,function(value)
+    Main:AddToggle("Summon&Kill Dough Boss Hop", _G.AutodoughkingHop,function(value)
          _G.AutodoughkingHop = value
     end)
     
