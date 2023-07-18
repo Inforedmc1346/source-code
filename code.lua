@@ -25,6 +25,7 @@ end
 
 repeat wait(1) until game:IsLoaded()
 local LocalPlayer = game:GetService("Players").LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
 local pfp
 local user
