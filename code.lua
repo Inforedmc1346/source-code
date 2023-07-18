@@ -128,7 +128,7 @@ function Update:Window(text,logo,keybind)
     Main.Position = UDim2.new(0.5, 0, 0.5, 0)
     Main.Size = UDim2.new(0, 0, 0, 0)
 
-    Main:TweenSize(UDim2.new(0, 556, 0, 350),"Out","Quad",0.4,true)
+    Main:TweenSize(UDim2.new(0, 540, 0, 340),"Out","Quad",0.4,true)
 
     local BtnStroke = Instance.new("UIStroke")
 
@@ -277,7 +277,7 @@ function Update:Window(text,logo,keybind)
 	Logo.BackgroundTransparency = 1.000
 	Logo.Position = UDim2.new(0, -5, 0, -5)
 	Logo.Size = UDim2.new(0, 135, 0, 135)
-	Logo.Image = "rbxassetid://14094405648"
+	Logo.Image = "rbxassetid://13918363155"
     local Tab = Instance.new("Frame")
     Tab.Name = "Tab"
     Tab.Parent = Main
@@ -360,7 +360,7 @@ function Update:Window(text,logo,keybind)
                 Main:TweenSize(UDim2.new(0, 0, 0, 0),"In","Quad",0.4,true)
             else
                 uihide = false
-                Main:TweenSize(UDim2.new(0, 556, 0, 350),"Out","Quad",0.5,true)
+                Main:TweenSize(UDim2.new(0, 540, 0, 340),"Out","Quad",0.5,true)
             end
         end
     end)
@@ -3621,7 +3621,7 @@ getgenv().ToTargets = function(p)
 
 
 
-local Library = Update:Window("Domadic HUB","",Enum.KeyCode.RightControl);
+local Library = Update:Window("HIRIMII HUB v2","",Enum.KeyCode.RightControl);
 
 local H = Library:AddTab("Home","12950870585")
 local Main = Library:AddTab("Main","6026568198")
@@ -3652,9 +3652,10 @@ setclipboard("https://youtube.com/@hirimii0901")
 game.StarterGui:SetCore("SendNotification", {
       Icon = "rbxassetid://13918363155";
       Title = "Hirimi Hub", 
-      Text = "Copied!";
+      Text = "Copied";
 })
 end)
+
 
 
 H:AddSeperator("Status")
@@ -3947,6 +3948,7 @@ end)
 Main:AddSeperator("Farm")
 
 
+
 local WeaponList = {"Melee","Sword","Fruit","Gun"}
 _G.SelectWeapon = "Melee"
 Main:AddDropdown("Select Weapon",WeaponList,function(value)
@@ -3993,8 +3995,26 @@ task.spawn(function()
 	end
     end)
     
-    Main:AddToggle("Bypass TP [Beta]",true,function()
+       Main:AddToggle("Bypass TP (Beta)",BypassTP,function(value)
+        BypassTP = value
     end)
+    
+       AutoAwakeningRace = true
+       Main:AddToggle("Awakening Race",AutoAwakeningRace,function(value)
+        AutoAwakeningRace = value
+       end)
+ 
+       spawn(function()
+           while wait() do
+		       pcall(function()
+			       if AutoAwakeningRace then
+				       game:GetService("VirtualInputManager"):SendKeyEvent(true,"Y",false,game)
+				       wait(0.1)
+                       game:GetService("VirtualInputManager"):SendKeyEvent(false,"Y",false,game)
+			       end
+		       end)
+           end
+       end)
    
     Main:AddToggle("Farm Level",_G.AutoFarm,function(value)
         _G.AutoFarm = value
@@ -4013,8 +4033,12 @@ task.spawn(function()
                     if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
                         StartMagnet = false
                         CheckQuest()
+                        if BypassTP then
                         if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude > 1500 then
 						BTP(CFrameQuest)
+						elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude < 1500 then
+						TP1(CFrameQuest)
+						end
 					else
 						TP1(CFrameQuest)
 					end
@@ -4254,7 +4278,6 @@ spawn(function()
 		end
 	end
     end)
-    
 Main:AddToggle("Set Spawn Point",true,function(value)
     _G.Set = value
 end)
@@ -4887,12 +4910,12 @@ function Chest_17500()
 	end
 end
 
-Main:AddToggle("Farm Farm Chest Hop",_G.AutoFarmChest_Hop,function(value)
+Main:AddToggle("Farm Chest Hop",_G.AutoFarmChest_Hop,function(value)
     _G.AutoFarmChest_Hop = value
     end)
 
 
-    Main:AddSeperator("Dought Boss")
+    Main:AddSeperator("Dough Boss")
     
         local MobKilled = Main:AddLabel("Killed")
     
@@ -5019,12 +5042,12 @@ Main:AddToggle("Farm Farm Chest Hop",_G.AutoFarmChest_Hop,function(value)
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner",value)
     end)
     
-    Main:AddToggle("Summon&Kill Dough Boss", _G.Autodoughking,function(value)
+    Main:AddToggle("Farm Dough King", _G.Autodoughking,function(value)
          _G.Autodoughking = value
         StopTween( _G.Autodoughking)
     end)
     
-    Main:AddToggle("Summon&Kill Dough Boss Hop", _G.AutodoughkingHop,function(value)
+    Main:AddToggle("Farm Dough King Hop", _G.AutodoughkingHop,function(value)
          _G.AutodoughkingHop = value
     end)
     
@@ -5133,6 +5156,10 @@ Main:AddToggle("Farm Farm Chest Hop",_G.AutoFarmChest_Hop,function(value)
     Main:AddToggle("Farm All Boss",_G.AutoAllBoss,function(value)
         _G.AutoAllBoss = value
         StopTween(_G.AutoAllBoss)
+    end)
+    
+    Main:AddToggle("Quest Boss(Beta)",false,function(value)
+    _G.Auto_Quest_Boss = value
     end)
     
     Main:AddToggle("Farm All Boss Hop",_G.AutoAllBossHop,function(value)
@@ -5709,7 +5736,7 @@ end)
         pcall(function()
             while wait() do
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    Mirragecheck:Set('🏝️: Mystic Island is Spawning')
+    Mirragecheck:Set('🏝️: Mystic Island Spawning')
     else
       Mirragecheck:Set('❌: Mystic Island Not Found ' )end
             end
@@ -6100,7 +6127,7 @@ spawn(function()
 						game.StarterGui:SetCore("SendNotification", {
 							Title = "Notification", 
 							Text = "Not Have Superhuman" ,
-							Icon = "http://www.roblox.com/asset/?id=12523036534",
+							Icon = "http://www.roblox.com/asset/?id=13918363155",
 							Duration = 2.5
 						})
 					end
@@ -6112,7 +6139,7 @@ spawn(function()
 						game.StarterGui:SetCore("SendNotification", {
 							Title = "Notification", 
 							Text = "Not Have Death Step" ,
-							Icon = "http://www.roblox.com/asset/?id=12523036534",
+							Icon = "http://www.roblox.com/asset/?id=13918363155",
 							Duration = 2.5
 						})
 					end
@@ -6124,7 +6151,7 @@ spawn(function()
 						game.StarterGui:SetCore("SendNotification", {
 							Title = "Notification", 
 							Text = "Not Have SharkMan Karate" ,
-							Icon = "http://www.roblox.com/asset/?id=12523036534",
+							Icon = "http://www.roblox.com/asset/?id=13918363155",
 							Duration = 2.5
 						})
 					end
@@ -6136,7 +6163,7 @@ spawn(function()
 						game.StarterGui:SetCore("SendNotification", {
 							Title = "Notification", 
 							Text = "Not Have Electric Claw" ,
-							Icon = "http://www.roblox.com/asset/?id=12523036534",
+							Icon = "http://www.roblox.com/asset/?id=13918363155",
 							Duration = 2.5
 						})
 					end
@@ -6146,7 +6173,7 @@ spawn(function()
 								game.StarterGui:SetCore("SendNotification", {
 									Title = "Notification", 
 									Text = "Not Have Enough Material" ,
-									Icon = "http://www.roblox.com/asset/?id=12523036534",
+									Icon = "http://www.roblox.com/asset/?id=13918363155",
 									Duration = 2.5
 								})
 							else
@@ -6157,7 +6184,7 @@ spawn(function()
 						game.StarterGui:SetCore("SendNotification", {
 							Title = "Notification", 
 							Text = "Not Have Dragon Talon" ,
-							Icon = "http://www.roblox.com/asset/?id=12523036534",
+							Icon = "http://www.roblox.com/asset/?id=13918363155",
 							Duration = 2.5
 						})
 					end
@@ -7201,7 +7228,7 @@ spawn(function()
     end)
 
     
-    M:AddSeperator("Misc Buddy Sword")
+    M:AddSeperator("Buddy Sword")
     
     M:AddToggle("Taken Buddy Sword",_G.AutoBudySword,function(value)
         _G.AutoBudySword = value
@@ -7404,7 +7431,7 @@ M:AddToggle("Taken Soul Guitar + Hop",false,function(value)
 
  M:AddSeperator("Dual Curse Katana")
 
-M:AddToggle("Taken Dual Curse Katana",_G.AutoCdk,function(value)
+M:AddToggle("Taken Cursed Dual Katana",_G.AutoCdk,function(value)
  Auto_Cursed_Dual_Katana = value
 StopTween(Auto_Cursed_Dual_Katana)
 end)
@@ -7909,12 +7936,12 @@ M:AddToggle("Taken Tushita", _G.Autotushita,function(value)
 
     M:AddSeperator("Carvander")
 
-    M:AddToggle("Taken Carvander", _G.AutoCarvender,function(value)
+    M:AddToggle("Taken Cavander", _G.AutoCarvender,function(value)
          _G.AutoCarvender = value
         StopTween( _G.AutoCarvender)
     end)
     
-    M:AddToggle("Taken Carvander Hop", _G.AutoCarvenderhop,function(value)
+    M:AddToggle("Taken Carvander", _G.AutoCarvenderhop,function(value)
          _G.AutoCarvenderhop = value
     end)
     
@@ -7957,7 +7984,7 @@ M:AddToggle("Taken Tushita", _G.Autotushita,function(value)
     
     M:AddSeperator("Pirate Raid [Beta]")
     
-    M:AddToggle("Pirate Raid", _G.AutoCarvender,function(value)
+    M:AddToggle("Farm Pirate Raid", _G.AutoCarvender,function(value)
      _G.AutoRaidPirate = value
     StopTween( _G.AutoRaidPirate)
     end)
@@ -8046,7 +8073,7 @@ M:AddToggle("Taken Tushita", _G.Autotushita,function(value)
         end
     end)
     
-    M:AddSeperator("Misc Elite")
+    M:AddSeperator("Elite Hunter")
     
     local EliteProgress = M:AddLabel("")
     
@@ -8139,7 +8166,7 @@ M:AddToggle("Taken Tushita", _G.Autotushita,function(value)
         _G.AutoEliteHunterHop = value
     end)
     
-    M:AddSeperator("Seperator Hallow Scythe")
+    M:AddSeperator("Hallow Scythe")
     
     M:AddToggle("Taken Hallow Scythe",_G.AutoFarmBossHallow,function(value)
         _G.AutoFarmBossHallow = value
@@ -8235,9 +8262,9 @@ M:AddToggle("Taken Tushita", _G.Autotushita,function(value)
         end)
     end)
     
-    M:AddSeperator(" Sea baeat Fixed ")
+    M:AddSeperator(" Sea Beast ")
  
-    M:AddToggle('Kill Sea baeat', false, function(value)
+    M:AddToggle('Kill Sea Beast', false, function(value)
     _G.AutoSeaBest = value
     StopTween(_G.AutoFarmSeabaest)
     end)
@@ -8367,12 +8394,12 @@ M:AddToggle('Kill Sea baeat Hop', false, function(value)
     
     M:AddSeperator(" Greybeard Boss ")
     
-    M:AddToggle("Taken Greybeard", _G.Autodoughking,function(value)
+    M:AddToggle("Kill Greybeard", _G.Autodoughking,function(value)
          _G.Autogay = value
         StopTween( _G.Autogay)
     end)
     
-    M:AddToggle("Taken Greybeard Hop", _G.AutodoughkingHop,function(value)
+    M:AddToggle("Kill Greybeard Hop", _G.AutodoughkingHop,function(value)
          _G.Autogayhop = value
     end)
     
@@ -8714,7 +8741,7 @@ M:AddToggle('Kill Sea baeat Hop', false, function(value)
                     if game:GetService("Players").LocalPlayer.VisionRadius.Value >= 3000 then
                         game:GetService("StarterGui"):SetCore("SendNotification", {
                             Icon = "rbxassetid://0";
-                            Title = "Observation", 
+                            Title = "Status Observation", 
                             Text = "You Have Max Points"
                         })
                         wait(2)
@@ -8998,7 +9025,7 @@ M:AddToggle('Kill Sea baeat Hop', false, function(value)
     
     M:AddSeperator("Legendary Sword")
     
-    M:AddToggle("Taken Legendary Sword",_G.AutoBuyLegendarySword,function(value)
+    M:AddToggle("Buy Legendary Sword",_G.AutoBuyLegendarySword,function(value)
         _G.AutoBuyLegendarySword = value
     end)
     
@@ -9030,17 +9057,17 @@ M:AddToggle('Kill Sea baeat Hop', false, function(value)
         end
     end)
     
-    M:AddToggle("Taken Legendary Sword Hop",_G.AutoBuyLegendarySword_Hop,function(value)
+    M:AddToggle("Buy Legendary Sword Hop",_G.AutoBuyLegendarySword_Hop,function(value)
         _G.AutoBuyLegendarySword_Hop = value
     end)
     
     M:AddSeperator("Enchancement Colour")
     
-    M:AddToggle("Taken Enchancement Colour",_G.AutoBuyEnchancementColour,function(value)
+    M:AddToggle("Buy Enchancement Colour",_G.AutoBuyEnchancementColour,function(value)
         _G.AutoBuyEnchancementColour = value
     end)
     
-    M:AddToggle("Taken Enchancement Hop",_G.AutoBuyEnchancementColour_Hop,function(value)
+    M:AddToggle("Buy Enchancement Hop",_G.AutoBuyEnchancementColour_Hop,function(value)
         _G.AutoBuyEnchancementColour_Hop = value
     end)
     
@@ -9062,7 +9089,7 @@ M:AddToggle('Kill Sea baeat Hop', false, function(value)
     
     M:AddSeperator("Other")
     
-    M:AddToggle("Taken Musketeer Hat",_G.AutoMusketeerHat,function(value)
+    M:AddToggle("Buy Musketeer Hat",_G.AutoMusketeerHat,function(value)
         _G.AutoMusketeerHat = value
         StopTween(_G.AutoMusketeerHat)
     end)
@@ -9533,7 +9560,7 @@ M:AddToggle('Kill Sea baeat Hop', false, function(value)
         end
     end)
     
-    M:AddToggle("Quest&Buy Evo Race (V2)",_G.Auto_EvoRace,function(value)
+    M:AddToggle("Quest & Buy Evo Race (V2)",_G.Auto_EvoRace,function(value)
         _G.Auto_EvoRace = value
         StopTween(_G.Auto_EvoRace)
     end)
@@ -9681,7 +9708,7 @@ M:AddToggle('Kill Sea baeat Hop', false, function(value)
         end)
     end)
     
-    M:AddToggle("Holy Torch",_G.AutoHolyTorch,function(value)
+    M:AddToggle("Auto Holy Torch",_G.AutoHolyTorch,function(value)
         _G.AutoHolyTorch = value
         StopTween(_G.AutoHolyTorch)
     end)
@@ -10240,7 +10267,7 @@ spawn(function()
     end)
     
     if World1 or World2 then
-RaceV4:AddLabel("Siuu ! Go to Third Sea")
+RaceV4:AddLabel("Ummm 🧐 Go to Third Sea")
 end
 
 if World3 then
@@ -10320,7 +10347,7 @@ RaceV4:AddButton("Clock Acces", function()
     game:GetService("Workspace").Map["Temple of Time"].ClockRoomExit:Remove()
 end)
 
-RaceV4:AddToggle("Quest & Buy Gear",_G.Auto_Farm_Bone4,function(value)
+RaceV4:AddToggle("Auto Buy Gear",_G.Auto_Farm_Bone4,function(value)
  _G.Auto_Farm_Bone4 = value
  StopTween(_G.Auto_Farm_Bone4)
 end)
@@ -10628,7 +10655,7 @@ end)
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("PlayerHunter")
     end)
     
-    P:AddToggle("Player Hunter [BETA]",false,function(value)
+    P:AddToggle("Player Hunter [Beta]",false,function(value)
         _G.AutoPlayerHunter = value
     StopTween(_G.AutoPlayerHunter)
     end)
@@ -11348,7 +11375,7 @@ spawn(function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RaidsNpc","Select",_G.SelectChip)
     end)
     
-    R:AddToggle("Start Dungeon",_G.Auto_StartRaid,function(value)
+    R:AddToggle("Auto Start Dungeon",_G.Auto_StartRaid,function(value)
         _G.Auto_StartRaid = value
     end)
     
@@ -11370,7 +11397,7 @@ spawn(function()
         end
     end)
     
-    R:AddButton("Start Go To Dungeon",function()
+    R:AddButton("Start Dungeon",function()
         if World2 then
             fireclickdetector(game:GetService("Workspace").Map.CircleIsland.RaidSummon2.Button.Main.ClickDetector)
         elseif World3 then
@@ -11418,12 +11445,12 @@ spawn(function()
     
     R:AddSeperator("Misc KoKo Sword")
     
- R:AddToggle("Taken Law Sword", _G.AutoOderSword,function(value)
+ R:AddToggle("Auto Law Sword", _G.AutoOderSword,function(value)
      _G.AutoOderSword = value
     StopTween( _G.AutoOderSword)
     end)
     
-    R:AddToggle("Taken Law Sword Hop", _G.AutoOderSwordHop,function(value)
+    R:AddToggle("Auto Law Sword Hop (New !)", _G.AutoOderSwordHop,function(value)
          _G.AutoOderSwordHop = value
     end)
     
@@ -12114,7 +12141,7 @@ end)
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk","Buy")
     end)
     
-S:AddToggle("Buy Abilities", false, function(t)
+S:AddToggle("Auto Buy Abilities", false, function(t)
     Abilities = t
     while Abilities do wait(.1)
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Geppo")
@@ -12123,7 +12150,7 @@ S:AddToggle("Buy Abilities", false, function(t)
     end
 end)
 
-S:AddSeperator("⛵ Boats  ⛵//")
+S:AddSeperator("⛵ Boats ⛵")
 
 BoatList = {
     "Pirate Sloop",
@@ -12322,23 +12349,15 @@ end)
 
     ------------Bone------------------
     
-    S:AddSeperator("🦴 Bones 🦴")
+    S:AddSeperator("🦴 Bones🦴")
     
     S:AddButton("Buy Surprise [ $50 Bone ]",function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Buy",1,1)
     end)
     
-    S:AddButton("Stat Refund [ $50 Bone ]",function()
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Buy",1,2)
-    end)
-        
-    S:AddButton("Race Reroll [ $50 Bone ]",function()
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Buy",1,3)
-    end)
-    
     ------------Stat------------------
     
-    S:AddSeperator("📊 Stat 📊")
+    S:AddSeperator("📊 Fragments 📊")
 
 S:AddButton("Reset Stats (Use 2.5K Fragments)", function()
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
@@ -12427,7 +12446,7 @@ end)
         _G.SelectFruit = value
     end)
     
-    D:AddToggle("Buy Fruit Sniper",_G.AutoBuyFruitSniper,function(value)
+    D:AddToggle("Auto Buy Fruit Sniper",_G.AutoBuyFruitSniper,function(value)
         _G.AutoBuyFruitSniper = value
     end)
     
@@ -12437,7 +12456,7 @@ end)
         _G.SelectFruitEat = value
     end)
     
-    D:AddToggle("Eat Fruit",_G.AutoEatFruit,function(value)
+    D:AddToggle("Auto Eat Fruit",_G.AutoEatFruit,function(value)
         _G.AutoEatFruit = value
     end)
     
@@ -12451,7 +12470,7 @@ end)
         end)
     end)
     
-    D:AddToggle("Eat Fruit Hop",_G.AutoEatFruitHop,function(value)
+    D:AddToggle("Auto Eat Fruit Hop",_G.AutoEatFruitHop,function(value)
         _G.AutoEatFruitHop = value
     end)
     
@@ -12480,7 +12499,7 @@ end)
         end)
     end)
     
-    D:AddToggle("Random Fruit",_G.Random_Auto,function(value)
+    D:AddToggle("Auto Random Fruit",_G.Random_Auto,function(value)
         _G.Random_Auto = value
     end)
     
@@ -12503,7 +12522,7 @@ end)
         game:GetService("Players").LocalPlayer.PlayerGui.Main.FruitShop.Visible = true
     end)
     
-    D:AddToggle("Drop Fruit",_G.DropFruit,function(value)
+    D:AddToggle("Auto Drop Fruit",_G.DropFruit,function(value)
         _G.DropFruit = value
     end)
         
@@ -12538,7 +12557,7 @@ end)
         end
     end)
     
-    D:AddToggle("Store Fruit",_G.AutoStoreFruit,function(value)
+    D:AddToggle("Auto Store Fruit",_G.AutoStoreFruit,function(value)
         _G.AutoStoreFruit = value
     end)
 
@@ -13913,5 +13932,12 @@ spawn(function()
 game.StarterGui:SetCore("SendNotification", {
       Icon = "rbxassetid://13918363155";
       Title = "Hirimi Hub", 
-      Text = "Welcome To Script!!";
+      Text = "Welcome To Script";
 })
+wait(3)
+game.StarterGui:SetCore("SendNotification", {
+      Icon = "rbxassetid://13918363155";
+      Title = "Hirimi Hub", 
+      Text = "Join For Discord In Home";
+})
+   
