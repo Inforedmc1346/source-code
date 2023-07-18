@@ -3999,8 +3999,7 @@ task.spawn(function()
         BypassTP = value
     end)
     
-       AutoAwakeningRace = false
-       Main:AddToggle("Awakening Race (On When Enable Farm)",AutoAwakeningRace,function(value)
+       Main:AddToggle("Awakening Race (On When Enable Farm)",false,function(value)
         AutoAwakeningRace = value
        end)
  
