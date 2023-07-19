@@ -8109,24 +8109,14 @@ M:AddToggle("Taken Tushita", _G.Autotushita,function(value)
         while wait() do
             if _G.AutoElitehunter and World3 then
                 pcall(function()
-                    local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
-                    if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-                        repeat  wait()
-                            topos(CFrame.new(-5418.892578125, 313.74130249023, -2826.2260742188)) 
-                        until not _G.AutoElitehunter or (Vector3.new(-5418.892578125, 313.74130249023, -2826.2260742188)-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3
-                        if (Vector3.new(-5418.892578125, 313.74130249023, -2826.2260742188)-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then
-                            wait(1.1)
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
-                            wait(0.5)
-                        end
-                    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-                        if string.find(QuestTitle,"Diablo") or string.find(QuestTitle,"Deandre") or string.find(QuestTitle,"Urban") then
-                            if game:GetService("Workspace").Enemies:FindFirstChild("Diablo [Lv. 1750]") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre [Lv. 1750]") or game:GetService("Workspace").Enemies:FindFirstChild("Urban [Lv. 1750]") then
-                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                    if v.Name == "Diablo [Lv. 1750]" or v.Name == "Deandre [Lv. 1750]" or v.Name == "Urban [Lv. 1750]" then
-                                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                            repeat task.wait()
-                                                AutoHaki()
+                    if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+						if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Diablo") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Deandre") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Urban") then
+							if game:GetService("Workspace").Enemies:FindFirstChild("Diablo [Lv. 1750]") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre [Lv. 1750]") or game:GetService("Workspace").Enemies:FindFirstChild("Urban [Lv. 1750]") then
+								for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+									if v.Name == "Diablo [Lv. 1750]" or v.Name == "Deandre [Lv. 1750]" or v.Name == "Urban [Lv. 1750]" then
+										if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+											repeat wait()
+												AutoHaki()
                                                 EquipWeapon(_G.SelectWeapon)
                                                 v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid.WalkSpeed = 0
@@ -8136,30 +8126,31 @@ M:AddToggle("Taken Tushita", _G.Autotushita,function(value)
                                                 game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
                                                 sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
                                             until _G.AutoElitehunter == false or v.Humanoid.Health <= 0 or not v.Parent
-                                        end
-                                    end
-                                end
-                            else
-                                if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo [Lv. 1750]") then
+										end
+									end
+								end
+							else
+								if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo [Lv. 1750]") then
                                     topos(game:GetService("ReplicatedStorage"):FindFirstChild("Diablo [Lv. 1750]").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
                                 elseif game:GetService("ReplicatedStorage"):FindFirstChild("Deandre [Lv. 1750]") then
                                     topos(game:GetService("ReplicatedStorage"):FindFirstChild("Deandre [Lv. 1750]").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
                                 elseif game:GetService("ReplicatedStorage"):FindFirstChild("Urban [Lv. 1750]") then
                                     topos(game:GetService("ReplicatedStorage"):FindFirstChild("Urban [Lv. 1750]").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
-                                else
-                                    if _G.AutoEliteHunterHop then
-                                        Hop()
-                                    else
-                                        topos(CFrame.new(-5418.892578125, 313.74130249023, -2826.2260742188))
-                                    end
-                                end
-                            end                    
-                        end
-                    end
-                end)
-            end
-        end
-    end)
+								end
+							end                    
+						end
+					else
+
+						if _G.AutoEliteHunterHop and game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("EliteHunter") == "I don't have anything for you right now. Come back later." then
+							hop()
+						else
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
+						end
+					end
+				end)
+			end
+		end
+	end)
     
     M:AddToggle("Kill Elite Hop",_G.AutoEliteHunterHop,function(value)
         _G.AutoEliteHunterHop = value
