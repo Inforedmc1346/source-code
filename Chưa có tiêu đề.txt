@@ -195,5 +195,6 @@ if isfolder("/hirimiKey") then
     writefile("/hirimiKey/key.txt", "")
   end
 else
+  makefolder("hirimiKey")
   writefile("/hirimiKey/key.txt", "")
 end
