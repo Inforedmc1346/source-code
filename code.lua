@@ -12,7 +12,7 @@ ImageButton1.BorderSizePixel = 0
 ImageButton1.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ImageButton1.Size = UDim2.new(0, 50, 0, 50)
 ImageButton1.Draggable = true
-ImageButton1.Image = "rbxassetid://13918363155"
+ImageButton1.Image = "rbxassetid://14161592006"
 ImageButton1.MouseButton1Down:connect(function()
   game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
   game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
@@ -135,7 +135,7 @@ function Update:Window(text,logo,keybind)
     BtnStroke.Name = "BtnStroke"
     BtnStroke.Parent = Main
     BtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    BtnStroke.Color = Color3.fromRGB(224, 29, 29)
+    BtnStroke.Color = Color3.fromRGB(255, 255, 255)
     BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
     BtnStroke.Thickness = 1
     BtnStroke.Transparency = 0
@@ -277,7 +277,7 @@ function Update:Window(text,logo,keybind)
 	Logo.BackgroundTransparency = 1.000
 	Logo.Position = UDim2.new(0, -5, 0, -5)
 	Logo.Size = UDim2.new(0, 135, 0, 135)
-	Logo.Image = "rbxassetid://13918363155"
+	Logo.Image = "rbxassetid://14094405648"
     local Tab = Instance.new("Frame")
     Tab.Name = "Tab"
     Tab.Parent = Main
@@ -410,7 +410,7 @@ function Update:Window(text,logo,keybind)
         BtnStroke.Name = "BtnStroke"
         BtnStroke.Parent = TabButton
         BtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-        BtnStroke.Color = Color3.fromRGB(224, 29, 29)
+        BtnStroke.Color = Color3.fromRGB(255, 255, 255)
         BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
         BtnStroke.Thickness = 1
         BtnStroke.Transparency = 0
@@ -655,7 +655,7 @@ function Update:Window(text,logo,keybind)
 
         Button.Name = "Button"
         Button.Parent = MainFramePage
-        Button.BackgroundColor3 = Color3.fromRGB(224, 29, 29)
+        Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         Button.Size = UDim2.new(0, 387, 0, 31)
 
         UICorner.CornerRadius = UDim.new(0, 5)
@@ -679,7 +679,7 @@ function Update:Window(text,logo,keybind)
         ImageButton.BorderSizePixel = 0
         ImageButton.Position = UDim2.new(0, 350, 0, 6)
         ImageButton.Size = UDim2.new(0, 20, 0, 20)
-        ImageButton.Image = "rbxassetid://13918363155"
+        ImageButton.Image = "rbxassetid://14161592006"
         ImageButton.ImageColor3 = Color3.fromRGB(255, 255, 255)
 
         UICorner_2.CornerRadius = UDim.new(0, 5)
@@ -694,12 +694,12 @@ function Update:Window(text,logo,keybind)
         Space.Font = Enum.Font.GothamSemibold
         Space.Text = "|"
         Space.TextSize = 15.000
-        Space.TextColor3 = Color3.fromRGB(224, 29, 29)
+        Space.TextColor3 = Color3.fromRGB(255, 255, 255)
         Space.TextXAlignment = Enum.TextXAlignment.Right
 
         Black.Name = "Black"
         Black.Parent = Button
-        Black.BackgroundColor3 = Color3.fromRGB(224, 29, 29)
+        Black.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         Black.BackgroundTransparency = 1.000
         Black.BorderSizePixel = 0
         Black.Position = UDim2.new(0, 1, 0, 1)
@@ -772,7 +772,7 @@ function Update:Window(text,logo,keybind)
         UIStroke.Name = "UIStroke"
         UIStroke.Parent = CheckFrame2
         UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-        UIStroke.Color = Color3.fromRGB(224, 29, 29)
+        UIStroke.Color = Color3.fromRGB(255, 255, 255)
         UIStroke.LineJoinMode = Enum.LineJoinMode.Round
         UIStroke.Thickness = 1
         UIStroke.Transparency = 0
@@ -789,7 +789,7 @@ function Update:Window(text,logo,keybind)
         ImageLabel.BorderSizePixel = 0
         ImageLabel.Position = UDim2.new(0, 5, 0, 6)
         ImageLabel.Size = UDim2.new(0, 20, 0, 20)
-        ImageLabel.Image = "rbxassetid://13918363155"
+        ImageLabel.Image = "rbxassetid://14161592006"
         ImageLabel.ImageColor3 = Color3.fromRGB(255, 255, 255)
 
         Space.Name = "Space"
@@ -801,7 +801,7 @@ function Update:Window(text,logo,keybind)
         Space.Font = Enum.Font.GothamSemibold
         Space.Text = "|"
         Space.TextSize = 15.000
-        Space.TextColor3 = Color3.fromRGB(224, 29, 29)
+        Space.TextColor3 = Color3.fromRGB(255, 255, 255)
         Space.TextXAlignment = Enum.TextXAlignment.Center
 
         Title.Name = "Title"
@@ -835,7 +835,7 @@ function Update:Window(text,logo,keybind)
             game.TweenService:Create(
                 ImageButton,
                 TweenInfo.new(0.08, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
-                {ImageColor3 = Color3.fromRGB(224, 29, 29)}
+                {ImageColor3 = Color3.fromRGB(255, 255, 255)}
             ):Play()
             toggle = not toggle
             pcall(callback, toggle)
@@ -847,7 +847,7 @@ function Update:Window(text,logo,keybind)
                     game.TweenService:Create(
                         ImageButton,
                         TweenInfo.new(0.08, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
-                        {ImageColor3 = Color3.fromRGB(224, 29, 29)}
+                        {ImageColor3 = Color3.fromRGB(255, 255, 255)}
                     ):Play()
                     ImageButton.ImageRectOffset = Vector2.new(4, 836)
                 else
@@ -885,7 +885,7 @@ function Update:Window(text,logo,keybind)
         UIStroke.Name = "UIStroke"
         UIStroke.Parent = Dropdown
         UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-        UIStroke.Color = Color3.fromRGB(224, 29, 29)
+        UIStroke.Color = Color3.fromRGB(255, 255, 255)
         UIStroke.LineJoinMode = Enum.LineJoinMode.Round
         UIStroke.Thickness = 1
         UIStroke.Transparency = 0
@@ -1110,7 +1110,7 @@ function Update:Window(text,logo,keybind)
         -- Prop --
         SliderFrame.Name = slidertitle or "SliderFrame"
         SliderFrame.Parent = MainFramePage
-        SliderFrame.BackgroundColor3 = Color3.fromRGB(224, 29, 29)
+        SliderFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         SliderFrame.BackgroundTransparency = 1.000
         SliderFrame.BorderSizePixel = 0
         SliderFrame.Size = UDim2.new(0, 387, 0, 60)
@@ -1126,7 +1126,7 @@ function Update:Window(text,logo,keybind)
         UIStroke.Name = "UIStroke"
         UIStroke.Parent = SliderFrame_2
         UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-        UIStroke.Color = Color3.fromRGB(224, 29, 29)
+        UIStroke.Color = Color3.fromRGB(255, 255, 255)
         UIStroke.LineJoinMode = Enum.LineJoinMode.Round
         UIStroke.Thickness = 1
         UIStroke.Transparency = 0
@@ -1138,12 +1138,12 @@ function Update:Window(text,logo,keybind)
         
         ImageLabel.Name = "ImageLabel"
         ImageLabel.Parent = SliderFrame_2
-        ImageLabel.BackgroundColor3 = Color3.fromRGB(224, 29, 29)
+        ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         ImageLabel.BackgroundTransparency = 1.000
         ImageLabel.BorderSizePixel = 0
         ImageLabel.Position = UDim2.new(0, 7.5, 0, 7.5)
         ImageLabel.Size = UDim2.new(0, 30, 0, 30)
-        ImageLabel.Image = "rbxassetid://13918363155"
+        ImageLabel.Image = "rbxassetid://14161592006"
             
         Title.Parent = SliderFrame_2
         Title.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
@@ -1158,7 +1158,7 @@ function Update:Window(text,logo,keybind)
                 
         SliderInput.Name = "SliderInput"
         SliderInput.Parent = SliderFrame_2
-        SliderInput.BackgroundColor3 = Color3.fromRGB(224, 29, 29)
+        SliderInput.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         SliderInput.BackgroundTransparency = 0.7
         SliderInput.BorderSizePixel = 0
         SliderInput.Position = UDim2.new(0, 8, 0, 42)
@@ -1169,7 +1169,7 @@ function Update:Window(text,logo,keybind)
         
         SliderButton.Name = "SliderButton"
         SliderButton.Parent = SliderInput
-        SliderButton.BackgroundColor3 = Color3.fromRGB(224, 29, 29)
+        SliderButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         SliderButton.BackgroundTransparency = 1.000
         SliderButton.BorderSizePixel = 0
         SliderButton.Position = UDim2.new(0, 0, 0, -7)
@@ -1177,7 +1177,7 @@ function Update:Window(text,logo,keybind)
     
         SliderCount.Name = "SliderCount"
         SliderCount.Parent = SliderButton
-        SliderCount.BackgroundColor3 = Color3.fromRGB(224, 29, 29)
+        SliderCount.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         SliderCount.BackgroundTransparency = 0.3
         SliderCount.BorderSizePixel = 0
         SliderCount.Position = UDim2.new(0,start,0,0)
@@ -1186,7 +1186,7 @@ function Update:Window(text,logo,keybind)
         Title_2.Name = "Title_2"
         Title_2.Parent = SliderButton
         Title_2.AnchorPoint = Vector2.new(0, 0)
-        Title_2.BackgroundColor3 = Color3.fromRGB(224, 29, 29)
+        Title_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         Title_2.AutoButtonColor = false
         Title_2.BackgroundTransparency = 1.000
         Title_2.Position = UDim2.new(0,start,0,0)
@@ -1206,7 +1206,7 @@ function Update:Window(text,logo,keybind)
         SliderStroke.Name = "SliderStroke"
         SliderStroke.Parent = BoxFrame
         SliderStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-        SliderStroke.Color = Color3.fromRGB(224, 29, 29)
+        SliderStroke.Color = Color3.fromRGB(255, 255, 255)
         SliderStroke.LineJoinMode = Enum.LineJoinMode.Round
         SliderStroke.Thickness = 1
         SliderStroke.Transparency = 0.5
@@ -1215,7 +1215,7 @@ function Update:Window(text,logo,keybind)
         
         BoxFrame.Name = "BoxFrame"
         BoxFrame.Parent = SliderFrame_2
-        BoxFrame.BackgroundColor3 = Color3.fromRGB(224, 29, 29)
+        BoxFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         BoxFrame.BackgroundTransparency = 1.000
         BoxFrame.Size = UDim2.new(0, 50, 0, 15)
         BoxFrame.Position = UDim2.new(0, 323, 0, 8)
@@ -1428,7 +1428,7 @@ function Update:Window(text,logo,keybind)
 
         Textbox.Name = "Textbox"
         Textbox.Parent = MainFramePage
-        Textbox.BackgroundColor3 = Color3.new(224, 29, 29)
+        Textbox.BackgroundColor3 = Color3.new(255, 255, 255)
         Textbox.BackgroundTransparency = 0
         Textbox.Size = UDim2.new(0, 387, 0, 31)
 
@@ -1557,7 +1557,7 @@ function Update:Window(text,logo,keybind)
         
         Textbox.Name = "Textbox"
         Textbox.Parent = MainFramePage
-        Textbox.BackgroundColor3 = Color3.new(224, 29, 29)
+        Textbox.BackgroundColor3 = Color3.new(255, 255, 255)
         Textbox.BackgroundTransparency = 0
         Textbox.Size = UDim2.new(0, 387, 0, 31)
         
@@ -1577,7 +1577,7 @@ function Update:Window(text,logo,keybind)
         
         TextboxLabel.Name = "TextboxLabel"
         TextboxLabel.Parent = Textbox
-        TextboxLabel.BackgroundColor3 = Color3.fromRGB(224, 29, 29)
+        TextboxLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         TextboxLabel.BackgroundTransparency = 1.000
         TextboxLabel.Position = UDim2.new(0, 15, 0, 0)
         TextboxLabel.Text = text
@@ -1590,7 +1590,7 @@ function Update:Window(text,logo,keybind)
         
         txtbtn.Name = "txtbtn"
         txtbtn.Parent = Textbox
-        txtbtn.BackgroundColor3 = Color3.fromRGB(224, 29, 29)
+        txtbtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         txtbtn.BackgroundTransparency = 1.000
         txtbtn.Position = UDim2.new(0, 1, 0, 1)
         txtbtn.Size = UDim2.new(0, 387, 0, 29)
@@ -1697,7 +1697,7 @@ function Update:Window(text,logo,keybind)
         Labeld.BackgroundTransparency = 1.000
         Labeld.Size = UDim2.new(0, 410, 0, 20)
         Labeld.Font = Enum.Font.GothamSemibold
-        Labeld.TextColor3 = Color3.fromRGB(224, 29, 29)
+        Labeld.TextColor3 = Color3.fromRGB(255, 255, 255)
         Labeld.TextSize = 15.000
         Labeld.Text = display or ""
         Labeld.TextXAlignment = Enum.TextXAlignment.Left
@@ -2463,7 +2463,7 @@ if game.PlaceId == 2753915549 then
                             name.TextYAlignment = 'Top'
                             name.BackgroundTransparency = 1
                             name.TextStrokeTransparency = 0.5
-                            name.TextColor3 = Color3.fromRGB(224, 29, 29)
+                            name.TextColor3 = Color3.fromRGB(255, 255, 255)
                         else
                             v['NameEsp'].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
                         end
@@ -2756,7 +2756,7 @@ function UpdateIslandESP()
                             name.TextYAlignment = 'Top'
                             name.BackgroundTransparency = 1
                             name.TextStrokeTransparency = 0.5
-                            name.TextColor3 = Color3.fromRGB(224, 29, 29)
+                            name.TextColor3 = Color3.fromRGB(255, 255, 255)
                         else
                             v['NameEsp'].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
                         end
@@ -3053,7 +3053,7 @@ spawn(function()
                             TextLabel.BackgroundTransparency = 1.000
                             TextLabel.Size = UDim2.new(0, 200, 0, 50)
                             TextLabel.Font = Enum.Font.GothamBold
-                            TextLabel.TextColor3 = Color3.fromRGB(224, 29, 29)
+                            TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
                             TextLabel.Text.Size = 35
                         end
                         local Dis = math.floor((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude)
@@ -3095,7 +3095,7 @@ spawn(function()
                             TextLabel.BackgroundTransparency = 1.000
                             TextLabel.Size = UDim2.new(0, 200, 0, 50)
                             TextLabel.Font = Enum.Font.GothamBold
-                            TextLabel.TextColor3 = Color3.fromRGB(224, 29, 29)
+                            TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
                             TextLabel.Text.Size = 35
                         end
                         local Dis = math.floor((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude)
@@ -3137,7 +3137,7 @@ spawn(function()
                             TextLabel.BackgroundTransparency = 1.000
                             TextLabel.Size = UDim2.new(0, 200, 0, 50)
                             TextLabel.Font = Enum.Font.GothamBold
-                            TextLabel.TextColor3 = Color3.fromRGB(224, 29, 29)
+                            TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
                             TextLabel.Text.Size = 35
                         end
                         local Dis = math.floor((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude)
@@ -3650,7 +3650,7 @@ H:AddLabel("https://discord.gg/rUKWhEJHf2")
 H:AddButton("Youtube Hirimi Hub",function()
 setclipboard("https://youtube.com/@hirimii0901")
 game.StarterGui:SetCore("SendNotification", {
-      Icon = "rbxassetid://13918363155";
+      Icon = "rbxassetid://14161592006";
       Title = "Hirimi Hub", 
       Text = "Copied";
 })
@@ -10365,48 +10365,35 @@ RaceV4:AddToggle("Disabled Inf Stairs", nil, function(value)
 end)
 
  
-  RaceV4:AddButton("Teleport Cyborg Door (Must Be in Temple Of Time!)",function()
+  RaceV4:AddButton("Teleport Trial Door",function()
+  if game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
   Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-  wait(0.1)
-  topos(CFrame.new(28492.4140625, 14894.4267578125, -422.1100158691406))
-  end)
-  
-  RaceV4:AddButton("Teleport Fish Door (Must Be in Temple Of Time!)",function()
-  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-  wait(0.1)
+  wait(0.6)
   topos(CFrame.new(28224.056640625, 14889.4267578125, -210.5872039794922))
-  end)
-  
-  RaceV4:AddButton("Teleport Ghoul Door (Must Be in Temple Of Time!)",function()
+  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" then
   Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-  wait(0.1)
-  topos(CFrame.new(28672.720703125, 14889.1279296875, 454.5961608886719))
-  end)
-  
-  RaceV4:AddButton("Teleport Human Door (Must Be in Temple Of Time!)",function()
-  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-  wait(0.1)
+  wait(0.6)
   topos(CFrame.new(29237.294921875, 14889.4267578125, -206.94955444335938))
-  end)
-  
-  RaceV4:AddButton("Teleport Mink Door (Must Be in Temple Of Time!)",function()
+  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" then
   Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-  wait(0.1)
-  topos(CFrame.new(29020.66015625, 14889.4267578125, -379.2682800292969))
-  end)
-  
-  RaceV4:AddButton("Teleport Sky Door (Must Be in Temple Of Time!)",function()
+  wait(0.6)
+  topos(CFrame.new(28492.4140625, 14894.4267578125, -422.1100158691406))
+  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
   Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-  wait(0.1)
+  wait(0.6)
   topos(CFrame.new(28967.408203125, 14918.0751953125, 234.31198120117188))
+  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Ghoul" then
+  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
+  wait(0.6)
+  topos(CFrame.new(28672.720703125, 14889.1279296875, 454.5961608886719))
+  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
+  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
+  wait(0.6)
+  topos(CFrame.new(29020.66015625, 14889.4267578125, -379.2682800292969))
+  end
   end)
 
-  RaceV4:AddSeperator("Complete Trials")
-  
-  RaceV4:AddButton("Buy Ancient One Quest",function(t)
-  game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer('UpgradeRace','Buy')
-  end)
-  RaceV4:AddToggle("Trail All Race V4",false,function(v)
+  RaceV4:AddToggle("Trial All Race V4",false,function(v)
   _G.AutoQuestRace = v
   StopTween(_G.AutoQuestRace)
   end)
@@ -10526,6 +10513,11 @@ spawn(function()
         end
     end)
 end)
+  
+  RaceV4:AddButton("Buy Ancient One Quest",function(t)
+  game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer('UpgradeRace','Buy')
+  end)
+  
   
  RaceV4:AddButton("Complete Angel Trial",function(t)
         topos(game.Workspace.Map.SkyTrial.Model.FinishPart.CFrame)
@@ -11228,27 +11220,25 @@ end)
         StopTween(_G.Auto_Dungeon)
     end)
     
-    spawn(function()
-        pcall(function()
-            while wait() do
-                if _G.Auto_Dungeon then
-                    if game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Timer.Visible == true then
-                        if game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 5") then
-                            topos(game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 5").CFrame*CFrame.new(0,25,0))
-                        elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 4") then
-                            topos(game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 4").CFrame*CFrame.new(0,25,0))
-                        elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 3") then
-                            topos(game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 3").CFrame*CFrame.new(0,25,0))
-                        elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 2") then
-                            topos(game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 2").CFrame*CFrame.new(0,25,0))
-                        elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 1") then
-                            topos(game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 1").CFrame*CFrame.new(0,25,0))
-                        end
-                    end
-                end
-            end
-        end)
-    end)
+spawn(function()
+    while wait() do
+        if _G.Auto_Dungeon then
+			if not game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == false then
+				if game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 5") then
+					topos(game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 5").CFrame * CFrame.new(0,70,100))
+				elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 4") then
+					topos(game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 4").CFrame * CFrame.new(0,70,100))
+				elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 3") then
+					topos(game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 3").CFrame * CFrame.new(0,70,100))
+				elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 2") then
+					topos(game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 2").CFrame * CFrame.new(0,70,100))
+				elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 1") then
+					topos(game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 1").CFrame * CFrame.new(0,70,100))
+				end
+			end
+        end
+    end
+end)
     
     R:AddToggle("Auto Awakener",_G.Auto_Awakener,function(value)
         _G.Auto_Awakener = value
@@ -11285,7 +11275,7 @@ spawn(function()
             end
         end
     end
-    end)
+end)
     
     R:AddLine()
 
@@ -13920,13 +13910,13 @@ spawn(function()
 
 
 game.StarterGui:SetCore("SendNotification", {
-      Icon = "rbxassetid://13918363155";
+      Icon = "rbxassetid://14161592006";
       Title = "Hirimi Hub", 
       Text = "Welcome To Script";
 })
 wait(3)
 game.StarterGui:SetCore("SendNotification", {
-      Icon = "rbxassetid://13918363155";
+      Icon = "rbxassetid://14161592006";
       Title = "Hirimi Hub", 
       Text = "Join For Discord In Home";
 })
