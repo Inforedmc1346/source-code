@@ -4139,108 +4139,8 @@ Main:AddToggle("Auto Kaitan",false,function(value)
                 end)
             end 
         end
-    end)
-    
-    local Mons = {}
-    local xx = {}
+    end)    
 
-    for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-        if string.find(v.Name , "Lv.") then
-            table.insert(xx, v.Name)
-        end
-    end
-
-    for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
-        if string.find(v.Name , "Lv.") then
-            table.insert(xx, v.Name)
-        end
-    end
-
-    table.sort(xx)
-    local result = {}
-
-    for key,value in ipairs(xx) do
-        if value ~=xx[key+1] then
-            table.insert(result,value)
-        end
-    end
-    for key,value in ipairs(result) do
-        table.insert(Mons, value)
-    end
-    
-    local Select_M = Main:AddDropdown("Select Mob",Mons,function(value)
-        _G.SelectMob = value
-    end)
-    
-    Main:AddButton("Refresh Mob",function()
-     Select_M:Clear()
-     local xx = {}
-	
-      for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-		    if string.find(v.Name , "Lv.") then
-			    table.insert(xx, v.Name)
-		    end
-	    end
-
-	    for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
-		    if string.find(v.Name , "Lv.") then
-			    table.insert(xx, v.Name)
-		    end
-	    end
-
-	    table.sort(xx)
-	    local result = {}
-
-	    for key,value in ipairs(xx) do
-		    if value ~=xx[key+1] then
-			    table.insert(result,value)
-		    end
-	    end
-	    for key,value in ipairs(result) do
-		    Select_M:Add(value)
-	    end
-    end)
-    
-    Main:AddToggle("Farm Mob",_G.AutoFarmMob,function(value)
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-        _G.AutoFarmMob = value
-        StopTween(_G.AutoFarmMob)
-    end)
-    
-    spawn(function()
-        while wait() do
-            if _G.AutoFarmMob then
-                pcall(function()
-                    if game:GetService("Workspace").Enemies:FindFirstChild(_G.SelectMob) then
-                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                            if v.Name == _G.SelectMob then
-                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                    repeat task.wait()
-                                        AutoHaki()
-                                        EquipWeapon(_G.SelectWeapon)
-                                        v.HumanoidRootPart.CanCollide = false
-                                        v.Humanoid.WalkSpeed = 0
-                                        SelectMag = true
-                                        PosMon = v.HumanoidRootPart.CFrame
-                                        v.HumanoidRootPart.Size = Vector3.new(80,80,80)                             
-                                        topos(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
-                                        game:GetService("VirtualUser"):CaptureController()
-                                        game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
-                                    until not _G.AutoFarmMob or not v.Parent or v.Humanoid.Health <= 0
-                                    SelectMag = false
-                                end
-                            end
-                        end
-                    else
-                        if game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectMob) then
-                            topos(game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectMob).HumanoidRootPart.CFrame * CFrame.new(5,10,2))
-                        end
-                    end
-                end)
-            end
-        end
-    end)
-    
    Main:AddToggle("Farm Nearest ",_G.AutoFarmNearest,function(value)
    _G.AutoFarmNearest = value
    StopTween(_G.AutoFarmNearest)
@@ -11218,7 +11118,7 @@ end)
         R:AddToggle("Next Island",_G.Auto_Dungeon,function(value)
         _G.Auto_Dungeon = value
         StopTween(_G.Auto_Dungeon)
-    end)
+        end)
     
 spawn(function()
     while wait() do
@@ -11239,6 +11139,7 @@ spawn(function()
         end
     end
 end)
+
     
     R:AddToggle("Auto Awakener",_G.Auto_Awakener,function(value)
         _G.Auto_Awakener = value
@@ -11255,27 +11156,26 @@ end)
         end)
     end)
     
-    R:AddToggle("Kill Aura",nil,function(value)
+    R:AddToggle("Kill Aura",_G.Kill_Arua,function(value)
     _G.Kill_Aura = value
-    end) 
-
-spawn(function()
-    while wait() do
-        if _G.Kill_Aura then
-            for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
-                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                    pcall(function()
-                        repeat wait(.1)
-                            v.Humanoid.Health = 0
-                            v.HumanoidRootPart.CanCollide = false
-							sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-                        until not _G.Kill_Aura  or not v.Parent or v.Humanoid.Health <= 0
-                    end)
+    end)
+    spawn(function()
+        while wait() do
+            if _G.Kill_Aura then
+                for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
+                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                        pcall(function()
+                            repeat wait(.1)
+                                v.Humanoid.Health = 0
+                                v.HumanoidRootPart.CanCollide = false
+							    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+                            until not _G.Kill_Aura or not v.Parent or v.Humanoid.Health <= 0
+                        end)
+                    end
                 end
             end
         end
-    end
-end)
+    end)
     
     R:AddLine()
 
