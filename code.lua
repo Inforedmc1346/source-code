@@ -3623,7 +3623,7 @@ getgenv().ToTargets = function(p)
 
 local Library = Update:Window("HIRIMII HUB v2","",Enum.KeyCode.RightControl);
 
-local H = Library:AddTab("Home","12950870585")
+local H = Library:AddTab("Dev","12950870585")
 local Main = Library:AddTab("Main","6026568198")
 local M = Library:AddTab("Item","9606626859")
 local Ss = Library:AddTab("Stats","7040410130")
@@ -3640,11 +3640,27 @@ local Time = H:AddLabel("Executor Time");spawn(function() getgenv().Time = true;
 H:AddLabel("Support PC/Mobile")
 H:AddLabel("SCRIPT V2 UPDATE")
 
+H:AddSeperator("Status")
+
+H:AddLabel("PC/Computer: ✅")
+H:AddLabel("Mobile: ✅")
+
+H:AddSeperator("Support Execute")
+
+H:AddLabel("PC/Computer:")
+H:AddLabel("Fluxus, Electron,...")
+
+H:AddLabel("Mobile:")
+H:AddLabel("Fluxus, DeltaX, Codex, Hydrogen")
+H:AddLabel("Flodded V")
+
 H:AddSeperator("Developer")
 
+H:AddLabel("Code By Hirimii")
 
 H:AddLabel("Hirimi Hub Discord")
 H:AddLabel("https://discord.gg/rUKWhEJHf2")
+H:AddLabel("Discord: t_hirimii")
  
 
 H:AddButton("Youtube Hirimi Hub",function()
@@ -11156,26 +11172,27 @@ end)
         end)
     end)
     
-    R:AddToggle("Kill Aura",_G.Kill_Arua,function(value)
-    _G.Kill_Aura = value
+    R:AddToggle("Kill Aura",_G.concubu ,function(vu)
+    _G.concubu  = vu
     end)
-    spawn(function()
-        while wait() do
-            if _G.Kill_Aura then
-                for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
-                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                        pcall(function()
-                            repeat wait(.1)
-                                v.Humanoid.Health = 0
-                                v.HumanoidRootPart.CanCollide = false
-							    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-                            until not _G.Kill_Aura or not v.Parent or v.Humanoid.Health <= 0
-                        end)
-                    end
+
+spawn(function()
+    while wait() do
+        if _G.concubu then
+            for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
+                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                    pcall(function()
+                        repeat wait(.1)
+                            v.Humanoid.Health = 0
+                            v.HumanoidRootPart.CanCollide = false
+                            sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+                        until not _G.concubu  or not v.Parent or v.Humanoid.Health <= 0
+                    end)
                 end
             end
         end
-    end)
+    end
+end)
     
     R:AddLine()
 
@@ -11778,6 +11795,7 @@ end)
             _G.SelectWarp = value
         end)
     end
+    
     
     T:AddButton("Bypass Teleport",function()
 		 if _G.TeleportWarp == "Manslon" then
