@@ -277,7 +277,7 @@ function Update:Window(text,logo,keybind)
 	Logo.BackgroundTransparency = 1.000
 	Logo.Position = UDim2.new(0, -5, 0, -5)
 	Logo.Size = UDim2.new(0, 135, 0, 135)
-	Logo.Image = "rbxassetid://14094405648"
+	Logo.Image = "rbxassetid://14236988608"
     local Tab = Instance.new("Frame")
     Tab.Name = "Tab"
     Tab.Parent = Main
@@ -4011,7 +4011,8 @@ task.spawn(function()
 	end
     end)
     
-       Main:AddToggle("Bypass TP (Beta)",BypassTP,function(value)
+       BypassTP = true
+       Main:AddToggle("Bypass TP",BypassTP,function(value)
         BypassTP = value
     end)
     
@@ -4848,6 +4849,13 @@ Main:AddToggle("Farm Chest Hop",_G.AutoFarmChest_Hop,function(value)
                 end
             end)
         end
+    end)
+    
+    Main:AddButton("BypassTP Cake Island",function()
+      if BypassTP then
+      local cakepos = CFrame.new(-2077, 252, -12373)
+      BTP(cakepos)
+    end
     end)
     
     Main:AddToggle("Farm Cake Prince",_G.AutoDoughtBoss,function(value)
@@ -8514,8 +8522,19 @@ M:AddToggle('Kill Sea baeat Hop', false, function(value)
     
     spawn(function()
         while wait() do 
+        local boneframe = CFrame.new(-9508.5673828125, 142.1398468017578, 5737.3603515625)
             if _G.Auto_Bone and World3 then
                 pcall(function()
+                          if BypassTP then
+                          if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude > 2000 then
+                          BTP(boneframe)
+                          wait(3)
+                          elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude < 2000 then
+                          TP1(boneframe)
+                          end
+                          else
+                            TP1(boneframe)
+                          end
                     if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton [Lv. 1975]") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie [Lv. 2000]") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul [Lv. 2025]") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy [Lv. 2050]") then
                         for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                             if v.Name == "Reborn Skeleton [Lv. 1975]" or v.Name == "Living Zombie [Lv. 2000]" or v.Name == "Demonic Soul [Lv. 2025]" or v.Name == "Posessed Mummy [Lv. 2050]" then
