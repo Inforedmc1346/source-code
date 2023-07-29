@@ -277,7 +277,7 @@ function Update:Window(text,logo,keybind)
 	Logo.BackgroundTransparency = 1.000
 	Logo.Position = UDim2.new(0, -5, 0, -5)
 	Logo.Size = UDim2.new(0, 135, 0, 135)
-	Logo.Image = "rbxassetid://14094405648"
+	Logo.Image = "rbxassetid://14236988608"
     local Tab = Instance.new("Frame")
     Tab.Name = "Tab"
     Tab.Parent = Main
@@ -4011,7 +4011,7 @@ task.spawn(function()
 	end
     end)
     
-       Main:AddToggle("Bypass TP (Beta)",BypassTP,function(value)
+       Main:AddToggle("Bypass TP",BypassTP,function(value)
         BypassTP = value
     end)
     
@@ -4848,6 +4848,12 @@ Main:AddToggle("Farm Chest Hop",_G.AutoFarmChest_Hop,function(value)
                 end
             end)
         end
+    end)
+    
+    Main:AddButton("BypassTP Cake Island", function()
+      if BypassTP then
+      local cakepos = CFrame.new(-2077, 252, -12373)
+      BTP(cakepos)
     end)
     
     Main:AddToggle("Farm Cake Prince",_G.AutoDoughtBoss,function(value)
@@ -5747,6 +5753,7 @@ spawn(function()
 		pcall(function()
 			if _G.dao then
 				game:GetService("VirtualInputManager"):SendKeyEvent(true,"W",false,game)
+				game:GetService("VirtualInputManager"):SendKeyEvent(true,"A",false,game)
 			end
 		end)
     end
@@ -8515,7 +8522,18 @@ M:AddToggle('Kill Sea baeat Hop', false, function(value)
     spawn(function()
         while wait() do 
             if _G.Auto_Bone and World3 then
+            local boneframe = CFrame.new(-9508.5673828125, 142.1398468017578, 5737.3603515625)
                 pcall(function()
+                          if BypassTP then
+                          if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude > 2000 then
+                          BTP(boneframe)
+                          wait(3)
+                          elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude < 2000 then
+                          TP1(boneframe)
+                          end
+                          else
+                            TP1(boneframe)
+                          end
                     if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton [Lv. 1975]") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie [Lv. 2000]") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul [Lv. 2025]") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy [Lv. 2050]") then
                         for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                             if v.Name == "Reborn Skeleton [Lv. 1975]" or v.Name == "Living Zombie [Lv. 2000]" or v.Name == "Demonic Soul [Lv. 2025]" or v.Name == "Posessed Mummy [Lv. 2050]" then
@@ -10282,28 +10300,23 @@ end)
 
  
   RaceV4:AddButton("Teleport Trial Door",function()
-  if game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
   Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
+  if game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
   wait(0.6)
   topos(CFrame.new(28224.056640625, 14889.4267578125, -210.5872039794922))
   elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" then
-  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
   wait(0.6)
   topos(CFrame.new(29237.294921875, 14889.4267578125, -206.94955444335938))
   elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" then
-  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
   wait(0.6)
   topos(CFrame.new(28492.4140625, 14894.4267578125, -422.1100158691406))
   elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
-  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
   wait(0.6)
   topos(CFrame.new(28967.408203125, 14918.0751953125, 234.31198120117188))
   elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Ghoul" then
-  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
   wait(0.6)
   topos(CFrame.new(28672.720703125, 14889.1279296875, 454.5961608886719))
   elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
-  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
   wait(0.6)
   topos(CFrame.new(29020.66015625, 14889.4267578125, -379.2682800292969))
   end
@@ -10433,20 +10446,6 @@ end)
   RaceV4:AddButton("Buy Ancient One Quest",function(t)
   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer('UpgradeRace','Buy')
   end)
-  
-  
- RaceV4:AddButton("Complete Angel Trial",function(t)
-        topos(game.Workspace.Map.SkyTrial.Model.FinishPart.CFrame)
-        end)
-
-        RaceV4:AddButton("Complete Rabbit Trial",function(t)
-        topos(game:GetService("Workspace").Map.MinkTrial.Ceiling.CFrame * CFrame.new(0,-5,0))
-        end)
-
-        RaceV4:AddButton("Complete Cyborg Trial",function(t)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,300,0)
-        end)
-    end
 
 	
     local plyserv = P:AddLabel("Players")
