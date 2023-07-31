@@ -3698,10 +3698,10 @@ SettingTab:AddToggle({
     end)
     
 SettingTab:AddSlider({
-	Name = "Kill %Heath [Mastery]",
+	Name = "Kill %Health [Mastery]",
 	Min = 0,
 	Max = 100,
-	Default = 25,
+	Default = 30,
 	Color = Color3.fromRGB(255,255,255),
 	Increment = 1,
 	ValueName = "Health",
@@ -5391,5 +5391,25 @@ MiscTab:AddButton({
   	end    
 }) 
 
+MiscTab:AddToggle({
+	Name = "Walk On Water",
+	Default = true,
+	Callback = function(Value)
+		_G.WalkWater = Value
+	end    
+})
+
+    spawn(function()
+			while task.wait() do
+				pcall(function()
+					if _G.WalkWater then
+						game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,112,1000)
+					else
+						game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,80,1000)
+					end
+				end)
+			end
+		end)
+		
 
 OrionLib:Init()
