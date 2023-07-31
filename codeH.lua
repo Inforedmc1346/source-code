@@ -1925,7 +1925,7 @@ task.spawn(function()
 _G.FastAttackDelay = "0.175"
 MainTab:AddDropdown({
 	Name = "Fast Attack Speed",
-	Default = "0.155",
+	Default = "0.175",
 	Options = {"0", "0.1", "0.15", "0.155", "0.16", "0.165", "0.17", "0.175", "0.18", "0.185"},
 	Callback = function(Value)
 		_G.FastAttackDelay = Value
@@ -2974,10 +2974,18 @@ ItemTab:AddToggle({
                      for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
                          if v:FindFirstChild("HumanoidRootPart") then
                             AutoHaki()
-                            EquipWeapon(_G.SelectWeapon)
+                            EquipWeapon(Melee)
                             TP1(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
                             game:GetService("VirtualUser"):CaptureController()
                             game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
+                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
+                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
+                            EquipWeapon(BloxFruit)
+                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
+                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
+                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
+                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"V",false,game)
                        else
                            if _G.AutoSeaBestHop then
                              Hop()
@@ -2996,6 +3004,37 @@ ItemTab:AddToggle({
 		_G.AutoSeaBestHop = Value
 	end    
 }) 
+
+ItemTab:AddToggle({
+	Name = "Kill PirateShips",
+	Default = false,
+	Callback = function(Value)
+		PirateShip = Value
+		StopTween(PirateShip)
+	end    
+})
+
+    spawn(function()
+        while wait() do
+            if PirateShip then
+                   pcall(function()
+                     for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+                         if v:FindFirstChild("HumanoidRootPart") then
+                            AutoHaki()
+                            EquipWeapon(_G.SelectWeapon)
+                            TP1(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
+                            game:GetService("VirtualUser"):CaptureController()
+                            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                       else
+                           if _G.AutoSeaBestHop then
+                             Hop()
+							    end
+							end
+                         end
+                    end)
+                end
+            end
+        end)
 
 ItemTab:AddToggle({
 	Name = "Kill Rip_Indra Boss",
@@ -5269,6 +5308,84 @@ DFTab:AddToggle({
     end
     end)
     
+local SHTab = Window:MakeTab({
+	Name = "Shop",
+	Icon = "rbxassetid://14161592006",
+	PremiumOnly = false
+}) 
+
+SHTab:AddButton({
+	Name = "Buy Dark Step",
+	Callback = function()
+      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Buy Electro",
+	Callback = function()
+      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectro")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Buy Fishman Karate",
+	Callback = function()
+      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Buy Dragon Claw",
+	Callback = function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","1")
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","2")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Buy Superhuman",
+	Callback = function()
+      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Buy Death Step",
+	Callback = function()
+      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Buy Electric Claw",
+	Callback = function()
+      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Buy Sharkman Karate",
+	Callback = function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Buy Dragon Talon",
+	Callback = function()
+      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Buy God Human",
+	Callback = function()
+      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
+  	end    
+})
+
 local STTab = Window:MakeTab({
 	Name = "Stats",
 	Icon = "rbxassetid://14161592006",
