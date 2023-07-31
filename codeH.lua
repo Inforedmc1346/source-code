@@ -2967,6 +2967,28 @@ ItemTab:AddToggle({
 	end    
 }) 
 
+    spawn(function()
+        while wait() do
+            if _G.AutoSeaBest then
+                   pcall(function()
+                     for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+                         if v:FindFirstChild("HumanoidRootPart") then
+                            AutoHaki()
+                            EquipWeapon(_G.SelectWeapon)
+                            TP1(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
+                            game:GetService("VirtualUser"):CaptureController()
+                            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                       else
+                           if _G.AutoSeaBestHop then
+                             Hop()
+							    end
+							end
+                         end
+                    end)
+                end
+            end
+        end)
+
 ItemTab:AddToggle({
 	Name = "Kill Sea Beast [Hop]",
 	Default = false,
@@ -5228,7 +5250,7 @@ spawn(function()
     end)
 
 DFTab:AddToggle({
-	Name = "Farm Fruit [New]",
+	Name = "TeleFruit",
 	Default = false,
 	Callback = function(Value)
 		_G.Grabfruit = Value
