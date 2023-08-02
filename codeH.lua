@@ -2458,6 +2458,28 @@ local ItemTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
+    local FM = ItemTab:AddLabel('Third World')
+    
+    task.spawn(function()
+            while task.wait() do
+                pcall(function()
+                    if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
+                        FM:Set("🌕: Full Moon 100%")
+                    elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
+                        FM:Set("🌖’ : Full Moon 75%")
+                    elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
+                        FM:Set("🌗“ : Full Moon 50%")
+                    elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
+                        FM:Set("🌘 : Full Moon 25%")
+                    elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
+                        FM:Set("🌘: Full Moon 15%")
+                    else
+                        FM:Set("Wait For Moon")
+                    end
+                end)
+            end
+    end)
+
 if World2 then
 ItemTab:AddToggle({
 	Name = "Farm Factory",
@@ -5588,7 +5610,7 @@ V4Tab:AddButton({
 end
 
 V4Tab:AddToggle({
-	Name = "Kill Player When Trial Complete[Beta]",
+	Name = "Kill Player When Trial Complete",
 	Default = false,
 	Callback = function(Value)
 		KillPlayer = Value
@@ -5601,7 +5623,7 @@ spawn(function()
   			if KillPlayer then
   					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
   						if v.Name ~= game.Players.LocalPlayer.Name then
-  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 2000 then
+  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 900 then
   						    plyselecthunthelpold = v.Humanoid.Health
   							repeat wait()
   								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
