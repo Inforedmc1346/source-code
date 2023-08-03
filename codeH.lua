@@ -6985,6 +6985,23 @@ ESTab:AddToggle({
 	end    
 }) 
 
+    spawn(function()
+	    while wait(2) do
+		    if FlowerESP then
+			    UpdateFlowerChams() 
+		    end
+		    if DevilFruitESP then
+			    UpdateDevilChams() 
+		    end
+		    if ChestESP then
+			    UpdateChestChams() 
+		    end
+		    if ESPPlayer then
+			    UpdatePlayerChams()
+		    end
+	    end
+    end)
+
 local MiscTab = Window:MakeTab({
 	Name = "Miscellaneous",
 	Icon = "rbxassetid://14161592006",
