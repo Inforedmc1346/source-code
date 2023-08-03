@@ -1898,7 +1898,7 @@ local MainTab = Window:MakeTab({
         "DRAGONABUSE"
     }
 
-TeleTab:AddButton({
+MainTab:AddButton({
 	Name = "Redeem All Code x2",
 	Callback = function()
         function RedeemCode(value)
