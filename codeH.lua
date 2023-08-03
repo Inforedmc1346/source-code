@@ -1892,10 +1892,10 @@ local MainTab = Window:MakeTab({
         "SUB2FER999",
         "MAGICBIS",
         "TY_FOR_WATCHING",
-        "STARCODEHEO"
-        "STAFFBATTLE"
-        "ADMIN_STRENGTH"
-        "DRAGONABUSE"
+        "STARCODEHEO",
+        "STAFFBATTLE",
+        "ADMIN_STRENGTH",
+        "DRAGONABUSE",
     }
 
 MainTab:AddButton({
