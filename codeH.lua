@@ -2657,6 +2657,65 @@ spawn(function()
     end)
     end)
     
+ItemTab:AddToggle({
+	Name = "Quest Evo Race[V2]",
+	Default = false,
+	Callback = function(Value)
+	    _G.Auto_EvoRace = Value
+        StopTween(_G.Auto_EvoRace)
+	end    
+}) 
+
+    spawn(function()
+        pcall(function()
+            while wait(.1) do
+                if _G.Auto_EvoRace then
+                    if not game:GetService("Players").LocalPlayer.Data.Race:FindFirstChild("Evolved") then
+                        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist","1") == 0 then
+                            topos(CFrame.new(-2779.83521, 72.9661407, -3574.02002, -0.730484903, 6.39014104e-08, -0.68292886, 3.59963224e-08, 1, 5.50667032e-08, 0.68292886, 1.56424669e-08, -0.730484903))
+                            if (Vector3.new(-2779.83521, 72.9661407, -3574.02002) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 4 then
+                                wait(1.3)
+                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist","2")
+                            end
+                        elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist","1") == 1 then
+                            pcall(function()
+                                if not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Flower 1") and not game:GetService("Players").LocalPlayer.Character:FindFirstChild("Flower 1") then
+                                    topos(game:GetService("Workspace").Flower1.CFrame)
+                                elseif not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Flower 2") and not game:GetService("Players").LocalPlayer.Character:FindFirstChild("Flower 2") then
+                                    topos(game:GetService("Workspace").Flower2.CFrame)
+                                elseif not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Flower 3") and not game:GetService("Players").LocalPlayer.Character:FindFirstChild("Flower 3") then
+                                    if game:GetService("Workspace").Enemies:FindFirstChild("Zombie [Lv. 950]") then
+                                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                            if v.Name == "Zombie [Lv. 950]" then
+                                                repeat task.wait()
+                                                    AutoHaki()
+                                                    EquipWeapon(_G.SelectWeapon)
+                                                    topos(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
+                                                    v.HumanoidRootPart.CanCollide = false
+                                                    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+                                                    game:GetService("VirtualUser"):CaptureController()
+                                                    game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
+                                                    PosMonEvo = v.HumanoidRootPart.CFrame
+                                                    StartEvoMagnet = true
+                                                until game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Flower 3") or not v.Parent or v.Humanoid.Health <= 0 or _G.Auto_EvoRace == false
+                                                StartEvoMagnet = false
+                                            end
+                                        end
+                                    else
+                                        StartEvoMagnet = false
+                                        topos(CFrame.new(-5685.9233398438, 48.480125427246, -853.23724365234))
+                                    end
+                                end
+                            end)
+                        elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist","1") == 2 then
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist","3")
+                        end
+                    end
+                end
+            end
+        end)
+    end)
+    
         local MobKilled = ItemTab:AddLabel("Killed")
     
     spawn(function()
@@ -3728,6 +3787,705 @@ ItemTab:AddToggle({
             end
         end)
     end) 
+    
+ItemTab:AddToggle({
+	Name = "Plug Holy Torch",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoHolyTorch = Value
+        StopTween(_G.AutoHolyTorch)
+	end    
+}) 
+
+    spawn(function()
+        while wait() do
+            if _G.AutoHolyTorch then
+                pcall(function()
+                    wait(1)
+                    TP1(CFrame.new(-10752, 417, -9366))
+                    wait(1)
+                    TP1(CFrame.new(-11672, 334, -9474))
+                    wait(1)
+                    TP1(CFrame.new(-12132, 521, -10655))
+                    wait(1)
+                    TP1(CFrame.new(-13336, 486, -6985))
+                    wait(1)
+                    TP1(CFrame.new(-13489, 332, -7925))
+                end)
+            end
+        end
+    end)
+    
+ItemTab:AddToggle({
+	Name = "Taken Yama",
+	Default = false,
+	Callback = function(Value)
+        _G.AutoYama = Value
+        StopTween(_G.AutoYama)
+	end    
+}) 
+
+    spawn(function()
+        while wait() do
+            if _G.AutoYama then
+                if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter","Progress") >= 30 then
+                    repeat wait(.1)
+                        fireclickdetector(game:GetService("Workspace").Map.Waterfall.SealedKatana.Handle.ClickDetector)
+                    until game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Yama") or not _G.AutoYama
+                end
+            end
+        end
+    end)
+    
+ItemTab:AddToggle({
+	Name = "Taken Tushita",
+	Default = false,
+	Callback = function(Value)
+         _G.Autotushita = value
+        StopTween( _G.Autotushita)
+	end    
+}) 
+
+ItemTab:AddToggle({
+	Name = "Taken Tushita Hop",
+	Default = false,
+	Callback = function(Value)
+	_G.Autotushitahop = Value
+	end    
+}) 
+
+    spawn(function()
+        while wait() do
+            if  _G.Autotushita and World3 then
+                pcall(function()
+                    if game:GetService("Workspace").Enemies:FindFirstChild("Longma [Lv. 2000] [Boss]") then
+                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if v.Name == "Longma [Lv. 2000] [Boss]" then
+                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat task.wait()
+                                        AutoHaki()
+                                        EquipWeapon(_G.SelectWeapon)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid.WalkSpeed = 0
+                                        v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+                                        topos(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
+                                        game:GetService("VirtualUser"):CaptureController()
+                                        game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                                        sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
+                                    until not  _G.Autotushita or not v.Parent or v.Humanoid.Health <= 0
+                                end
+                            end
+                        end
+                    else
+                    topos(CFrame.new(-10238.875976563, 389.7912902832, -9549.7939453125))
+                        if game:GetService("ReplicatedStorage"):FindFirstChild("Longma [Lv. 2000] [Boss]") then
+                            topos(game:GetService("ReplicatedStorage"):FindFirstChild("Longma [Lv. 2000] [Boss]").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                        else
+                            if  _G.Autotushitahop then
+                                Hop()
+                            end
+                        end
+                    end
+                end)
+            end
+        end
+    end)
+    
+ItemTab:AddToggle({
+	Name = "Quest Cursed Dual Katana",
+	Default = false,
+	Callback = function(Value)
+	Auto_Cursed_Dual_Katana = Value
+    StopTween(Auto_Cursed_Dual_Katana)
+	end    
+}) 
+
+spawn(function()
+		while wait() do
+			pcall(function()
+				if Auto_Cursed_Dual_Katana then
+					if GetMaterial("Alucard Fragment") == 0 then
+						Auto_Quest_Yama_1 = true
+						Auto_Quest_Yama_2 = false
+						Auto_Quest_Yama_3 = false
+						Auto_Quest_Tushita_1 = false
+						Auto_Quest_Tushita_2 = false
+						Auto_Quest_Tushita_3 = false
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","Progress","Evil")
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","StartTrial","Evil")
+					elseif GetMaterial("Alucard Fragment") == 1 then
+						Auto_Quest_Yama_1 = false
+						Auto_Quest_Yama_2 = true
+						Auto_Quest_Yama_3 = false
+						Auto_Quest_Tushita_1 = false
+						Auto_Quest_Tushita_2 = false
+						Auto_Quest_Tushita_3 = false
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","Progress","Evil")
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","StartTrial","Evil")
+					elseif GetMaterial("Alucard Fragment") == 2 then
+						Auto_Quest_Yama_1 = false
+						Auto_Quest_Yama_2 = false
+						Auto_Quest_Yama_3 = true
+						Auto_Quest_Tushita_1 = false
+						Auto_Quest_Tushita_2 = false
+						Auto_Quest_Tushita_3 = false
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","Progress","Evil")
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","StartTrial","Evil")
+					elseif GetMaterial("Alucard Fragment") == 3 then
+						Auto_Quest_Yama_1 = false
+						Auto_Quest_Yama_2 = false
+						Auto_Quest_Yama_3 = false
+						Auto_Quest_Tushita_1 = true
+						Auto_Quest_Tushita_2 = false
+						Auto_Quest_Tushita_3 = false
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","Progress","Good")
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","StartTrial","Good")
+					elseif GetMaterial("Alucard Fragment") == 4 then
+						Auto_Quest_Yama_1 = false
+						Auto_Quest_Yama_2 = false
+						Auto_Quest_Yama_3 = false
+						Auto_Quest_Tushita_1 = false
+						Auto_Quest_Tushita_2 = true
+						Auto_Quest_Tushita_3 = false
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","Progress","Good")
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","StartTrial","Good")
+					elseif GetMaterial("Alucard Fragment") == 5 then
+						Auto_Quest_Yama_1 = false
+						Auto_Quest_Yama_2 = false
+						Auto_Quest_Yama_3 = false
+						Auto_Quest_Tushita_1 = false
+						Auto_Quest_Tushita_2 = false
+						Auto_Quest_Tushita_3 = true
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","Progress","Good")
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","StartTrial","Good")
+					elseif GetMaterial("Alucard Fragment") == 6 then
+						if game:GetService("Workspace").Enemies:FindFirstChild("Cursed Skeleton Boss [Lv. 2025] [Boss]") or game:GetService("Workspace").ReplicatedStorage:FindFirstChild("Cursed Skeleton Boss [Lv. 2025] [Boss]") then
+							Auto_Quest_Yama_1 = false
+							Auto_Quest_Yama_2 = false
+							Auto_Quest_Yama_3 = false
+							Auto_Quest_Tushita_1 = false
+							Auto_Quest_Tushita_2 = false
+							Auto_Quest_Tushita_3 = false
+							if game:GetService("Workspace").Enemies:FindFirstChild("Cursed Skeleton Boss [Lv. 2025] [Boss]") or game:GetService("Workspace").Enemies:FindFirstChild("Cursed Skeleton [Lv. 2200]") then
+								for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+									if v.Name == "Cursed Skeleton Boss [Lv. 2025] [Boss]" or v.Name == "Cursed Skeleton [Lv. 2200]" then
+										if v.Humanoid.Health > 0 then
+											v.HumanoidRootPart.CanCollide = false
+											v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+											topos(v.HumanoidRootPart.CFrame * CFrame.new(0,50,0))
+											game:GetService'VirtualUser':CaptureController()
+											game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+										end
+									end
+								end
+							end
+						else
+							if (CFrame.new(-12361.7060546875, 603.3547973632812, -6550.5341796875).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","Progress","Good")
+								wait(1)
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","Progress","Evil")
+								wait(1)
+								topos(CFrame.new(-12361.7060546875, 603.3547973632812, -6550.5341796875))
+								wait(1.5)
+								game:GetService("VirtualInputManager"):SendKeyEvent(true, "E", false, game)
+								wait(1.5)
+								topos(CFrame.new(-12253.5419921875, 598.8999633789062, -6546.8388671875))
+							else
+								topos(CFrame.new(-12361.7060546875, 603.3547973632812, -6550.5341796875))
+							end   
+						end
+					end
+				end
+			end)
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if Auto_Quest_Yama_1 then
+				pcall(function()
+					if game:GetService("Workspace").Enemies:FindFirstChild("Mythological Pirate [Lv. 1850]") then
+						for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if v.Name == "Mythological Pirate [Lv. 1850]" then
+								repeat wait()
+									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,0,-2))
+								until Auto_Cursed_Dual_Katana == false or Auto_Cursed_Dual_Katana == false or Auto_Quest_Yama_1 == false
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","StartTrial","Evil")
+							end
+						end
+					else
+						topos(CFrame.new(-13451.46484375, 543.712890625, -6961.0029296875))
+					end
+				end)
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			pcall(function()
+				if Auto_Quest_Yama_2 then
+					for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+						if v:FindFirstChild("HazeESP") then
+							v.HazeESP.Size = UDim2.new(50,50,50,50)
+							v.HazeESP.MaxDistance = "inf"
+						end
+					end
+					for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
+						if v:FindFirstChild("HazeESP") then
+							v.HazeESP.Size = UDim2.new(50,50,50,50)
+							v.HazeESP.MaxDistance = "inf"
+						end
+					end
+				end
+			end)
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			pcall(function()
+				for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+					if Auto_Quest_Yama_2 and v:FindFirstChild("HazeESP") and (v.HumanoidRootPart.Position - PosMonsEsp.Position).magnitude <= 300 then
+						v.HumanoidRootPart.CFrame = PosMonsEsp
+						v.HumanoidRootPart.CanCollide = false
+						v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+						if not v.HumanoidRootPart:FindFirstChild("BodyVelocity") then
+							local vc = Instance.new("BodyVelocity", v.HumanoidRootPart)
+							vc.MaxForce = Vector3.new(1, 1, 1) * math.huge
+							vc.Velocity = Vector3.new(0, 0, 0)
+						end
+					end
+				end
+			end)
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if Auto_Quest_Yama_2 then 
+				pcall(function() 
+					for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+						if v:FindFirstChild("HazeESP") then
+							repeat wait()
+								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 2000 then
+									topos(y.HumanoidRootPart.CFrameMon * CFrame.new(0,20,0))
+								else
+									StartMagnet = true
+									FastAttack = true
+									if Auto_Buso then
+										if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+										end
+									end
+									if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+										wait()
+										EquipWeapon(_G.SelectWeapon)
+									end
+									PosMonsEsp = v.HumanoidRootPart.CFrame
+									if not FastAttack then
+										game:GetService'VirtualUser':CaptureController()
+										game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+									end
+									v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+									if _G.Configs["Show Hitbox"] then
+										v.HumanoidRootPart.Transparency = _G.Hitbox_LocalTransparency
+									else
+										v.HumanoidRootPart.Transparency = 1
+									end
+									v.Humanoid.JumpPower = 0
+									v.Humanoid.WalkSpeed = 0
+									v.HumanoidRootPart.CanCollide = false
+									v.Humanoid:ChangeState(11)
+									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,20,0))								
+								end      
+							until Auto_Cursed_Dual_Katana == false or Auto_Quest_Yama_2 == false or not v.Parent or v.Humanoid.Health <= 0 or not v:FindFirstChild("HazeESP")
+						else
+							for x,y in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
+								if y:FindFirstChild("HazeESP") then
+									if (y.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 2000 then
+										topos(y.HumanoidRootPart.CFrameMon* CFrame.new(0,20,0))
+									else
+										topos(y.HumanoidRootPart.CFrame * CFrame.new(0,20,0))
+									end
+								end
+							end
+						end
+					end
+				end)
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if Auto_Quest_Yama_3 then
+				pcall(function()
+					if game.Players.LocalPlayer.Backpack:FindFirstChild("Hallow Essence") then         
+						_G.Auto_Bone = false           
+						topos(game:GetService("Workspace").Map["Haunted Castle"].Summoner.Detection.CFrame)
+					elseif game:GetService("Workspace").Map:FindFirstChild("HellDimension") then
+						repeat wait()
+							if game:GetService("Workspace").Enemies:FindFirstChild("Cursed Skeleton [Lv. 2200]") or game:GetService("Workspace").Enemies:FindFirstChild("Cursed Skeleton [Lv. 2200] [Boss]") or game:GetService("Workspace").Enemies:FindFirstChild("Hell's Messenger [Lv. 2200] [Boss]") then
+								for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+									if v.Name == "Cursed Skeleton [Lv. 2200]" or v.Name == "Cursed Skeleton [Lv. 2200] [Boss]" or v.Name == "Hell's Messenger [Lv. 2200] [Boss]" then
+										if v.Humanoid.Health > 0 then
+											repeat wait()
+												StartMagnet = true
+												FastAttack = true
+												if Auto_Buso then
+													if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+														game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+													end
+												end
+												if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+													wait()
+													EquipWeapon(_G.SelectWeapon)
+												end
+												PosMonsEsp = v.HumanoidRootPart.CFrame
+												if not FastAttack then
+													game:GetService'VirtualUser':CaptureController()
+													game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+												end
+												v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+												if _G.Configs["Show Hitbox"] then
+													v.HumanoidRootPart.Transparency = _G.Hitbox_LocalTransparency
+												else
+													v.HumanoidRootPart.Transparency = 1
+												end
+												v.Humanoid.JumpPower = 0
+												v.Humanoid.WalkSpeed = 0
+												v.HumanoidRootPart.CanCollide = false
+												v.Humanoid:ChangeState(11)
+												topos(v.HumanoidRootPart.CFrame * CFrame.new(0,50,0))
+											until v.Humanoid.Health <= 0 or not v.Parent or Auto_Quest_Yama_3 == false
+										end
+									end
+								end
+							else
+								wait(5)
+								topos(game:GetService("Workspace").Map.HellDimension.Torch1.CFrame)
+								wait(1.5)
+								game:GetService("VirtualInputManager"):SendKeyEvent(true, "E", false, game)
+								wait(1.5)        
+								topos(game:GetService("Workspace").Map.HellDimension.Torch2.CFrame)
+								wait(1.5)
+								game:GetService("VirtualInputManager"):SendKeyEvent(true, "E", false, game)
+								wait(1.5)     
+								topos(game:GetService("Workspace").Map.HellDimension.Torch3.CFrame)
+								wait(1.5)
+								game:GetService("VirtualInputManager"):SendKeyEvent(true, "E", false, game)
+								wait(1.5)     
+								topos(game:GetService("Workspace").Map.HellDimension.Exit.CFrame)
+							end
+						until Auto_Cursed_Dual_Katana == false or Auto_Quest_Yama_3 == false or GetMaterial("Alucard Fragment") == 3
+					else
+						if game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper [Lv. 2100] [Raid Boss]") or game.ReplicatedStorage:FindFirstChild("Soul Reaper [Lv. 2100] [Raid Boss]") then
+							if game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper [Lv. 2100] [Raid Boss]") then
+								for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+									if v.Name == "Soul Reaper [Lv. 2100] [Raid Boss]" then
+										if v.Humanoid.Health > 0 then
+											repeat wait()
+												topos(v.HumanoidRootPart.CFrame * CFrame.new(0,0,-2))
+											until Auto_Cursed_Dual_Katana == false or Auto_Quest_Yama_3 == false or game:GetService("Workspace").Map:FindFirstChild("HellDimension")
+										end
+									end
+								end
+							else
+								topos(CFrame.new(-9570.033203125, 315.9346923828125, 6726.89306640625))
+							end
+						else
+							_G.Auto_Bone = true
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Buy",1,1)
+						end
+					end
+				end)
+			end
+		end
+	end)
+
+	spawn(function() 
+		while wait() do
+			if Auto_Quest_Tushita_1 then
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","BoatQuest",workspace.NPCs:FindFirstChild("Luxury Boat Dealer"))
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if Auto_Quest_Tushita_1 then
+				topos(CFrame.new(-9546.990234375, 21.139892578125, 4686.1142578125))
+				wait(5)
+				topos(CFrame.new(-6120.0576171875, 16.455780029296875, -2250.697265625))
+				wait(5)
+				topos(CFrame.new(-9533.2392578125, 7.254445552825928, -8372.69921875))    
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if Auto_Quest_Tushita_2 then
+				pcall(function()
+					if (CFrame.new(-5539.3115234375, 313.800537109375, -2972.372314453125).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 500 then
+						for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if Auto_Quest_Tushita_2 and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 2000 then
+									repeat wait()
+										v.HumanoidRootPart.CanCollide = false
+										v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+										topos(v.HumanoidRootPart.CFrame * CFrame.new(0,50,0))
+										game:GetService'VirtualUser':CaptureController()
+										game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+									until v.Humanoid.Health <= 0 or not v.Parent or Auto_Quest_Tushita_2 == false
+								end
+							end
+						end
+					else
+						topos(CFrame.new(-5545.1240234375, 313.800537109375, -2976.616455078125))
+					end
+				end)
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if Auto_Quest_Tushita_3 then
+				pcall(function()
+					if game:GetService("Workspace").Enemies:FindFirstChild("Cake Queen [Lv. 2175] [Boss]") or game.ReplicatedStorage:FindFirstChild("Cake Queen [Lv. 2175] [Boss]") then
+						if game:GetService("Workspace").Enemies:FindFirstChild("Cake Queen [Lv. 2175] [Boss]") then
+							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+								if v.Name == "Cake Queen [Lv. 2175] [Boss]" then
+									if v.Humanoid.Health > 0 then
+										repeat wait()
+											if Auto_Buso then
+												if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+													game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+												end
+											end
+											if not game.Players.LocalPlayer.Character:FindFirstChild(_G.Select_Weapon) then
+												wait()
+												EquipWeapon(_G.SelectWeapon)
+											end
+											if not FastAttack then
+												game:GetService'VirtualUser':CaptureController()
+												game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+											end
+											v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+											if _G.Configs["Show Hitbox"] then
+												v.HumanoidRootPart.Transparency = _G.Hitbox_LocalTransparency
+											else
+												v.HumanoidRootPart.Transparency = 1
+											end
+											v.Humanoid.JumpPower = 0
+											v.Humanoid.WalkSpeed = 0
+											v.HumanoidRootPart.CanCollide = false
+											v.Humanoid:ChangeState(11)
+											topos(v.HumanoidRootPart.CFrame * CFrame.new(0,50,0))
+										until Auto_Cursed_Dual_Katana == false or Auto_Quest_Tushita_3 == false or game:GetService("Workspace").Map:FindFirstChild("HeavenlyDimension")
+									end
+								end
+							end
+						else
+							topos(CFrame.new(-709.3132934570312, 381.6005859375, -11011.396484375))
+						end
+					elseif game:GetService("Workspace").Map:FindFirstChild("HeavenlyDimension") then
+						repeat wait()
+							if game:GetService("Workspace").Enemies:FindFirstChild("Cursed Skeleton [Lv. 2200]") or game:GetService("Workspace").Enemies:FindFirstChild("Cursed Skeleton [Lv. 2200] [Boss]") or game:GetService("Workspace").Enemies:FindFirstChild("Heaven's Guardian [Lv. 2200] [Boss]") then
+								for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+									if v.Name == "Cursed Skeleton [Lv. 2200]" or v.Name == "Cursed Skeleton [Lv. 2200] [Boss]" or v.Name == "Heaven's Guardian [Lv. 2200] [Boss]" then
+										if v.Humanoid.Health > 0 then
+											repeat wait()
+												if Auto_Buso then
+													if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+														game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+													end
+												end
+												if not game.Players.LocalPlayer.Character:FindFirstChild(_G.Select_Weapon) then
+													wait()
+													EquipWeapon(_G.Select_Weapon)
+												end
+												if not FastAttack then
+													game:GetService'VirtualUser':CaptureController()
+													game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+												end
+												v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+												if _G.Configs["Show Hitbox"] then
+													v.HumanoidRootPart.Transparency = _G.Hitbox_LocalTransparency
+												else
+													v.HumanoidRootPart.Transparency = 1
+												end
+												v.Humanoid.JumpPower = 0
+												v.Humanoid.WalkSpeed = 0
+												v.HumanoidRootPart.CanCollide = false
+												v.Humanoid:ChangeState(11)
+											until v.Humanoid.Health <= 0 or not v.Parent or Auto_Quest_Tushita_3 == false
+										end
+									end
+								end
+							else
+								wait(5)
+								topos(game:GetService("Workspace").Map.HeavenlyDimension.Torch1.CFrame)
+								wait(1.5)
+								game:GetService("VirtualInputManager"):SendKeyEvent(true, "E", false, game)
+								wait(1.5)        
+								topos(game:GetService("Workspace").Map.HeavenlyDimension.Torch2.CFrame)
+								wait(1.5)
+								game:GetService("VirtualInputManager"):SendKeyEvent(true, "E", false, game)
+								wait(1.5)     
+								topos(game:GetService("Workspace").Map.HeavenlyDimension.Torch3.CFrame)
+								wait(1.5)
+								game:GetService("VirtualInputManager"):SendKeyEvent(true, "E", false, game)
+								wait(1.5)     
+								topos(game:GetService("Workspace").Map.HeavenlyDimension.Exit.CFrame)
+							end
+						until Auto_Cursed_Dual_Katana == false or Auto_Quest_Tushita_3 == false or GetMaterial("Alucard Fragment") == 6
+					else
+						hop()
+					end
+				end)
+			end
+		end
+ end)
+ 
+ ItemTab:AddToggle({
+	Name = "Quest Soul Guitar",
+	Default = false,
+	Callback = function(Value)
+		  _G.AutoNevaSoulGuitar = value    
+          StopTween(_G.AutoNevaSoulGuitar)
+	end    
+}) 
+
+spawn(function()
+		while wait() do
+			pcall(function()
+				if _G.AutoNevaSoulGuitar then
+					if GetWeaponInventory("Soul Guitar") == false then
+						if (CFrame.new(-9681.458984375, 6.139880657196045, 6341.3720703125).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000 then
+							if game:GetService("Workspace").NPCs:FindFirstChild("Skeleton Machine") then
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("soulGuitarBuy",true)
+							else
+								if game:GetService("Workspace").Map["Haunted Castle"].Candle1.Transparency == 0 then
+									if game:GetService("Workspace").Map["Haunted Castle"].Placard1.Left.Part.Transparency == 0 then
+										Quest2 = true
+										repeat wait() topos(CFrame.new(-8762.69140625, 176.84783935546875, 6171.3076171875)) until (CFrame.new(-8762.69140625, 176.84783935546875, 6171.3076171875).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 or not _G.AutoNevaSoulGuitar
+										wait(1)
+										fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"].Placard7.Left.ClickDetector)
+										wait(1)
+										fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"].Placard6.Left.ClickDetector)
+										wait(1)
+										fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"].Placard5.Left.ClickDetector)
+										wait(1)
+										fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"].Placard4.Right.ClickDetector)
+										wait(1)
+										fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"].Placard3.Left.ClickDetector)
+										wait(1)
+										fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"].Placard2.Right.ClickDetector)
+										wait(1)
+										fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"].Placard1.Right.ClickDetector)
+										wait(1)
+									elseif game:GetService("Workspace").Map["Haunted Castle"].Tablet.Segment1:FindFirstChild("ClickDetector") then
+										if game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part1:FindFirstChild("ClickDetector") then
+											Quest4 = true
+											repeat wait() topos(CFrame.new(-9553.5986328125, 65.62338256835938, 6041.58837890625)) until (CFrame.new(-9553.5986328125, 65.62338256835938, 6041.58837890625).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 or not _G.AutoNevaSoulGuitar
+											wait(1)
+											topos(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part3.CFrame)
+											wait(1)
+											fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part3.ClickDetector)
+											wait(1)
+											topos(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part4.CFrame)
+											wait(1)
+											fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part4.ClickDetector)
+											wait(1)
+											fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part4.ClickDetector)
+											wait(1)
+											fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part4.ClickDetector)
+											wait(1)
+											topos(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part6.CFrame)
+											wait(1)
+											fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part6.ClickDetector)
+											wait(1)
+											fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part6.ClickDetector)
+											wait(1)
+											topos(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part8.CFrame)
+											wait(1)
+											fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part8.ClickDetector)
+											wait(1)
+											topos(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part10.CFrame)
+											wait(1)
+											fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part10.ClickDetector)
+											wait(1)
+											fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part10.ClickDetector)
+											wait(1)
+											fireclickdetector(game:GetService("Workspace").Map["Haunted Castle"]["Lab Puzzle"].ColorFloor.Model.Part10.ClickDetector)
+										else
+											Quest3 = true
+											--Not Work Yet
+										end
+									else
+										if game:GetService("Workspace").NPCs:FindFirstChild("Ghost") then
+											local args = {
+												[1] = "GuitarPuzzleProgress",
+												[2] = "Ghost"
+											}
+
+											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+										end
+										if game.Workspace.Enemies:FindFirstChild("Living Zombie [Lv. 2000]") then
+											for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+												if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+													if v.Name == "Living Zombie [Lv. 2000]" then
+														EquipWeapon(_G.SelectWeapon)
+														v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+														v.HumanoidRootPart.Transparency = 1
+														v.Humanoid.JumpPower = 0
+														v.Humanoid.WalkSpeed = 0
+														v.HumanoidRootPart.CanCollide = false
+														v.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,20,0)
+														topos(CFrame.new(-10160.787109375, 138.6616973876953, 5955.03076171875))
+														game:GetService'VirtualUser':CaptureController()
+														game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+													end
+												end
+											end
+										else
+											topos(CFrame.new(-10160.787109375, 138.6616973876953, 5955.03076171875))
+										end
+									end
+								else    
+									if string.find(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("gravestoneEvent",2), "Error") then
+										print("Go to Grave")
+										topos(CFrame.new(-8653.2060546875, 140.98487854003906, 6160.033203125))
+									elseif string.find(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("gravestoneEvent",2), "Nothing") then
+										print("Wait Next Night")
+									else
+										game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("gravestoneEvent",2,true)
+									end
+								end
+							end
+						else
+							topos(CFrame.new(-9681.458984375, 6.139880657196045, 6341.3720703125))
+	end
+	else
+if _G.soulGuitarhop then
+hop()
+end
+						end
+					end
+			end)
+		end
+end)
+
+ItemTab:AddToggle({
+	Name = "Quest Soul Guitar + HOP",
+	Default = false,
+	Callback = function(Value)
+		_G.soulGuitarhop = Value
+	end    
+}) 
 
 local SettingTab = Window:MakeTab({
 	Name = "Setting",
@@ -5607,7 +6365,6 @@ V4Tab:AddButton({
       		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer('UpgradeRace','Buy')
   	end    
 }) 
-end
 
 V4Tab:AddToggle({
 	Name = "Kill Player When Trial Complete",
@@ -5643,6 +6400,7 @@ spawn(function()
   			end)
   	end
   end)
+end
 
 local RaidTab = Window:MakeTab({
 	Name = "Raid",
@@ -6182,6 +6940,50 @@ spawn(function()
 			end
 		end
 	end)
+	
+local ESTab = Window:MakeTab({
+	Name = "Esp",
+	Icon = "rbxassetid://14161592006",
+	PremiumOnly = false
+}) 
+
+ESTab:AddToggle({
+	Name = "ESP Player",
+	Default = false,
+	Callback = function(a)
+		        ESPPlayer = a
+	UpdatePlayerChams()
+	end    
+}) 
+
+ESTab:AddToggle({
+	Name = "ESP Chest",
+	Default = false,
+	Callback = function(a)
+		        ChestESP = a
+	UpdateChestChams() 
+	end    
+}) 
+
+ESTab:AddToggle({
+	Name = "ESP Flower",
+	Default = false,
+	Callback = function(a)
+		        FlowerESP = a
+	UpdateFlowerChams() 
+	end    
+}) 
+
+ESTab:AddToggle({
+	Name = "ESP Fruit",
+	Default = false,
+	Callback = function(a)
+		        DevilFruitESP = a
+        while DevilFruitESP do wait()
+            UpdateDevilChams() 
+        end
+	end    
+}) 
 
 local MiscTab = Window:MakeTab({
 	Name = "Miscellaneous",
