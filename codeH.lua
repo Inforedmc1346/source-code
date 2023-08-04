@@ -6296,7 +6296,9 @@ spawn(function()
 						end
 					end
 				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
-					topos(game.Workspace.Map.SkyTrial.Model.FinishPart.CFrame)
+					for i,v in pairs(game:GetService("Workspace").Map.SkyTrial.Model:GetDescendants()) do
+						if v.Name ==  "snowisland_Cylinder.081" then
+							topos(game.Workspace.Map.SkyTrial.Model.FinishPart.CFrame)
 						end
 					end
 				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
