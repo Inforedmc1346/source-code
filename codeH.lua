@@ -2091,6 +2091,31 @@ MainTab:AddToggle({
 	end    
 }) 
 
+MainTab:AddDropdown({
+	Name = "Bring Mob Change",
+	Default = "Normal",
+	Options = {"Low", "Normal", "Super Bring"},
+	Callback = function(Value)
+		_G.BringMode = Value
+	end    
+})
+
+spawn(function()
+    while wait(.1) do
+        if _G.BringMode then
+            pcall(function()
+                if _G.BringMode == "Low" then
+                    _G.BringMode = 200
+                elseif _G.BringMode == "Normal" then
+                    _G.BringMode = 250
+                elseif _G.BringMode == "Super Bring" then
+                    _G.BringMode = 300
+                end
+            end)
+        end
+    end
+end)
+
 MainTab:AddToggle({
 	Name = "Farm Level",
 	Default = false,
