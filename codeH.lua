@@ -1959,10 +1959,9 @@ task.spawn(function()
 	end
     end)
 
-_G.FastAttackDelay = "0.175"
 MainTab:AddDropdown({
 	Name = "Fast Attack Speed",
-	Default = "0.155",
+	Default = "0.175",
 	Options = {"0", "0.1", "0.15", "0.155", "0.16", "0.165", "0.17", "0.175", "0.18", "0.185"},
 	Callback = function(Value)
 		_G.FastAttackDelay = Value
@@ -2083,32 +2082,6 @@ end)
 
 local CamShake = require(game.ReplicatedStorage.Util.CameraShaker)
 CamShake:Stop()
-
-_G.BringMode = "Normal"
-MainTab:AddDropdown({
-	Name = "Bring Mob Change",
-	Default = "Normal",
-	Options = {"Low", "Normal", "Super Bring"},
-	Callback = function(Value)
-		_G.BringMode = Value
-	end    
-})
-
-spawn(function()
-    while wait(.1) do
-        if _G.BringMode then
-            pcall(function()
-                if _G.BringMode == "Low" then
-                    _G.BringMode = 250
-                elseif _G.BringMode == "Normal" then
-                    _G.BringMode = 300
-                elseif _G.BringMode == "Super Bring" then
-                    _G.BringMode = 350
-                end
-            end)
-        end
-    end
-end)
 
 MainTab:AddToggle({
 	Name = "Bypass TP",
@@ -2653,16 +2626,6 @@ ItemTab:AddToggle({
 		    end
 		end
 		end
-spawn(function()
-    while wait() do
-		pcall(function()
-			if _G.dao then
-				game:GetService("VirtualInputManager"):SendKeyEvent(true,"W",false,game)
-				game:GetService("VirtualInputManager"):SendKeyEvent(true,"A",false,game)
-			end
-		end)
-    end
-end)
 
 	end    
 }) 
@@ -3683,7 +3646,7 @@ ItemTab:AddToggle({
 					for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
 						if v:FindFirstChild("HumanoidRootPart") then
 						    AutoHaki()
-							TP1(v.HumanoidRootPart.CFrame * CFrame.new(1,100,45))
+							TP1(v.HumanoidRootPart.CFrame * CFrame.new(1,170,45))
 							game:GetService("VirtualUser"):CaptureController()
 							game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
 							for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
@@ -3701,6 +3664,8 @@ ItemTab:AddToggle({
 							wait(.2)
 							game:GetService("VirtualInputManager"):SendKeyEvent(true,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
 							game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							wait(.2)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game.Players.LocalPlayer.Character.HumanoidRootPart)
 							for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 								if v:IsA("Tool") then
 									if v.ToolTip == "Blox Fruit" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
@@ -3716,8 +3681,10 @@ ItemTab:AddToggle({
 							wait(.2)
 							game:GetService("VirtualInputManager"):SendKeyEvent(true,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
 							game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							wait(.2)
+					        game:GetService("VirtualInputManager"):SendKeyEvent(false,"V",false,game.Players.LocalPlayer.Character.HumanoidRootPart)
 					
-							wait(0.5)
+							wait(0.6)
 							for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 								if v:IsA("Tool") then
 									if v.ToolTip == "Sword" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
@@ -3770,7 +3737,7 @@ ItemTab:AddToggle({
         while wait() do
             if PirateShip then
                    pcall(function()
-                     for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+                     for i,v in pairs(game:GetService("Workspace").Shipraids:GetChildren()) do
                          if v:FindFirstChild("HumanoidRootPart") then
                             AutoHaki()
                             EquipWeapon(_G.SelectWeapon)
@@ -5171,8 +5138,8 @@ MainTab:AddToggle({
 SettingTab:AddToggle({
 	Name = "Bring Mob",
 	Default = true,
-	Callback = function(Value)
-		_G.BringMonster = Value
+	Callback = function(Mag)
+		_G.BringMonster = Mag
 	end    
 })
 
@@ -6248,30 +6215,34 @@ V4Tab:AddButton({
 	Name = "Teleport Trial Door",
 	Callback = function()
   Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
+  wait(.1)
+  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
+  wait(.1)
+  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
       		  if game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
-      		  wait(0.6)
+      		  wait(1)
       		  topos(CFrame.new(28224.056640625, 14889.4267578125, -210.5872039794922))
       		  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" then
-      		  wait(0.6)
+      		  wait(1)
       		  topos(CFrame.new(29237.294921875, 14889.4267578125, -206.94955444335938))
       		  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" then
-      		  wait(0.6)
+      		  wait(1)
       		  topos(CFrame.new(28492.4140625, 14894.4267578125, -422.1100158691406))
       		  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
-      		  wait(0.6)
+      		  wait(1)
       		  topos(CFrame.new(28967.408203125, 14918.0751953125, 234.31198120117188))
       		  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Ghoul" then
-      		  wait(0.6)
+      		  wait(1)
       		  topos(CFrame.new(28672.720703125, 14889.1279296875, 454.5961608886719))
       		  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
-      		  wait(0.6)
+      		  wait(1)
       		  topos(CFrame.new(29020.66015625, 14889.4267578125, -379.2682800292969))
       		  end
   	end    
 }) 
 
 V4Tab:AddToggle({
-	Name = "Trial All Race V4",
+	Name = "Finish Trial V4",
 	Default = false,
 	Callback = function(Value)
 		_G.AutoQuestRace = Value
@@ -6417,7 +6388,7 @@ spawn(function()
   			if KillPlayer then
   					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
   						if v.Name ~= game.Players.LocalPlayer.Name then
-  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 900 then
+  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1100 then
   						    plyselecthunthelpold = v.Humanoid.Health
   							repeat wait()
   								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
