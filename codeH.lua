@@ -6244,6 +6244,10 @@ V4Tab:AddButton({
   Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
   wait(.1)
   Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
+  wait(.1)
+  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
+  wait(.1)
+  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
       		  if game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
       		  wait(1)
       		  topos(CFrame.new(28224.056640625, 14889.4267578125, -210.5872039794922))
@@ -6292,9 +6296,7 @@ spawn(function()
 						end
 					end
 				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
-					for i,v in pairs(game:GetService("Workspace").Map.SkyTrial.Model:GetDescendants()) do
-						if v.Name ==  "snowisland_Cylinder.081" then
-							topos(v.CFrame* CFrame.new(0,0,0))
+					topos(game.Workspace.Map.SkyTrial.Model.FinishPart.CFrame)
 						end
 					end
 				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
