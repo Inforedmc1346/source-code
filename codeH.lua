@@ -2816,7 +2816,7 @@ spawn(function()
                         end
                     else
                         if game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]") then
-                            game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2172.802490234375, 69.97880554199219, -12396.994140625)
+                            topos(game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
                         else
                             if KillMob == 0 then
                             end                    
@@ -2862,10 +2862,10 @@ spawn(function()
                                 end
                             else
                                 if game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]") then
-                                    game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2172.802490234375, 69.97880554199219, -12396.994140625)
+                                    topos(game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
                                 else
                                     if game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]") then
-                                        game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2172.802490234375, 69.97880554199219, -12396.994140625)
+                                        topos(game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
                                     end
                                 end
                             end
@@ -2916,9 +2916,9 @@ ItemTab:AddToggle({
                             end
                         end
                     else
-                    game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2172.802490234375, 69.97880554199219, -12396.994140625)
+                    topos(CFrame.new(-2662.818603515625, 1062.3480224609375, -11853.6953125))
                         if game:GetService("ReplicatedStorage"):FindFirstChild("Dough King [Lv. 2300] [Raid Boss]") then
-                            game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2172.802490234375, 69.97880554199219, -12396.994140625)
+                            topos(game:GetService("ReplicatedStorage"):FindFirstChild("Dough King [Lv. 2300] [Raid Boss]").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
                         else
                             if  _G.AutodoughkingHop then
                                 Hop()
