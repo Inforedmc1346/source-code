@@ -7146,6 +7146,18 @@ spawn(function()
 		end
 	end)
 	
+local PlayerTab = Window:MakeTab({
+	Name = "Player",
+	Icon = "rbxassetid://14161592006",
+	PremiumOnly = false
+}) 
+
+Playerslist = {}
+    
+    for i,v in pairs(game:GetService("Players"):GetChildren()) do
+        table.insert(Playerslist,v.Name)
+    end
+	
 local SelectedPly = PlayerTab:AddDropdown({
 	Name = "Select Players",
 	Default = "",
