@@ -9,7 +9,7 @@ if game.PlaceId == 2753915549 then
         World3 = true
     end
 
-	function CheckQuest() 
+	function CheckQuest()  
         MyLevel = game:GetService("Players").LocalPlayer.Data.Level.Value
         if World1 then
             if MyLevel == 1 or MyLevel <= 9 then
@@ -1842,7 +1842,7 @@ getgenv().ToTargets = function(p)
         game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
     end)
     
-local Window = OrionLib:MakeWindow({Name = "Hirimi Hub [H Version]", HidePremium = false, SaveConfig = true, ConfigFolder = "HHubPaid"})
+local Window = OrionLib:MakeWindow({Name = "Hirimi Hub [H Version Beta]", HidePremium = false, SaveConfig = true, ConfigFolder = "HHubPaid"})
 
 local SettingsTab = Window:MakeTab({
 	Name = "Developer",
@@ -2160,7 +2160,7 @@ MainTab:AddToggle({
                                                 v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid.WalkSpeed = 0
                                                 v.Head.CanCollide = false
-                                                v.HumanoidRootPart.Size = Vector3.new(70,70,70)
+                                                v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                                 StartMagnet = true
                                                 game:GetService'VirtualUser':CaptureController()
                                                 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
@@ -7146,6 +7146,88 @@ spawn(function()
 		end
 	end)
 	
+local PlayerTab = Window:MakeTab({
+	Name = "Player",
+	Icon = "rbxassetid://14161592006",
+	PremiumOnly = false
+}) 
+
+Playerslist = {}
+    
+    for i,v in pairs(game:GetService("Players"):GetChildren()) do
+        table.insert(Playerslist,v.Name)
+    end
+    
+local SelectedPly = PlayerTab:AddDropdown({
+	Name = "Select Players",
+	Default = "",
+	Options = Playerslist,
+	Callback = function(Value)
+		_G.SelectPly = Value
+	end    
+})
+PlayerTab:AddButton({
+	Name = "Reflesh Player",
+	Callback = function()
+        Playerslist = {}
+        SelectedPly:Refresh()
+        for i,v in pairs(game:GetService("Players"):GetChildren()) do  
+            SelectedPly:Add(v.Name)
+        end
+  	end    
+})
+
+PlayerTab:AddButton({
+	Name = "Get Kill Player Quest",
+	Callback = function()
+      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("PlayerHunter")
+  	end    
+})
+
+PlayerTab:AddToggle({
+	Name = "Kill Player [Selected]",
+	Default = false,
+	Callback = function(Value)
+		_G.Auto_Kill_Ply = Value
+		StopTween(_G.Auto_Kill_Ply)
+	end    
+})
+
+    spawn(function()
+        while wait() do
+            if _G.Auto_Kill_Ply then
+                pcall(function()
+                    if _G.SelectPly ~= nil then 
+                        if game.Players:FindFirstChild(_G.SelectPly) then
+                            if game.Players:FindFirstChild(_G.SelectPly).Character.Humanoid.Health > 0 then
+                                repeat task.wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                    AutoHaki()
+                                    game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.CanCollide = false
+                                    topos(game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+                                    spawn(function()
+                                        pcall(function()
+                                            if _G.SelectWeapon == SelectWeaponGun then
+                                                local args = {
+                                                    [1] = game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.Position,
+                                                    [2] = game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart
+                                                }
+                                                game:GetService("Players").LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
+                                            else
+                                                game:GetService("VirtualUser"):CaptureController()
+                                                game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                                            end
+                                        end)
+                                    end)
+                                until game.Players:FindFirstChild(_G.SelectPly).Character.Humanoid.Health <= 0 or not game.Players:FindFirstChild(_G.SelectPly) or not _G.Auto_Kill_Ply
+                            end
+                        end
+                    end
+                end)
+            end
+        end
+    end)
+	
 local ESTab = Window:MakeTab({
 	Name = "Esp",
 	Icon = "rbxassetid://14161592006",
@@ -7356,7 +7438,7 @@ for i,v in pairs(P) do
         local data = {
             ["embeds"] = {
                 {
-                    ["description"] = "**Mirage Island!**\n```lua\n"..tostring('game:GetService("ReplicatedStorage").__ServerBrowser:InvokeServer("teleport","'..game.JobId..'")').."\n```",
+                    ["description"] = "**Moon!**\n```lua\n"..tostring('game:GetService("ReplicatedStorage").__ServerBrowser:InvokeServer("teleport","'..game.JobId..'")').."\n```",
                     ["color"] = 663255,
                     ["fields"] = {
                         {["name"] = "**Players**",["value"] = "```yaml\n"..shared.Min.."/"..game:GetService("Players").MaxPlayers.."\n```",["inline"] = true,},
