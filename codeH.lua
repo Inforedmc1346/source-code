@@ -9,7 +9,7 @@ if game.PlaceId == 2753915549 then
         World3 = true
     end
 
-	function CheckQuest()  
+	function CheckQuest() 
         MyLevel = game:GetService("Players").LocalPlayer.Data.Level.Value
         if World1 then
             if MyLevel == 1 or MyLevel <= 9 then
@@ -1842,7 +1842,7 @@ getgenv().ToTargets = function(p)
         game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
     end)
     
-local Window = OrionLib:MakeWindow({Name = "Hirimi Hub [H Version Beta]", HidePremium = false, SaveConfig = true, ConfigFolder = "HHubPaid"})
+local Window = OrionLib:MakeWindow({Name = "Hirimi Hub [H Version]", HidePremium = false, SaveConfig = true, ConfigFolder = "HHubPaid"})
 
 local SettingsTab = Window:MakeTab({
 	Name = "Developer",
@@ -2160,7 +2160,7 @@ MainTab:AddToggle({
                                                 v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid.WalkSpeed = 0
                                                 v.Head.CanCollide = false
-                                                v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                                v.HumanoidRootPart.Size = Vector3.new(70,70,70)
                                                 StartMagnet = true
                                                 game:GetService'VirtualUser':CaptureController()
                                                 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
@@ -2484,102 +2484,6 @@ MainTab:AddToggle({
                     game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Data.DevilFruit.Value].RemoteEvent:FireServer(unpack(args))
                 end
             end)
-        end)
-    end)
-    
-MainTab:AddToggle({
-	Name = "Farm Mastery Gun",
-	Default = false,
-	Callback = function(Value)
-		_G.AutoFarmGunMastery = Value
-        StopTween(_G.AutoFarmGunMastery)
-	end    
-}) 
-
-    spawn(function()
-        pcall(function()
-            while wait() do
-                if _G.AutoFarmGunMastery then
-                    local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
-                    if not string.find(QuestTitle, NameMon) then
-                        Magnet = false                                      
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-                    end
-                    if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-                        StartMasteryGunMagnet = false
-                        CheckQuest()
-                        TP1(CFrameQuest)
-                        if (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
-                            wait(0.1)
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NameQuest, LevelQuest)
-                        end
-                    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-                        CheckQuest()
-                        if game:GetService("Workspace").Enemies:FindFirstChild(Mon) then
-                            pcall(function()
-                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                    if v.Name == Mon then
-                                        repeat task.wait()
-                                            if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
-                                                HealthMin = v.Humanoid.MaxHealth * _G.Kill_At/100
-                                                if v.Humanoid.Health <= HealthMin then                                                
-                                                    EquipWeapon(SelectWeaponGun)
-                                                    TP1(v.HumanoidRootPart.CFrame * CFrame.new(0,10,0))
-                                                    v.Humanoid.WalkSpeed = 0
-                                                    v.HumanoidRootPart.CanCollide = false
-                                                    v.HumanoidRootPart.Size = Vector3.new(2,2,1)
-                                                    v.Head.CanCollide = false                                                
-                                                    local args = {
-                                                        [1] = v.HumanoidRootPart.Position,
-                                                        [2] = v.HumanoidRootPart
-                                                    }
-                                                    game:GetService("Players").LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
-                                                    game:GetService("VirtualUser"):CaptureController()
-                                                    game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
-			                                        game:GetService("VirtualInputManager"):SendKeyEvent(true,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
-							                        game:GetService("VirtualInputManager"):SendKeyEvent(false,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
-							                        wait(.2)
-							                        game:GetService("VirtualInputManager"):SendKeyEvent(true,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
-							                        game:GetService("VirtualInputManager"):SendKeyEvent(false,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
-                                                else
-                                                    AutoHaki()
-                                                    EquipWeapon(_G.SelectWeapon)
-                                                    v.Humanoid.WalkSpeed = 0
-                                                    v.HumanoidRootPart.CanCollide = false
-                                                    v.Head.CanCollide = false               
-                                                    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-                                                    TP1(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
-                                                    game:GetService'VirtualUser':CaptureController()
-                                                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                end
-                                                StartMasteryGunMagnet = true 
-                                                PosMonMasteryGun = v.HumanoidRootPart.CFrame
-                                            else
-                                                StartMasteryGunMagnet = false
-                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-                                            end
-                                        until v.Humanoid.Health <= 0 or _G.AutoFarmGunMastery == false or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-                                        StartMasteryGunMagnet = false
-                                    end
-                                end
-                            end)
-                        else
-                           TP1(CFrameMon)
-                            StartMasteryGunMagnet = false
-                            local Mob = game:GetService("ReplicatedStorage"):FindFirstChild(Mon) 
-                            if Mob then
-                                TP1(Mob.HumanoidRootPart.CFrame * CFrame.new(0,0,10))
-                            else
-                                if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame.Y <= 1 then
-                                    game:GetService("Players").LocalPlayer.Character.Humanoid.Jump = true
-                                    task.wait()
-                                    game:GetService("Players").LocalPlayer.Character.Humanoid.Jump = false
-                                end
-                            end
-                        end 
-                    end
-                end
-            end
         end)
     end)
 
@@ -7146,88 +7050,6 @@ spawn(function()
 		end
 	end)
 	
-local PlayerTab = Window:MakeTab({
-	Name = "Player",
-	Icon = "rbxassetid://14161592006",
-	PremiumOnly = false
-}) 
-
-Playerslist = {}
-    
-    for i,v in pairs(game:GetService("Players"):GetChildren()) do
-        table.insert(Playerslist,v.Name)
-    end
-    
-local SelectedPly = PlayerTab:AddDropdown({
-	Name = "Select Players",
-	Default = "",
-	Options = Playerslist,
-	Callback = function(Value)
-		_G.SelectPly = Value
-	end    
-})
-PlayerTab:AddButton({
-	Name = "Reflesh Player",
-	Callback = function()
-        Playerslist = {}
-        SelectedPly:Refresh()
-        for i,v in pairs(game:GetService("Players"):GetChildren()) do  
-            SelectedPly:Add(v.Name)
-        end
-  	end    
-})
-
-PlayerTab:AddButton({
-	Name = "Get Kill Player Quest",
-	Callback = function()
-      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("PlayerHunter")
-  	end    
-})
-
-PlayerTab:AddToggle({
-	Name = "Kill Player [Selected]",
-	Default = false,
-	Callback = function(Value)
-		_G.Auto_Kill_Ply = Value
-		StopTween(_G.Auto_Kill_Ply)
-	end    
-})
-
-    spawn(function()
-        while wait() do
-            if _G.Auto_Kill_Ply then
-                pcall(function()
-                    if _G.SelectPly ~= nil then 
-                        if game.Players:FindFirstChild(_G.SelectPly) then
-                            if game.Players:FindFirstChild(_G.SelectPly).Character.Humanoid.Health > 0 then
-                                repeat task.wait()
-                                    EquipWeapon(_G.SelectWeapon)
-                                    AutoHaki()
-                                    game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.CanCollide = false
-                                    topos(game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
-                                    spawn(function()
-                                        pcall(function()
-                                            if _G.SelectWeapon == SelectWeaponGun then
-                                                local args = {
-                                                    [1] = game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.Position,
-                                                    [2] = game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart
-                                                }
-                                                game:GetService("Players").LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
-                                            else
-                                                game:GetService("VirtualUser"):CaptureController()
-                                                game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
-                                            end
-                                        end)
-                                    end)
-                                until game.Players:FindFirstChild(_G.SelectPly).Character.Humanoid.Health <= 0 or not game.Players:FindFirstChild(_G.SelectPly) or not _G.Auto_Kill_Ply
-                            end
-                        end
-                    end
-                end)
-            end
-        end
-    end)
-	
 local ESTab = Window:MakeTab({
 	Name = "Esp",
 	Icon = "rbxassetid://14161592006",
@@ -7399,70 +7221,3 @@ MiscTab:AddButton({
 })
 
 OrionLib:Init()
-
-local P = {2753915549,4442272183,7449423635};
-for i,v in pairs(game:GetService("Players"):GetChildren()) do
-    shared.Min = i
-end
-
-game:GetService("RunService").Heartbeat:Connect(function()
-    for i,v in pairs(P) do
-        if v == game.PlaceId then
-            if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
-                shared.Mystic = "Spawn"
-            else
-                shared.Mystic = "Not spawn"
-            end
-            
-            if game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149431" then
-                shared.FullMoon = tostring("100%".." | ".."Full Moon")
-            elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149052" then
-                shared.FullMoon = tostring("75%")
-            elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709143733" then
-                shared.FullMoon = tostring("50%")
-            elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709150401" then
-                shared.FullMoon = tostring("25%")
-            elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149680" then
-                shared.FullMoon = tostring("15%")
-            else
-                shared.FullMoon = tostring("0%")
-            end
-        end
-    end
-end)
-
-for i,v in pairs(P) do
-    if v == game.PlaceId then
-        local url =
-            "https://discord.com/api/webhooks/1137355222419771513/YE4AsobrghqBtgOLSsjGRo_dKf0To97oLwCi_OTP2nz79zMajDDKYPQUgEr8UQz7P5Oq"
-        local data = {
-            ["embeds"] = {
-                {
-                    ["description"] = "**Moon!**\n```lua\n"..tostring('game:GetService("ReplicatedStorage").__ServerBrowser:InvokeServer("teleport","'..game.JobId..'")').."\n```",
-                    ["color"] = 663255,
-                    ["fields"] = {
-                        {["name"] = "**Players**",["value"] = "```yaml\n"..shared.Min.."/"..game:GetService("Players").MaxPlayers.."\n```",["inline"] = true,},
-                        {["name"] = "**🌕Full Moon :**",["value"] = "```yaml\n"..shared.FullMoon.."\n```",["inline"] = true,},
-                        {["name"] = "**🌌Mirage Island :**",["value"] = "```lua\n"..tostring(shared.Mystic).."\n```",["inline"] = true,}
-                    },
-                    ["footer"] = {
-                        ["text"] = "Webhook",
-                        ["icon_url"] = ""
-                    },
-                    ["timestamp"] = DateTime.now():ToIsoDate(),
-                    ["thumbnail"] = {
-                        ["url"] = "https://tr.rbxcdn.com/9b78e73ecff59b92a0d23e0cf4b40292/150/150/Image/Png"
-                    }
-                }
-            },
-        }
-        local newdata = game:GetService("HttpService"):JSONEncode(data)
-
-        local headers = {
-            ["content-type"] = "application/json"
-        }
-        request = http_request or request or HttpPost or syn.request
-        local R = {Url = url, Body = newdata, Method = "POST", Headers = headers}
-        request(R)
-    end
-end
