@@ -3762,8 +3762,8 @@ ItemTab:AddToggle({
         while wait() do
             if PirateShip then
                    pcall(function()
-                     for i,v in pairs(game:GetService("Workspace").Shipraids:GetChildren()) do
-                         if v:FindFirstChild("HumanoidRootPart") then
+                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                         if v.Name == "PirateBrigade" or v.Name == "PirateBasic" then
                             AutoHaki()
                             EquipWeapon(_G.SelectWeapon)
                             TP1(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
@@ -3779,6 +3779,32 @@ ItemTab:AddToggle({
                 end
             end
         end)
+        
+ cac = {
+    Weapon = "Melee",
+    Skill = {"Z", "X", "C"}
+ }
+task.spawn(function() 
+   while wait() do 
+      local cA = CheckPirateBoat() 
+        if cA then 
+             to(cA.CFrame+Vector3.new(math.random(10,-10), 30, math.random(10,-10)))
+              if game.Players.LocalPlayer:DistanceFromCharacter(cA.Position) < 90 then 
+            aimpos = cA.Position
+           for _, aI in pairs(cac) do 
+                if type(aI) == "String" then 
+                   EquipWeapon(aI)
+                 else 
+                   for _, gF in pairs(aI) do 
+                            game:GetService("VirtualUser"):CaptureController()
+							game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                   end
+                end
+           end
+              end
+         end
+   end
+             end)
 
 ItemTab:AddToggle({
 	Name = "Kill Rip_Indra Boss",
@@ -6417,9 +6443,9 @@ spawn(function()
   			if KillPlayer then
   					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
   						if v.Name ~= game.Players.LocalPlayer.Name then
-  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1100 then
-  						    plyselecthunthelpold = v.Humanoid.Health
+  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1000 then
   							repeat wait()
+                                  NameTarget = v.Name
   								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
   								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
@@ -6869,6 +6895,50 @@ SHTab:AddButton({
 	Name = "Buy God Human",
 	Callback = function()
       		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Buy Buso Haki",
+	Callback = function()
+      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Buso")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Buy Geppo",
+	Callback = function()
+      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Geppo")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Buy Soru",
+	Callback = function()
+      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Soru")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Buy Ken(Observation)",
+	Callback = function()
+      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk","Buy")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Reset Stats",
+	Callback = function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2")
+  	end    
+})
+
+SHTab:AddButton({
+	Name = "Race Reroll",
+	Callback = function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","1")
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","2")
   	end    
 })
 
