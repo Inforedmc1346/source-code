@@ -6457,7 +6457,8 @@ spawn(function()
   									game:GetService'VirtualUser':CaptureController()
   									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
   								end
-                              v.HumanoidRootPart.CanCollide = false
+                              game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.HumanoidRootPart.CanCollide = false
+                              TargetSelectHunt = v.Humanoid
   							until not KillPlayer or v:WaitForChild("Humanoid").Health > 0
   						end
   					end
