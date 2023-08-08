@@ -5755,6 +5755,7 @@ spawn(function()
 		pcall(function()
 			if _G.dao then
 				game:GetService("VirtualInputManager"):SendKeyEvent(true,"W",false,game)
+				game:GetService("VirtualInputManager"):SendKeyEvent(true,"A",false,game)
 			end
 		end)
     end
@@ -13855,6 +13856,6 @@ wait(3)
 game.StarterGui:SetCore("SendNotification", {
       Icon = "rbxassetid://14161592006";
       Title = "Hirimi Hub", 
-      Text = "Join For Discord In Home";
+      Text = "Join For Discord In Dev";
 })
    
