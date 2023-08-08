@@ -6437,40 +6437,37 @@ V4Tab:AddToggle({
 	end    
 }) 
 
-    spawn(function()
-        while wait() do
-            if KillPlayer then
-                pcall(function()
-                    if v.Name ~= game.Players.LocalPlayer.Name then 
-                        if game.Players:FindFirstChild(game.Players.LocalPlayer.Name) then
-                            if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1100 then
-                                repeat task.wait()
-                                    EquipWeapon(_G.SelectWeapon)
-                                    AutoHaki()
-                                    game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.HumanoidRootPart.CanCollide = false
-                                    topos(game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
-                                    spawn(function()
-                                        pcall(function()
-                                            if _G.SelectWeapon == SelectWeaponGun then
-                                                local args = {
-                                                    [1] = game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.HumanoidRootPart.Position,
-                                                    [2] = game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.HumanoidRootPart
-                                                }
-                                                game:GetService("Players").LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
-                                            else
-                                                game:GetService("VirtualUser"):CaptureController()
-                                                game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
-                                            end
-                                        end)
-                                    end)
-                                until game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.Humanoid.Health <= 0 or not game.Players:FindFirstChild(_G.SelectPly) or not _G.Auto_Kill_Ply
-                            end
-                        end
-                    end
-                end)
-            end
-        end
-    end)
+spawn(function()
+  	while wait() do 
+  		pcall(function()
+  			if KillPlayer then
+  					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
+  						if v.Name ~= game.Players.LocalPlayer.Name then
+  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1000 then
+                            plyselecthunthelpold = v.Humanoid.Health
+  							repeat wait()
+                                  NameTarget = v.Name
+  								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 150 then
+  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+                                      StartCheckTarget = true
+  								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
+  									AutoHaki()
+  									EquipWeapon(_G.SelectWeapon)
+  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+  									game:GetService'VirtualUser':CaptureController()
+  									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+  								end
+                              game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.HumanoidRootPart.CanCollide = false
+                              TargetSelectHunt = v.Humanoid
+  							until not KillPlayer or v:WaitForChild("Humanoid").Health > 0
+  						end
+  					end
+  					end
+				end
+  			end)
+  	end
+  end)
+end
 
 local RaidTab = Window:MakeTab({
 	Name = "Raid",
