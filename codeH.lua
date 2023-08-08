@@ -6443,7 +6443,7 @@ V4Tab:AddToggle({
                 pcall(function()
                     if v.Name ~= game.Players.LocalPlayer.Name then 
                         if game.Players:FindFirstChild(game.Players.LocalPlayer.Name) then
-                            if game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.Humanoid.Health > 0 then
+                            if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1100 then
                                 repeat task.wait()
                                     EquipWeapon(_G.SelectWeapon)
                                     AutoHaki()
