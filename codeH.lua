@@ -2105,6 +2105,26 @@ spawn(function()
 end)
 
 MainTab:AddToggle({
+	Name = "Turn On Awakening Race V4",
+	Default = false,
+	Callback = function(Value)
+		AutoAwakeningRace = Value
+	end    
+})
+
+       spawn(function()
+           while wait() do
+		       pcall(function()
+			       if AutoAwakeningRace then
+				       game:GetService("VirtualInputManager"):SendKeyEvent(true,"Y",false,game)
+				       wait(0.1)
+                       game:GetService("VirtualInputManager"):SendKeyEvent(false,"Y",false,game)
+			       end
+		       end)
+           end
+       end)
+
+MainTab:AddToggle({
 	Name = "Farm Level",
 	Default = false,
 	Callback = function(Value)
@@ -4729,73 +4749,30 @@ MainTab:AddToggle({
             end 
         end
     end)    
-    
-MainTab:AddToggle({
-	Name = "Turn On Awakening Race V4",
-	Default = false,
-	Callback = function(Value)
-		AutoAwakeningRace = Value
-	end    
-})
-
-       spawn(function()
-           while wait() do
-		       pcall(function()
-			       if AutoAwakeningRace then
-				       game:GetService("VirtualInputManager"):SendKeyEvent(true,"Y",false,game)
-				       wait(0.1)
-                       game:GetService("VirtualInputManager"):SendKeyEvent(false,"Y",false,game)
-			       end
-		       end)
-           end
-       end)
 
 spawn(function()
-
 	while task.wait() do
-
 		pcall(function()
-
 			if StartMagnet then
-
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-
 					if v.Name == Ms and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 350 then
-
 						v.Humanoid.WalkSpeed = 0
-
 						v.Humanoid.JumpPower = 0
-
 						v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-
 						v.HumanoidRootPart.CanCollide = false
-
 						v.Head.CanCollide = false
-
 						v.HumanoidRootPart.CFrame = FarmPos
-
 						if v.Humanoid:FindFirstChild('Animator') then
-
 							v.Humanoid.Animator:Destroy()
-
 						end
-
 						v.Humanoid:ChangeState(11)
-
 						v.Humanoid:ChangeState(14)
-
 						sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
-
 					end
-
 				end
-
 			end
-
 		end)
-
 	end
-
 end)
 
 
@@ -4967,68 +4944,37 @@ MainTab:AddToggle({
 }) 
 
 spawn(function()
-
  while wait(.1) do
-
  if _G.AutoFarmSelectMonster then
-
  pcall(function()
-
-  checkselect(SelectMonster)
-
+  CheckQuest(SelectMonster)
   if game:GetService("Workspace").Enemies:FindFirstChild(SelectMonster) then
-
   for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-
   if v.Name == SelectMonster then
-
   if v:FindFirstChild("Humanoid") then
-
   if v.Humanoid.Health > 0 then
-
   repeat game:GetService("RunService").Heartbeat:wait()
-
   EquipWeapon(_G.SelectWeapon)
-
   if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-
   local args = {
-
    [1] = "Buso"
-
   }
-
   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-
   end
-
   topos(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
-
   v.HumanoidRootPart.CanCollide = false
-
   v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-
   game:GetService("VirtualUser"):CaptureController()
-
   game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672), game.Workspace.CurrentCamera.CFrame)
-
   PosMonSelectMonster = v.HumanoidRootPart.CFrame
-
   SelectMonsterMagnet = true
-
   until not _G.AutoFarmSelectMonster or not v.Parent or v.Humanoid.Health == 0 or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name)
-
   end
-
   end
-
   end
-
   end
-
   else
-
-   checkselect(SelectMonster)
+   CheckQuest(SelectMonster)
 
   SelectMonsterMagnet = false
 
@@ -5205,6 +5151,10 @@ local BoneFarm = MainTab:AddToggle({
                     pcall(function()
                           if BypassTP then
                           if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude > 2000 then
+                          BTP(boneframe)
+                          wait(.1)
+                          BTP(boneframe)
+                          wait(.1)
                           BTP(boneframe)
                           wait(3)
                           elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude < 2000 then
@@ -5437,6 +5387,14 @@ SettingTab:AddToggle({
 	end    
 }) 
 
+
+SettingTab:AddToggle({
+	Name = "Auto Click",
+	Default = true,
+	Callback = function(Value)
+	_G.AutoClick = Value
+	end    
+}) 
 local TeleTab = Window:MakeTab({
 	Name = "Teleport",
 	Icon = "rbxassetid://14161592006",
@@ -6269,6 +6227,18 @@ task.spawn(function()
 		end)
 	end
     end)
+    
+--// Function Auto Click
+    spawn(function()
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if _G.AutoClick or Fastattack then
+             pcall(function()
+                game:GetService'VirtualUser':CaptureController()
+			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+            end)
+        end
+    end)
+   end)
 
 local V4Tab = Window:MakeTab({
 	Name = "Race V4",
@@ -6543,7 +6513,7 @@ spawn(function()
   								end
                               game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.HumanoidRootPart.CanCollide = false
                               TargetSelectHunt = v.Humanoid
-  							until not KillPlayer or v:WaitForChild("Humanoid").Health > 0
+  							until game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.Humanoid.Health <= 0 or not KillPlayer or not game.Players:FindFirstChild(game.Players.LocalPlayer.Name)
   						end
   					end
   					end
