@@ -1578,6 +1578,18 @@ end)
         end
     end
     
+    spawn(function()
+	while wait() do
+		for i,v in pairs(game:GetService("Workspace")["_WorldOrigin"]:GetChildren()) do
+			pcall(function()
+				if v.Name == ("CurvedRing") or v.Name == ("SlashHit") or v.Name == ("SwordSlash") or v.Name == ("SlashTail") or v.Name == ("Sounds") then
+					v:Destroy()
+				end
+			end)
+		end
+	end
+    end)
+    
     function GetDistance(target)
         return math.floor((target.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude)
     end
@@ -1851,7 +1863,7 @@ SettingsTab:AddLabel("https://youtube.com/@hirimii0901")
 
 SettingsTab:AddLabel("Join For Discord") 
 
-SettingsTab:AddLabel("https://discord.gg/dJq24Ytyax") 
+SettingsTab:AddLabel("https://discord.gg/rUKWhEJHf2") 
 
 SettingsTab:AddLabel("I From 🇻🇳") 
 
@@ -2103,28 +2115,6 @@ spawn(function()
         end
     end
 end)
-
-MainTab:AddToggle({
-	Name = "Turn On Awakening Race V4",
-	Default = false,
-	Callback = function(Value)
-		AutoAwakeningRace = Value
-	end    
-})
-
-       spawn(function()
-           while wait() do
-		       pcall(function()
-			       if AutoAwakeningRace then
-				       game:GetService("VirtualInputManager"):SendKeyEvent(true,"Y",false,game)
-				       wait(0.1)
-                       game:GetService("VirtualInputManager"):SendKeyEvent(false,"Y",false,game)
-			       end
-		       end)
-           end
-       end)
-       
-MainTab:AddParagraph("Main Farm","GENARAL FARM")
 
 MainTab:AddToggle({
 	Name = "Farm Level",
@@ -2655,7 +2645,6 @@ ItemTab:AddToggle({
             end
         end)
     elseif World3 then
-    ItemTab:AddParagraph("Mystic Island","UNLOCK LEVEL")
     spawn(function()
         pcall(function()
             while wait() do
@@ -2789,7 +2778,6 @@ spawn(function()
     end)
     end)
     
-ItemTab:AddParagraph("Upgrade Race","EVO,...")
 ItemTab:AddToggle({
 	Name = "Quest Evo Race[V2]",
 	Default = false,
@@ -2848,8 +2836,6 @@ ItemTab:AddToggle({
             end
         end)
     end)
-    
-ItemTab:AddParagraph("Dough Boss","Farm Sea 3")
     
         local MobKilled = ItemTab:AddLabel("Killed")
     
@@ -3040,8 +3026,6 @@ ItemTab:AddToggle({
         end
     end)
     
-    ItemTab:AddParagraph("Elite Hunter","Farm Sea 3")
-    
     local EliteProgress = ItemTab:AddLabel("")
     
     spawn(function()
@@ -3132,7 +3116,6 @@ ItemTab:AddToggle({
 	end    
 }) 
 
-ItemTab:AddParagraph("Fully Melee","TAKEN GOD HUMAN")
 ItemTab:AddToggle({
 	Name = "Taken Superhuman",
 	Default = false,
@@ -3491,7 +3474,6 @@ spawn(function()
 	end
 end)
 
-ItemTab:AddParagraph("Farm Meterials","METERIALS")
 ItemTab:AddToggle({
 	Name = "Farm Mystic Droplet",
 	Default = false,
@@ -3723,8 +3705,6 @@ spawn(function()
             end
         end
     end)
-    
-ItemTab:AddParagraph("Legendary Sword","SEA 2")
 
 ItemTab:AddToggle({
 	Name = "Buy Legendary Sword",
@@ -3770,7 +3750,6 @@ ItemTab:AddToggle({
 	end    
 }) 
 
-ItemTab:AddParagraph("Sea Events","SEABEAST,..")
 ItemTab:AddToggle({
 	Name = "Kill Sea Beast",
 	Default = false,
@@ -3879,8 +3858,8 @@ ItemTab:AddToggle({
         while wait() do
             if PirateShip then
                    pcall(function()
-                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                         if v.Name == "PirateBrigade" or v.Name == "PirateBasic" then
+                     for i,v in pairs(game:GetService("Workspace").Shipraids:GetChildren()) do
+                         if v:FindFirstChild("HumanoidRootPart") then
                             AutoHaki()
                             EquipWeapon(_G.SelectWeapon)
                             TP1(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
@@ -3896,34 +3875,7 @@ ItemTab:AddToggle({
                 end
             end
         end)
-        
- cac = {
-    Weapon = "Melee",
-    Skill = {"Z", "X", "C"}
- }
-task.spawn(function() 
-   while wait() do 
-      local cA = CheckPirateBoat() 
-        if cA then 
-             to(cA.CFrame+Vector3.new(math.random(10,-10), 30, math.random(10,-10)))
-              if game.Players.LocalPlayer:DistanceFromCharacter(cA.Position) < 90 then 
-            aimpos = cA.Position
-           for _, aI in pairs(cac) do 
-                if type(aI) == "String" then 
-                   EquipWeapon(aI)
-                 else 
-                   for _, gF in pairs(aI) do 
-                            game:GetService("VirtualUser"):CaptureController()
-							game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
-                   end
-                end
-           end
-              end
-         end
-   end
-             end)
 
-ItemTab:AddParagraph("Dark Dagger","RIP INDRA")
 ItemTab:AddToggle({
 	Name = "Kill Rip_Indra Boss",
 	Default = false,
@@ -3960,8 +3912,6 @@ ItemTab:AddToggle({
             end
         end)
     end) 
-    
-ItemTab:AddParagraph("Sword Curse","CURSED DUAL KATANA")
     
 ItemTab:AddToggle({
 	Name = "Plug Holy Torch",
@@ -4525,8 +4475,6 @@ spawn(function()
 		end
  end)
  
- ItemTab:AddParagraph("Soul Guitar","Lv.2200 and FullMoon")
- 
  ItemTab:AddToggle({
 	Name = "Quest Soul Guitar",
 	Default = false,
@@ -4767,30 +4715,73 @@ MainTab:AddToggle({
             end 
         end
     end)    
+    
+MainTab:AddToggle({
+	Name = "Turn On Awakening Race V4",
+	Default = false,
+	Callback = function(Value)
+		AutoAwakeningRace = Value
+	end    
+})
+
+       spawn(function()
+           while wait() do
+		       pcall(function()
+			       if AutoAwakeningRace then
+				       game:GetService("VirtualInputManager"):SendKeyEvent(true,"Y",false,game)
+				       wait(0.1)
+                       game:GetService("VirtualInputManager"):SendKeyEvent(false,"Y",false,game)
+			       end
+		       end)
+           end
+       end)
 
 spawn(function()
+
 	while task.wait() do
+
 		pcall(function()
+
 			if StartMagnet then
+
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+
 					if v.Name == Ms and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 350 then
+
 						v.Humanoid.WalkSpeed = 0
+
 						v.Humanoid.JumpPower = 0
+
 						v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+
 						v.HumanoidRootPart.CanCollide = false
+
 						v.Head.CanCollide = false
+
 						v.HumanoidRootPart.CFrame = FarmPos
+
 						if v.Humanoid:FindFirstChild('Animator') then
+
 							v.Humanoid.Animator:Destroy()
+
 						end
+
 						v.Humanoid:ChangeState(11)
+
 						v.Humanoid:ChangeState(14)
+
 						sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
+
 					end
+
 				end
+
 			end
+
 		end)
+
 	end
+
 end)
 
 
@@ -4962,37 +4953,68 @@ MainTab:AddToggle({
 }) 
 
 spawn(function()
+
  while wait(.1) do
+
  if _G.AutoFarmSelectMonster then
+
  pcall(function()
-  CheckQuest(SelectMonster)
+
+  checkselect(SelectMonster)
+
   if game:GetService("Workspace").Enemies:FindFirstChild(SelectMonster) then
+
   for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+
   if v.Name == SelectMonster then
+
   if v:FindFirstChild("Humanoid") then
+
   if v.Humanoid.Health > 0 then
+
   repeat game:GetService("RunService").Heartbeat:wait()
+
   EquipWeapon(_G.SelectWeapon)
+
   if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+
   local args = {
+
    [1] = "Buso"
+
   }
+
   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+
   end
+
   topos(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
+
   v.HumanoidRootPart.CanCollide = false
+
   v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+
   game:GetService("VirtualUser"):CaptureController()
+
   game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672), game.Workspace.CurrentCamera.CFrame)
+
   PosMonSelectMonster = v.HumanoidRootPart.CFrame
+
   SelectMonsterMagnet = true
+
   until not _G.AutoFarmSelectMonster or not v.Parent or v.Humanoid.Health == 0 or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name)
+
   end
+
   end
+
   end
+
   end
+
   else
-   CheckQuest(SelectMonster)
+
+   checkselect(SelectMonster)
 
   SelectMonsterMagnet = false
 
@@ -5007,8 +5029,6 @@ spawn(function()
  end
 
 end)
-
-MainTab:AddParagraph("Boss Farm","BOSS SELECT FARM")
 
         local Boss = {}
     
@@ -5145,8 +5165,6 @@ MainTab:AddToggle({
             end
         end
     end)
-    
-MainTab:AddParagraph("Bone Farm","SEA 3 FARM")
  
 BoneCheck = MainTab:AddLabel("Your Bone : Third World ")
     
@@ -5173,10 +5191,6 @@ local BoneFarm = MainTab:AddToggle({
                     pcall(function()
                           if BypassTP then
                           if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude > 2000 then
-                          BTP(boneframe)
-                          wait(.1)
-                          BTP(boneframe)
-                          wait(.1)
                           BTP(boneframe)
                           wait(3)
                           elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude < 2000 then
@@ -5349,6 +5363,34 @@ spawn(function()
     end
 end)
 
+SettingTab:AddToggle({
+	Name = "White Screen",
+	Default = false,
+	Callback = function(Value)
+		_G.WhiteScreen = Value
+		if _G.WhiteScreen == true then
+    game:GetService("RunService"):Set3dRenderingEnabled(false)
+elseif _G.WhiteScreen == false then
+    game:GetService("RunService"):Set3dRenderingEnabled(true)
+end
+	end    
+})
+
+SettingTab:AddToggle({
+	Name = "Remove Fog",
+	Default = false,
+	Callback = function(Value)
+		RemoveFog = Value
+		        if not RemoveFog then return end
+        while RemoveFog do wait()
+            game.Lighting.FogEnd = 9e9
+            if not RemoveFog then
+                game.Lighting.FogEnd = 2500
+            end
+        end
+	end    
+})
+
 local SetPosTab = Window:MakeTab({
 	Name = "Set Position",
 	Icon = "rbxassetid://14161592006",
@@ -5409,21 +5451,11 @@ SettingTab:AddToggle({
 	end    
 }) 
 
-
-SettingTab:AddToggle({
-	Name = "Auto Click",
-	Default = false,
-	Callback = function(Value)
-	_G.AutoClick = Value
-	end    
-}) 
 local TeleTab = Window:MakeTab({
 	Name = "Teleport",
 	Icon = "rbxassetid://14161592006",
 	PremiumOnly = false
 })
-
-TeleTab:AddParagraph("TELE SEA","Travel Sea")
 
 TeleTab:AddButton({
 	Name = "Travel Main (1)",
@@ -5445,8 +5477,6 @@ TeleTab:AddButton({
       		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
   	end    
 })
-
-TeleTab:AddParagraph("Tween","TELEPORT NORMAL")
 
 if World1 then
 TeleTab:AddDropdown({
@@ -5638,8 +5668,6 @@ TeleTab:AddToggle({
 		        StopTween(_G.TeleportIsland)
 	end    
 })
-
-TeleTab:AddParagraph("BTP Island","BYPASS TELEPORT")
 
 if World1 then
 TeleTab:AddDropdown({
@@ -6255,18 +6283,6 @@ task.spawn(function()
 		end)
 	end
     end)
-    
---// Function Auto Click
-    spawn(function()
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if _G.AutoClick or Fastattack then
-             pcall(function()
-                game:GetService'VirtualUser':CaptureController()
-			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
-            end)
-        end
-    end)
-   end)
 
 local V4Tab = Window:MakeTab({
 	Name = "Race V4",
@@ -6280,8 +6296,6 @@ if World1 or World2 then
 end
 
 if World3 then
-V4Tab:AddParagraph("Teleport TPT","RaceV4 TP")
-
   V4Tab:AddButton({
 	Name = "TP Top GreatTree",
 	Callback = function()
@@ -6379,8 +6393,6 @@ V4Tab:AddButton({
       		  end
   	end    
 }) 
-
-V4Tab:AddParagraph("Trial Race","RACE V4 TRIALS")
 
 V4Tab:AddToggle({
 	Name = "Finish Trial V4",
@@ -6499,7 +6511,7 @@ spawn(function()
 				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
 					for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
 						if v.Name == "StartPoint" then
-							topos(v.CFrame* CFrame.new(0,9,0))
+							topos(v.CFrame* CFrame.new(0,10,0))
 					  	end
 				   	end
 				end
@@ -6529,23 +6541,19 @@ spawn(function()
   			if KillPlayer then
   					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
   						if v.Name ~= game.Players.LocalPlayer.Name then
-  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1000 then
-                            plyselecthunthelpold = v.Humanoid.Health
+  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1100 then
+  						    plyselecthunthelpold = v.Humanoid.Health
   							repeat wait()
-                                  NameTarget = v.Name
-  								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 150 then
+  								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
-                                      StartCheckTarget = true
-  								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
+  								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
   									AutoHaki()
   									EquipWeapon(_G.SelectWeapon)
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
   									game:GetService'VirtualUser':CaptureController()
   									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
   								end
-                              game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.HumanoidRootPart.CanCollide = false
-                              TargetSelectHunt = v.Humanoid
-  							until game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.Humanoid.Health <= 0 or not KillPlayer or not game.Players:FindFirstChild(game.Players.LocalPlayer.Name)
+  							until not KillPlayer or v:WaitForChild("Humanoid").Health > 0
   						end
   					end
   					end
@@ -7257,5 +7265,55 @@ MiscTab:AddToggle({
 			end
 		end)
 		
+MiscTab:AddButton({
+	Name = "Fps Boost",
+	Callback = function()
+        pcall(function()
+            game:GetService("Lighting").FantasySky:Destroy()
+            local g = game
+            local w = g.Workspace
+            local l = g.Lighting
+            local t = w.Terrain
+            t.WaterWaveSize = 0
+            t.WaterWaveSpeed = 0
+            t.WaterReflectance = 0
+            t.WaterTransparency = 0
+            l.GlobalShadows = false
+            l.FogEnd = 9e9
+            l.Brightness = 0
+            settings().Rendering.QualityLevel = "Level01"
+            for i, v in pairs(g:GetDescendants()) do
+                if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then 
+                    v.Material = "Plastic"
+                    v.Reflectance = 0
+                elseif v:IsA("Decal") or v:IsA("Texture") then
+                    v.Transparency = 1
+                elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+                    v.Lifetime = NumberRange.new(0)
+                elseif v:IsA("Explosion") then
+                    v.BlastPressure = 1
+                    v.BlastRadius = 1
+                elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+                    v.Enabled = false
+                elseif v:IsA("MeshPart") then
+                    v.Material = "Plastic"
+                    v.Reflectance = 0
+                    v.TextureID = 10385902758728957
+                end
+            end
+            for i, e in pairs(l:GetChildren()) do
+                if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+                    e.Enabled = false
+                end
+            end
+            for i, v in pairs(game:GetService("Workspace").Camera:GetDescendants()) do
+                if v.Name == ("Water;") then
+                    v.Transparency = 1
+                    v.Material = "Plastic"
+                end
+            end
+        end)
+  	end    
+})
 
 OrionLib:Init()
