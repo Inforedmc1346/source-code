@@ -2123,6 +2123,8 @@ MainTab:AddToggle({
 		       end)
            end
        end)
+       
+MainTab:AddParagraph("Main Farm","GENARAL FARM")
 
 MainTab:AddToggle({
 	Name = "Farm Level",
@@ -2653,6 +2655,7 @@ ItemTab:AddToggle({
             end
         end)
     elseif World3 then
+    ItemTab:AddParagraph("Mystic Island","UNLOCK LEVEL")
     spawn(function()
         pcall(function()
             while wait() do
@@ -2786,6 +2789,7 @@ spawn(function()
     end)
     end)
     
+ItemTab:AddParagraph("Upgrade Race","EVO,...")
 ItemTab:AddToggle({
 	Name = "Quest Evo Race[V2]",
 	Default = false,
@@ -2844,6 +2848,8 @@ ItemTab:AddToggle({
             end
         end)
     end)
+    
+ItemTab:AddParagraph("Dough Boss","Farm Sea 3")
     
         local MobKilled = ItemTab:AddLabel("Killed")
     
@@ -3034,6 +3040,8 @@ ItemTab:AddToggle({
         end
     end)
     
+    ItemTab:AddParagraph("Elite Hunter","Farm Sea 3")
+    
     local EliteProgress = ItemTab:AddLabel("")
     
     spawn(function()
@@ -3124,6 +3132,7 @@ ItemTab:AddToggle({
 	end    
 }) 
 
+ItemTab:AddParagraph("Fully Melee","TAKEN GOD HUMAN")
 ItemTab:AddToggle({
 	Name = "Taken Superhuman",
 	Default = false,
@@ -3482,6 +3491,7 @@ spawn(function()
 	end
 end)
 
+ItemTab:AddParagraph("Farm Meterials","METERIALS")
 ItemTab:AddToggle({
 	Name = "Farm Mystic Droplet",
 	Default = false,
@@ -3713,6 +3723,8 @@ spawn(function()
             end
         end
     end)
+    
+ItemTab:AddParagraph("Legendary Sword","SEA 2")
 
 ItemTab:AddToggle({
 	Name = "Buy Legendary Sword",
@@ -3758,6 +3770,7 @@ ItemTab:AddToggle({
 	end    
 }) 
 
+ItemTab:AddParagraph("Sea Events","SEABEAST,..")
 ItemTab:AddToggle({
 	Name = "Kill Sea Beast",
 	Default = false,
@@ -3910,6 +3923,7 @@ task.spawn(function()
    end
              end)
 
+ItemTab:AddParagraph("Dark Dagger","RIP INDRA")
 ItemTab:AddToggle({
 	Name = "Kill Rip_Indra Boss",
 	Default = false,
@@ -3946,6 +3960,8 @@ ItemTab:AddToggle({
             end
         end)
     end) 
+    
+ItemTab:AddParagraph("Sword Curse","CURSED DUAL KATANA")
     
 ItemTab:AddToggle({
 	Name = "Plug Holy Torch",
@@ -4509,6 +4525,8 @@ spawn(function()
 		end
  end)
  
+ ItemTab:AddParagraph("Soul Guitar","Lv.2200 and FullMoon")
+ 
  ItemTab:AddToggle({
 	Name = "Quest Soul Guitar",
 	Default = false,
@@ -4990,6 +5008,8 @@ spawn(function()
 
 end)
 
+MainTab:AddParagraph("Boss Farm","BOSS SELECT FARM")
+
         local Boss = {}
     
     for i, v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
@@ -5125,6 +5145,8 @@ MainTab:AddToggle({
             end
         end
     end)
+    
+MainTab:AddParagraph("Bone Farm","SEA 3 FARM")
  
 BoneCheck = MainTab:AddLabel("Your Bone : Third World ")
     
@@ -5401,6 +5423,8 @@ local TeleTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
+TeleTab:AddParagraph("TELE SEA","Travel Sea")
+
 TeleTab:AddButton({
 	Name = "Travel Main (1)",
 	Callback = function()
@@ -5421,6 +5445,8 @@ TeleTab:AddButton({
       		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
   	end    
 })
+
+TeleTab:AddParagraph("Tween","TELEPORT NORMAL")
 
 if World1 then
 TeleTab:AddDropdown({
@@ -5612,6 +5638,8 @@ TeleTab:AddToggle({
 		        StopTween(_G.TeleportIsland)
 	end    
 })
+
+TeleTab:AddParagraph("BTP Island","BYPASS TELEPORT")
 
 if World1 then
 TeleTab:AddDropdown({
@@ -6252,6 +6280,8 @@ if World1 or World2 then
 end
 
 if World3 then
+V4Tab:AddParagraph("Teleport TPT","RaceV4 TP")
+
   V4Tab:AddButton({
 	Name = "TP Top GreatTree",
 	Callback = function()
@@ -6349,6 +6379,8 @@ V4Tab:AddButton({
       		  end
   	end    
 }) 
+
+V4Tab:AddParagraph("Trial Race","RACE V4 TRIALS")
 
 V4Tab:AddToggle({
 	Name = "Finish Trial V4",
@@ -6467,7 +6499,7 @@ spawn(function()
 				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
 					for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
 						if v.Name == "StartPoint" then
-							topos(v.CFrame* CFrame.new(0,10,0))
+							topos(v.CFrame* CFrame.new(0,9,0))
 					  	end
 				   	end
 				end
