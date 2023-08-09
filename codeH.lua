@@ -5395,6 +5395,7 @@ SettingTab:AddToggle({
 	_G.AutoClick = Value
 	end    
 }) 
+
 local TeleTab = Window:MakeTab({
 	Name = "Teleport",
 	Icon = "rbxassetid://14161592006",
