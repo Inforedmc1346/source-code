@@ -5748,7 +5748,6 @@ for _,v in next, workspace.Boats.PirateBrigade:GetDescendants() do
     end
 end
 end
-end) 
 
 spawn(function()
     while wait() do
