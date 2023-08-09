@@ -5390,12 +5390,11 @@ SettingTab:AddToggle({
 
 SettingTab:AddToggle({
 	Name = "Auto Click",
-	Default = true,
+	Default = false,
 	Callback = function(Value)
 	_G.AutoClick = Value
 	end    
 }) 
-
 local TeleTab = Window:MakeTab({
 	Name = "Teleport",
 	Icon = "rbxassetid://14161592006",
