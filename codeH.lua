@@ -1578,18 +1578,6 @@ end)
         end
     end
     
-    spawn(function()
-	while wait() do
-		for i,v in pairs(game:GetService("Workspace")["_WorldOrigin"]:GetChildren()) do
-			pcall(function()
-				if v.Name == ("CurvedRing") or v.Name == ("SlashHit") or v.Name == ("SwordSlash") or v.Name == ("SlashTail") or v.Name == ("Sounds") then
-					v:Destroy()
-				end
-			end)
-		end
-	end
-    end)
-    
     function GetDistance(target)
         return math.floor((target.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude)
     end
