@@ -2534,7 +2534,6 @@ MainTab:AddToggle({
                                                         [2] = v.HumanoidRootPart
                                                     }
                                                     game:GetService("Players").LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
-                                                    game:GetService("RunService").RenderStepped:Connect(function()
                                                     game:GetService("VirtualUser"):CaptureController()
                                                     game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
 			                                        game:GetService("VirtualInputManager"):SendKeyEvent(true,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
