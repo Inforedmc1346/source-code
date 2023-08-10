@@ -6548,10 +6548,10 @@ spawn(function()
                             plyselecthunthelpold = v.Humanoid.Health
   							repeat wait()
                                   NameTarget = v.Name
-  								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 150 then
+  								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 500 then
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
                                       StartCheckTarget = true
-  								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
+  								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
   									AutoHaki()
   									EquipWeapon(_G.SelectWeapon)
                                        v.HumanoidRootPart.CanCollide = false
