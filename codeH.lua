@@ -6538,44 +6538,65 @@ V4Tab:AddToggle({
 	end    
 }) 
 
-    spawn(function()
-        while wait() do
-            pcall(function()
-                if KillPlayer then
-                    for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
-                        if v.Name ~= game.Players.LocalPlayer.Name then
-                            if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1000 then
-                                plyselecthunthelpold = v.Humanoid.Health
-                                repeat task.wait()
-                                    EquipWeapon(_G.SelectWeapon)
-                                    NameTarget = v.Name
-                                    spawn(function()
+spawn(function()
+  	while wait() do 
+  		pcall(function()
+  			if KillPlayer then
+  					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
+  						if v.Name ~= game.Players.LocalPlayer.Name then
+  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1000 then
+                            plyselecthunthelpold = v.Humanoid.Health
+  							repeat wait()
+                                  NameTarget = v.Name
+  								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 150 then
+  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+                                      StartCheckTarget = true
+  								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
+  									AutoHaki()
+  									EquipWeapon(_G.SelectWeapon)
+                                       v.HumanoidRootPart.CanCollide = false
+                                       v.Humanoid.WalkSpeed = 0
+                                       v.Head.CanCollide = false 
+  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+  									game:GetService'VirtualUser':CaptureController()
+  									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+  								end
+                                   spawn(function()
                                         if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 150 then
                                             StartCheckTarget = true
                                         end
                                     end)
-                                    v.HumanoidRootPart.CanCollide = false
-                                    spawn(function()
-                                        pcall(function()
-                                            local args = {
-                                                [1] = v.HumanoidRootPart.Position,
-                                                [2] = v.HumanoidRootPart
-                                            }
-                                            game:GetService("Players").LocalPlayer.Character[_G.SelectWeapon].RemoteFunctionShoot:InvokeServer(unpack(args))
-                                        end)
-                                    end)
-                                    TargetSelectHunt = v.Humanoid
-                                until KillPlayer == false or v.Humanoid.Health == 0 or not v:FindFirstChild("HumanoidRootPart") or not v:FindFirstChild("Humanoid") or not v.Parent or NextplySelect == true
-                                NextplySelect = false
-                                StartCheckTarget = false
+                              game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.HumanoidRootPart.CanCollide = false
+                              TargetSelectHunt = v.Humanoid
+  							until game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.Humanoid.Health <= 0 or not KillPlayer or not game.Players:FindFirstChild(game.Players.LocalPlayer.Name)
+                              NextplySelect = false
+                              StartCheckTarget = false
+  						end
+  					end
+  					end
+				end
+  			end)
+  	end
+  end)
+end
+
+    spawn(function()
+        pcall(function()
+            while wait() do
+                if KillPlayer then
+                    if TargetSelectHunt ~= nil then
+                        if StartCheckTarget then
+                            wait(6.5)
+                            if TargetSelectHunt.Health == TargetSelectHunt.MaxHealth or TargetSelectHunt.Health >= plyselecthunthelpold then
+                                NextplySelect = true
+                                TargetSelectHunt = nil
                             end
                         end
                     end
                 end
-            end)
-        end
+            end
+        end)
     end)
-    end
 
 local RaidTab = Window:MakeTab({
 	Name = "Raid",
