@@ -6575,6 +6575,7 @@ V4Tab:AddToggle({
             end)
         end
     end)
+    end
 
 local RaidTab = Window:MakeTab({
 	Name = "Raid",
