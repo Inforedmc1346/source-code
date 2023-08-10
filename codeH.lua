@@ -2875,6 +2875,12 @@ ItemTab:AddButton({
 	  if BypassTP then
       local cakepos = CFrame.new(-2077, 252, -12373)
       BTP(cakepos)
+      wait(.1)
+      game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2077, 252, -12373)
+      wait(.1)
+      game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2077, 252, -12373)
+      wait(.1)
+      game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2077, 252, -12373)
     end
   	end    
 }) 
@@ -5175,9 +5181,13 @@ local BoneFarm = MainTab:AddToggle({
                           if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude > 2000 then
                           BTP(boneframe)
                           wait(.1)
-                          BTP(boneframe)
+                          game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9515.3720703125, 164.00624084473, 5786.0610351562)
                           wait(.1)
-                          BTP(boneframe)
+                          game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9515.3720703125, 164.00624084473, 5786.0610351562)
+                          wait(.1)
+                          game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9515.3720703125, 164.00624084473, 5786.0610351562)
+                          wait(.1)
+                          game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9515.3720703125, 164.00624084473, 5786.0610351562)
                           wait(3)
                           elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude < 2000 then
                           TP1(boneframe)
@@ -6349,6 +6359,12 @@ V4Tab:AddToggle({
 V4Tab:AddButton({
 	Name = "Teleport Trial Door",
 	Callback = function()
+  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
+  wait(.1)
+  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
+  wait(.1)
+  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
+  wait(.1)
   Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
   wait(.1)
   Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
