@@ -6554,7 +6554,7 @@ spawn(function()
   			if KillPlayer then
   					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
   						if v.Name ~= game.Players.LocalPlayer.Name then
-  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1200 then
+  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1100 then
   						    plyselecthunthelpold = v.Humanoid.Health
   							repeat wait()
   								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
@@ -7278,5 +7278,27 @@ MiscTab:AddToggle({
 			end
 		end)
 		
+MiscTab:AddTextbox({
+	Name = "Paste Job ID",
+	Default = "Paste",
+	TextDisappear = true,
+	Callback = function(Value)
+		_G.Job = Value
+	end	  
+})
+
+MiscTab:AddButton({
+	Name = "Copy Job ID",
+	Callback = function()
+      	setclipboard(tostring(game.JobId))
+  	end    
+})
+
+MiscTab:AddButton({
+	Name = "Join Server ID",
+	Callback = function()
+      		game:GetService("TeleportService"):TeleportToPlaceInstance(game.placeId,_G.Job, game.Players.LocalPlayer)
+  	end    
+})
 
 OrionLib:Init()
