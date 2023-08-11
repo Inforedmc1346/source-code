@@ -6557,7 +6557,7 @@ spawn(function()
   									game:GetService'VirtualUser':CaptureController()
   									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
   								end
-  							until not KillPlayer or v:WaitForChild("Humanoid").Health > 0
+  							until game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.Humanoid.Health <= 0 or not KillPlayer or not game.Players:FindFirstChild(game.Players.LocalPlayer.Name)
   						end
   					end
   					end
