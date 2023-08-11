@@ -5427,6 +5427,15 @@ SettingTab:AddToggle({
 	_G.AutoClick = Value
 	end    
 }) 
+
+SettingTab:AddButton({
+	Name = "Remove Fog",
+	Callback = function()
+    game:GetService("Lighting").LightingLayers:Destroy()
+	game:GetService("Lighting").Sky:Destroy()
+  	end    
+})
+
 local TeleTab = Window:MakeTab({
 	Name = "Teleport",
 	Icon = "rbxassetid://14161592006",
