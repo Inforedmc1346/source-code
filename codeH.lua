@@ -5263,6 +5263,7 @@ MainTab:AddToggle({
 	end    
 })
 
+    if World2 then
         spawn(function()
             while wait() do 
                 if _G.AutoSecondSea then
@@ -5327,7 +5328,8 @@ MainTab:AddToggle({
 		StopTween(_G.AutoThirdSea)
 	end    
 })
-
+    
+    if World3 then
         spawn(function()
             while wait() do
                 if _G.AutoThirdSea then
