@@ -6554,8 +6554,7 @@ spawn(function()
   			if KillPlayer then
   					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
   						if v.Name ~= game.Players.LocalPlayer.Name then
-  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1200 then
-  						    plyselecthunthelpold = v.Humanoid.Health
+  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 900 then
   							repeat wait()
   								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
