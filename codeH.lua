@@ -6553,16 +6553,19 @@ spawn(function()
   		pcall(function()
   			if KillPlayer then
   					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
-  						if v.Name then
-  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 100 then
+  						if v.Name ~= game.Players.LocalPlayer.Name then
+  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1200 then
+  						    plyselecthunthelpold = v.Humanoid.Health
   							repeat wait()
-  							    topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
-  								AutoHaki()
-  								EquipWeapon(_G.SelectWeapon)
-  								game:GetService'VirtualUser':CaptureController()
-  								game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                  v.HumanoidRootPart.CanCollide = false
-                                  v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+  								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
+  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+  								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
+  									AutoHaki()
+  									EquipWeapon(_G.SelectWeapon)
+  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+  									game:GetService'VirtualUser':CaptureController()
+  									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+  								end
   							until not KillPlayer or v:WaitForChild("Humanoid").Health > 0
   						end
   					end
