@@ -1830,7 +1830,7 @@ getgenv().ToTargets = function(p)
         game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
     end)
     
-local Window = OrionLib:MakeWindow({Name = "Hirimi Hub[HYPER VERSION] Beta", HidePremium = false, SaveConfig = true, ConfigFolder = "HHubPaid"})
+local Window = OrionLib:MakeWindow({Name = "Hirimi Hub[H]", HidePremium = false, SaveConfig = true, ConfigFolder = "HyperVersion"})
 
 local SettingsTab = Window:MakeTab({
 	Name = "Developer",
@@ -2544,6 +2544,8 @@ MainTab:AddToggle({
                                                         [2] = v.HumanoidRootPart
                                                     }
                                                     game:GetService("Players").LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
+                                                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Validator2"):FireServer(unpack(args))
+                                                    game:GetService("Players").LocalPlayer.Character.Slingshot.RemoteFunctionShoot:InvokeServer(unpack(args))
                                                     game:GetService("VirtualUser"):CaptureController()
                                                     game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
 			                                        game:GetService("VirtualInputManager"):SendKeyEvent(true,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
@@ -4786,6 +4788,37 @@ ItemTab:AddToggle({
             end
         end
     end)
+
+ItemTab:AddParagraph("Haki Color","BUSO COLOR")
+
+local haki = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer("ColorsDealer", "1")
+
+ItemTab:AddLabel("Color:"..haki)
+
+ItemTab:AddToggle({
+	Name = "Buy Color",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoBuyEnchancementColour = Value
+	end    
+})
+
+spawn(function()
+        while wait() do
+            if _G.AutoBuyEnchancementColour then
+                local args = {
+                    [1] = "ColorsDealer",
+                    [2] = "2"
+                }
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                if _G.AutoBuyEnchancementColour_Hop and _G.AutoBuyEnchancementColour and not World1 then
+                    wait(10)
+                    Hop()
+                end
+            end 
+        end
+    end)
+
 
 local SettingTab = Window:MakeTab({
 	Name = "Setting",
