@@ -4791,9 +4791,7 @@ ItemTab:AddToggle({
 
 ItemTab:AddParagraph("Haki Color","BUSO COLOR")
 
-local haki = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer("ColorsDealer", "1")
-
-ItemTab:AddLabel("Color:", haki)
+ItemTab:AddLabel("Color:", game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer("ColorsDealer", "1"))
 
 ItemTab:AddToggle({
 	Name = "Buy Color",
