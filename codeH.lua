@@ -4791,7 +4791,21 @@ ItemTab:AddToggle({
 
 ItemTab:AddParagraph("Haki Color","BUSO COLOR")
 
-ItemTab:AddLabel("Color:", game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer("ColorsDealer", "1"))
+local haki = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer("ColorsDealer", "1")
+
+spawn(function()
+pcall(function()
+while wait() do
+ if game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer("ColorsDealer", "1") then
+ ColorHaki:Set(haki)
+ else
+ ColorHaki:Set("NOT FOUND COLOR")
+ end
+ end
+end)
+end)
+
+ColorHaki = ItemTab:AddLabel("Label")
 
 ItemTab:AddToggle({
 	Name = "Buy Color",
