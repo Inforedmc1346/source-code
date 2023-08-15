@@ -6933,11 +6933,11 @@ spawn(function()
   							repeat wait()
                                   game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.HumanoidRootPart.CanCollide = false
   								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
-  									topos(game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
   								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
   									AutoHaki()
   									EquipWeapon(_G.SelectWeapon)
-  									topos(game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
   									game:GetService'VirtualUser':CaptureController()
   									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
   								end
