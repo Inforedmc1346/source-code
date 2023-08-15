@@ -6936,13 +6936,13 @@ spawn(function()
   						if v.Name ~= game.Players.LocalPlayer.Name then
   						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 900 then
   							repeat wait()
-                                  v.HumanoidRootPart.CanCollide = false
-                                  v.Humanoid.WalkSpeed = 0
-                                  v.Head.CanCollide = false
   								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 100 then
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
   								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 100 then
   									AutoHaki()
+                                      v.HumanoidRootPart.CanCollide = false
+                                      v.Humanoid.WalkSpeed = 0
+                                      v.Head.CanCollide = false
   									EquipWeapon(_G.SelectWeapon)
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
                                       Click()
