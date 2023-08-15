@@ -6932,16 +6932,11 @@ spawn(function()
   	while wait() do 
   		pcall(function()
   			if KillPlayer then
+                   if game.Players:FindFirstChild(game.Players.LocalPlayer.Name) then
   					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
   						if v.Name ~= game.Players.LocalPlayer.Name then
   						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1100 then
-  						    plyselecthunthelpold = v.Humanoid.Health
   							repeat wait()
-                                      spawn(function()
-                                        if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 300 then
-                                            StartCheckTarget = true
-                                        end
-                                    end)
   								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
   								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
@@ -6951,36 +6946,16 @@ spawn(function()
   									game:GetService'VirtualUser':CaptureController()
   									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
   								end
-                                  TargetSelectHunt = v.Humanoid
-  							until not KillPlayer or v:WaitForChild("Humanoid").Health > 0
-                              NextplySelect = false
-                              StartCheckTarget = false
+  							until game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.Humanoid.Health <= 0 or not KillPlayer or not game.Players:FindFirstChild(game.Players.LocalPlayer.Name)
   						end
   					end
   					end
+                 end
 				end
   			end)
   	end
   end)
 end
-
-    spawn(function()
-        pcall(function()
-            while wait() do
-                if KillPlayer then
-                    if TargetSelectHunt ~= nil then
-                        if StartCheckTarget then
-                            wait(6.5)
-                            if TargetSelectHunt.Health == TargetSelectHunt.MaxHealth or TargetSelectHunt.Health >= plyselecthunthelpold then
-                                NextplySelect = true
-                                TargetSelectHunt = nil
-                            end
-                        end
-                    end
-                end
-            end
-        end)
-    end)
 
 
 local RaidTab = Window:MakeTab({
