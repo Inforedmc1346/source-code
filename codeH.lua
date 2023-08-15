@@ -6956,6 +6956,18 @@ spawn(function()
   	end
   end)
 end
+spawn(function()
+  pcall(function()
+    if KillPlayer == true then
+        v.HumanoidRootPart.CanCollide = false
+        v.Head.CanCollide = false
+    else
+        v.HumanoidRootPart.CanCollide = true
+        v.Head.CanCollide = true
+    end
+    end)
+  end)
+
 
 local RaidTab = Window:MakeTab({
 	Name = "Raid",
