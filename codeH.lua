@@ -7083,8 +7083,6 @@ spawn(function()
   									AutoHaki()
   									EquipWeapon(_G.SelectWeapon)
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
-                                      game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game.Players.LocalPlayer.Character.HumanoidRootPart)
-                                      game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game.Players.LocalPlayer.Character.HumanoidRootPart)
   									game:GetService'VirtualUser':CaptureController()
   									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
   								end
