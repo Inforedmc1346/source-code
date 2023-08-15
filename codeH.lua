@@ -6940,9 +6940,6 @@ spawn(function()
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
   								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 100 then
   									AutoHaki()
-                                      v.HumanoidRootPart.CanCollide = false
-                                      v.Humanoid.WalkSpeed = 0
-                                      v.Head.CanCollide = false
   									EquipWeapon(_G.SelectWeapon)
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
                                       Click()
