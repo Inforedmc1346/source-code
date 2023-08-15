@@ -6912,6 +6912,7 @@ spawn(function()
         end
     end)
 end)
+end
 
 V4Tab:AddButton({
 	Name = "Buy Acient One Quest",
