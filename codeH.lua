@@ -6961,9 +6961,10 @@ spawn(function()
     if KillPlayer == true then
         v.HumanoidRootPart.CanCollide = false
         v.Head.CanCollide = false
-    else
+    if KillPlayer == false then
         v.HumanoidRootPart.CanCollide = true
         v.Head.CanCollide = true
+    end
     end
     end)
   end)
