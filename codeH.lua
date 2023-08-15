@@ -2618,7 +2618,7 @@ local ItemTab = Window:MakeTab({
                     elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
                         FM:Set("🌗“ : Full Moon 50%")
                     elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
-                        FM:Set("🌘 : Full Moon 25%")
+                        FM:Set("?? : Full Moon 25%")
                     elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
                         FM:Set("🌘: Full Moon 15%")
                     else
@@ -6932,10 +6932,10 @@ spawn(function()
   	while wait() do 
   		pcall(function()
   			if KillPlayer then
-                   if game.Players:FindFirstChild(game.Players.LocalPlayer.Name) then
   					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
   						if v.Name ~= game.Players.LocalPlayer.Name then
-  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 1100 then
+  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 900 then
+  						    plyselecthunthelpold = v.Humanoid.Health
   							repeat wait()
   								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
@@ -6946,16 +6946,14 @@ spawn(function()
   									game:GetService'VirtualUser':CaptureController()
   									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
   								end
-  							until game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.Humanoid.Health <= 0 or not KillPlayer or not game.Players:FindFirstChild(game.Players.LocalPlayer.Name)
+  							until not KillPlayer or v:WaitForChild("Humanoid").Health > 0
   						end
   					end
   					end
-                 end
 				end
   			end)
   	end
   end)
-end
 
 
 local RaidTab = Window:MakeTab({
