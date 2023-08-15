@@ -1824,6 +1824,11 @@ getgenv().ToTargets = function(p)
         end)
     end)
     
+    function Click()
+    game:GetService('VirtualUser'):CaptureController()
+    game:GetService('VirtualUser'):Button1Down(Vector2.new(1280, 672))
+    end
+    
     game:GetService("Players").LocalPlayer.Idled:connect(function()
         game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
         wait(1)
@@ -6932,14 +6937,14 @@ spawn(function()
   						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 900 then
   							repeat wait()
                                   game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.HumanoidRootPart.CanCollide = false
-  								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
+                                  game.Players:FindFirstChild(game.Players.LocalPlayer.Name).Character.Head.CanCollide = false
+  								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 100 then
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
-  								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
+  								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 100 then
   									AutoHaki()
   									EquipWeapon(_G.SelectWeapon)
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
-  									game:GetService'VirtualUser':CaptureController()
-  									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                      Click()
   								end
   							until not KillPlayer or v:WaitForChild("Humanoid").Health > 0
   						end
