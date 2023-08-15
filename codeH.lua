@@ -2763,6 +2763,21 @@ ItemTab:AddToggle({
 
 	end    
 }) 
+
+spawn(function()
+    while wait() do
+		pcall(function()
+			if _G.dao then
+				game:GetService("VirtualInputManager"):SendKeyEvent(true,"W",false,game)
+				wait(2)
+				game:GetService("VirtualInputManager"):SendKeyEvent(true,"S",false,game)
+				wait(4)
+			end
+		end)
+    end
+end)
+
+
     
 ItemTab:AddToggle({
 	Name = "Tween Gear",
@@ -3796,7 +3811,7 @@ ItemTab:AddToggle({
 					for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
 						if v:FindFirstChild("HumanoidRootPart") then
 						    AutoHaki()
-							TP1(v.HumanoidRootPart.CFrame * CFrame.new(1,170,45))
+							TP1(v.HumanoidRootPart.CFrame * CFrame.new(1,500,45))
 							game:GetService("VirtualUser"):CaptureController()
 							game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
 							for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
@@ -3866,6 +3881,9 @@ ItemTab:AddToggle({
 							wait(.2)
 							game:GetService("VirtualInputManager"):SendKeyEvent(true,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
 							game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							v.HumanoidRootPart.CanCollide = false
+							v.Humanoid.WalkSpeed = 0
+                            v.Head.CanCollide = false 
 						end
 					end
                     end)
@@ -3873,6 +3891,39 @@ ItemTab:AddToggle({
         end
           end)
         
+spawn(function()
+  pcall(function()
+    for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+      if v:FindFirstChild("HumanoidRootPart") then
+        function two(gotoCFrame) --- Tween
+		      pcall(function()
+		          game.Players.LocalPlayer.Character.Humanoid.Sit = false
+		          game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+		      end)
+		      if (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude <= 200 then
+		          pcall(function() 
+		              tweenz:Cancel()
+		          end)
+		          game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.CFrame = gotoCFrame
+		      else
+		          local tween_s = game:service"TweenService"
+		          local info = TweenInfo.new((game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude/325, Enum.EasingStyle.Linear)
+		           tween, err = pcall(function()
+		              tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = gotoCFrame})
+		              tweenz:Play()
+		          end)
+		          if not tween then return err end
+		      end
+		      function _TweenCanCle()
+		          tweenz:Cancel()
+		      end
+		  
+        end
+	end
+		two(CFrame.new(-5100.7085, 29.968586, -6792.45459, -0.33648631, -0.0396691673, 0.940852463, -6.40461678e-07, 0.999112308, 0.0421253517, -0.941688359, 0.0141740013, -0.336187631))
+        end
+    end)
+  end)
 
 ItemTab:AddToggle({
 	Name = "Kill PirateShips[Beta]",
