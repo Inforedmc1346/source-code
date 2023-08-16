@@ -5816,6 +5816,24 @@ end
 	end    
 })
 
+MainTab:AddParagraph("Setting Kill Player","Trials")
+
+SettintTab:AddToggle({
+	Name = "Skill X",
+	Default = false,
+	Callback = function(Value)
+		_G.skX = Value
+	end    
+})
+
+SettingTab:AddToggle({
+	Name = "Skill C",
+	Default = false,
+	Callback = function(Value)
+		_G.skC = Value
+	end    
+})
+
 local TeleTab = Window:MakeTab({
 	Name = "Teleport",
 	Icon = "rbxassetid://14161592006",
@@ -6912,7 +6930,6 @@ spawn(function()
         end
     end)
 end)
-end
 
 V4Tab:AddButton({
 	Name = "Buy Acient One Quest",
@@ -6938,13 +6955,12 @@ spawn(function()
   						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 900 then
   							repeat wait()
   								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 100 then
-  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
-  								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
+  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,15,0))
+  								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 100 then
   									AutoHaki()
   									EquipWeapon(_G.SelectWeapon)
-  									topos(v.HumanoidRootPart.CFrame)
-                                      game:GetService'VirtualUser':CaptureController()
-                                      game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672),workspace.CurrentCamera.CFrame)                                 
+  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,15,0))
+                                      Click()
   								end
   							until not KillPlayer or v:WaitForChild("Humanoid").Health > 0
   						end
@@ -6954,7 +6970,30 @@ spawn(function()
   			end)
   	end
   end)
-
+  
+  spawn(function()
+  if KillPlayer == true then
+    _G.Skill = true
+    else
+      _G.Skill = false
+      end
+  end)
+  
+  spawn(function()
+  pcall(function()
+    if _G.Skill then
+      if _G.skX then
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+        game:GetService("VirtualInputManager"):SendKeyEvent(false,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+      end
+      if _G.skC then
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+        game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+      end
+    end
+    end)
+  end)
+end
 
 local RaidTab = Window:MakeTab({
 	Name = "Raid",
