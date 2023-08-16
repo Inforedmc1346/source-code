@@ -6231,32 +6231,43 @@ V4Tab:AddToggle({
 	end    
 }) 
 
-spawn(function()
-  	while wait() do 
-  		pcall(function()
-  			if KillPlayer then
-  					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
-  						if v.Name ~= game.Players.LocalPlayer.Name then
-  						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 900 then
-  							repeat wait()
-  								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
-  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
-  								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
-  									AutoHaki()
-  									EquipWeapon(_G.SelectWeapon)
-  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
-  									game:GetService'VirtualUser':CaptureController()
-  									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-  								end
-  							until not KillPlayer or v:WaitForChild("Humanoid").Health > 0
-  						end
-  					end
-  					end
-				end
-  			end)
-  	end
-  end)
-end
+    spawn(function()
+        while wait() do
+            if KillPlayer then
+                pcall(function()
+                    for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
+                        if v.Name ~= game.Players.LocalPlayer.Name then
+                            if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health > 0 then
+                            if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 900 then
+                                repeat task.wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                    AutoHaki()
+                                    game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.CanCollide = false
+                                    topos(game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+                                    spawn(function()
+                                        pcall(function()
+                                            if _G.SelectWeapon == SelectWeaponGun then
+                                                local args = {
+                                                    [1] = game.Players:FindFirstChild(v.Name).Character.HumanoidRootPart.Position,
+                                                    [2] = game.Players:FindFirstChild(v.Name).Character.HumanoidRootPart
+                                                }
+                                                game:GetService("Players").LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
+                                            else
+                                                game:GetService("VirtualUser"):CaptureController()
+                                                game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                                            end
+                                        end)
+                                    end)
+                                until game.Players:FindFirstChild(v.Name).Character.Humanoid.Health <= 0 or not game.Players:FindFirstChild(v.Name) or not KillPlayer
+                            end
+                        end
+                    end
+                  end
+                end)
+            end
+        end
+    end)
+    end
 
 local RaidTab = Window:MakeTab({
 	Name = "Raid",
