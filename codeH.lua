@@ -6934,17 +6934,17 @@ spawn(function()
   		pcall(function()
   			if KillPlayer then
   					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
-  						if v.Name ~= game.Players.LocalPlayer.Name then
+  						if v.Name == game.Players.LocalPlayer.Name then
   						  if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= 900 then
   							repeat wait()
-  								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
+  								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 100 then
   									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
   								elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
   									AutoHaki()
   									EquipWeapon(_G.SelectWeapon)
-  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
-  									game:GetService'VirtualUser':CaptureController()
-  									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+  									topos(v.HumanoidRootPart.CFrame)
+                                      game:GetService'VirtualUser':CaptureController()
+                                      game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672),workspace.CurrentCamera.CFrame)                                 
   								end
   							until not KillPlayer or v:WaitForChild("Humanoid").Health > 0
   						end
