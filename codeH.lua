@@ -6950,11 +6950,11 @@ spawn(function()
       							repeat wait()
       									AutoHaki()
       									EquipWeapon(_G.SelectWeapon)
+                                          NameTarget = v.Name
                                           topos(v.HumanoidRootPart.CFrame * CFrame.new(0,0,5))
                                           v.HumanoidRootPart.CanCollide = false
     			                          v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-      									game:GetService'VirtualUser':CaptureController()
-      									game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672), game.Workspace.CurrentCamera.CFrame)
+                                          Click()
       							until not KillPlayer or not v.Parent or v.Humanoid.Health <= 0 
       						  end
       						end
