@@ -6945,7 +6945,7 @@ spawn(function()
       		pcall(function()
       			if KillPlayer then
       					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
-      						if v.Name and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
+      						if v.Name ~= game.Players.LocalPlayer.Name and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
       						  if v.Humanoid.Health > 0 then
       							repeat wait()
       									AutoHaki()
