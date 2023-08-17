@@ -6941,30 +6941,29 @@ V4Tab:AddToggle({
 }) 
 
 spawn(function()
-  	while wait() do 
-  		pcall(function()
-  			if KillPlayer then
-  					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
-  						if v.Name and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
-  						  if v.Humanoid.Health > 0 then
-  							repeat wait()
-  									AutoHaki()
-  									EquipWeapon(_G.SelectWeapon)
-                                      v.HumanoidRootPart.CanCollide = false
-			                          v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-  									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
-  									game:GetService'VirtualUser':CaptureController()
-  									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-  								end
-  							until not KillPlayer or not v.Parent or v.Humanoid.Health <= 0 
-  						end
-  					end
-  					end
-				end
-  			end)
-  	end
-  end)
-end
+      	while wait() do 
+      		pcall(function()
+      			if KillPlayer then
+      					for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
+      						if v.Name and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
+      						  if v.Humanoid.Health > 0 then
+      							repeat wait()
+      									AutoHaki()
+      									EquipWeapon(_G.SelectWeapon)
+                                          v.HumanoidRootPart.CanCollide = false
+    			                          v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+      									topos(v.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+      									game:GetService'VirtualUser':CaptureController()
+      									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+      							until not KillPlayer or not v.Parent or v.Humanoid.Health <= 0 
+      						  end
+      						end
+      					end
+  			end
+      	 end)
+      	end
+      end)
+    end
 
 local RaidTab = Window:MakeTab({
 	Name = "Raid",
