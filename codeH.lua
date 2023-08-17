@@ -6965,25 +6965,6 @@ spawn(function()
   	end
   end)
 end
-  
-        spawn(function()
-        pcall(function()
-            while wait() do
-                if KillPlayer then
-                    if TargetSelectHunt ~= nil then
-                        if StartCheckTarget then
-                            wait(6.5)
-                            if TargetSelectHunt.Health == TargetSelectHunt.MaxHealth or TargetSelectHunt.Health >= plyselecthunthelpold then
-                                NextplySelect = true
-                                TargetSelectHunt = nil
-                            end
-                        end
-                    end
-                end
-            end
-        end)
-    end)
-    end
 
 local RaidTab = Window:MakeTab({
 	Name = "Raid",
