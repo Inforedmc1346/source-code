@@ -3734,6 +3734,22 @@ spawn(function()
     
 ItemTab:AddParagraph("Legendary Sword","SEA 2")
 
+spawn(function()
+pcall(function()
+if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1") then
+legendsword:Set("Shisui")
+elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer","2") then
+legendsword:Set("Wando")
+elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer","3") then
+legendsword:Set("Saddi")
+else
+legendsword:Set("NOT FOUND SWORD")
+end
+end)
+end)
+
+local legendsword = ItemTab:AddLabel("...")
+
 ItemTab:AddToggle({
 	Name = "Buy Legendary Sword",
 	Default = false,
@@ -4805,7 +4821,7 @@ while wait() do
 end)
 end)
 
-ColorHaki = ItemTab:AddLabel("Label")
+ColorHaki = ItemTab:AddLabel("...")
 
 ItemTab:AddToggle({
 	Name = "Buy Color",
@@ -7341,76 +7357,53 @@ local SHTab = Window:MakeTab({
 	PremiumOnly = false
 }) 
 
-SHTab:AddButton({
-	Name = "Buy Dark Step",
-	Callback = function()
-      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
-  	end    
+SHTab:AddDropdown({
+	Name = "Select Melee",
+	Default = "",
+	Options = {
+		"Dark Step",
+		"Electro",
+		"Fishman Karate",
+		"Dragon Claw",
+		"SuperHuman",
+		"Death Step",
+		"Electric Claw",
+		"SharkMan Karate",
+		"Dragon Talon",
+		"God Human"
+     },
+	Callback = function(Value)
+		_G.BuyMelee = Value
+	end    
 })
 
 SHTab:AddButton({
-	Name = "Buy Electro",
-	Callback = function()
-      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectro")
-  	end    
-})
-
-SHTab:AddButton({
-	Name = "Buy Fishman Karate",
-	Callback = function()
-      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate")
-  	end    
-})
-
-SHTab:AddButton({
-	Name = "Buy Dragon Claw",
-	Callback = function()
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","1")
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","2")
-  	end    
-})
-
-SHTab:AddButton({
-	Name = "Buy Superhuman",
-	Callback = function()
-      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
-  	end    
-})
-
-SHTab:AddButton({
-	Name = "Buy Death Step",
-	Callback = function()
-      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
-  	end    
-})
-
-SHTab:AddButton({
-	Name = "Buy Electric Claw",
-	Callback = function()
-      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
-  	end    
-})
-
-SHTab:AddButton({
-	Name = "Buy Sharkman Karate",
-	Callback = function()
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true)
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
-  	end    
-})
-
-SHTab:AddButton({
-	Name = "Buy Dragon Talon",
-	Callback = function()
-      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
-  	end    
-})
-
-SHTab:AddButton({
-	Name = "Buy God Human",
-	Callback = function()
-      		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
-  	end    
+	Name = "Buy Melee",
+	Callback = function() 
+      	if _G.BuyMelee == "Dark Step" then
+          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
+          elseif _G.BuyMelee == "Electro" then
+          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectro")
+          elseif _G.BuyMelee == "Fishman Karate" then
+          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate")
+          elseif _G.BuyMelee == "Dragon Claw" then
+          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","1")
+          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","2")
+          elseif _G.BuyMelee == "SuperHuman" then
+          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
+          elseif _G.BuyMelee == "Death Step" then
+          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
+          elseif _G.BuyMelee == "Electric Claw" then
+          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
+          elseif _G.BuyMelee == "SharkMan Karate" then
+          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true)
+          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
+          elseif _G.BuyMelee == "Dragon Talon" then
+          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
+          elseif _G.BuyMelee == "God Human" then
+          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
+          end
+      end
 })
 
 SHTab:AddButton({
