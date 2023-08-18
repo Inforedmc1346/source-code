@@ -7669,13 +7669,13 @@ MiscTab:AddButton({
 
 spawn(function()
 if World3 then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Inforedmc1346/source-code/main/webhook1.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Inforedmc1346/source-code/main/webhook1.lua", true))()
 end
 end)
 
 spawn(function()
 if World2 or World3 then
-https://raw.githubusercontent.com/Inforedmc1346/source-code/main/haki.lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Inforedmc1346/source-code/main/haki.lua", true))()
 end
 end)
 
