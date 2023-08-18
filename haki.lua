@@ -27,7 +27,7 @@ end
 local data = {
 	["embeds"] = {
 		{
-			["title"] = "Haki Finder".."|".." HIRIMI HUB",
+			["title"] = "**Haki Color**\n```lua\n"..tostring('game:GetService("ReplicatedStorage").__ServerBrowser:InvokeServer("teleport","'..game.JobId..'")').."\n```",
 			["description"] = "```"..haki.."```",
 			["type"] = "rich",
 			["color"] = color,
