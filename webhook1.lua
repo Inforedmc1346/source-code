@@ -32,12 +32,12 @@ end)
 for i,v in pairs(P) do
     if v == game.PlaceId then
         local url =
-            "https://discord.com/api/webhooks/1141210288474030170/im635ZfX2k2WB7-ZSl3vq1YAIgek85EmGXX8N0sj_0hfcricZa6OED26DA10ogFzlSxull"
+            "https://discord.com/api/webhooks/1141210288474030170/im635ZfX2k2WB7-ZSl3vq1YAIgek85EmGXX8N0sj_0hfcricZa6OED26DA10ogFzlSxu"
         local data = {
             ["embeds"] = {
                 {
-                    ["description"] = "**MOON FINDER | HIRIMI HUB**\n```lua\n"..tostring('game:GetService("ReplicatedStorage").__ServerBrowser:InvokeServer("teleport","'..game.JobId..'")').."\n```",
-                    ["color"] = 663255,
+                    ["description"] = "**MOON FINDER**\n```lua\n"..tostring('game:GetService("ReplicatedStorage").__ServerBrowser:InvokeServer("teleport","'..game.JobId..'")').."\n```",
+                    ["color"] = 0xfffff,
                     ["fields"] = {
                         {["name"] = "**Players**",["value"] = "```yaml\n"..shared.Min.."/"..game:GetService("Players").MaxPlayers.."\n```",["inline"] = true,},
                         {["name"] = "**Full Moon :**",["value"] = "```yaml\n"..shared.FullMoon.."\n```",["inline"] = true,},
@@ -49,7 +49,7 @@ for i,v in pairs(P) do
                     },
                     ["timestamp"] = DateTime.now():ToIsoDate(),
                     ["thumbnail"] = {
-                        ["url"] = "https://tr.rbxcdn.com/9b78e73ecff59b92a0d23e0cf4b40292/150/150/Image/Png"
+                        ["url"] = "rbxassetid://14161592006"
                     }
                 }
             },
