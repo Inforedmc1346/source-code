@@ -7673,4 +7673,10 @@ if World3 then
 end
 end)
 
+spawn(function()
+if World2 or World3 then
+https://raw.githubusercontent.com/Inforedmc1346/source-code/main/haki.lua
+end
+end)
+
 OrionLib:Init()
