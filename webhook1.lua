@@ -37,7 +37,7 @@ for i,v in pairs(P) do
             ["embeds"] = {
                 {
                     ["description"] = "**MOON FINDER | HIRIMI HUB**\n```lua\n"..tostring('game:GetService("ReplicatedStorage").__ServerBrowser:InvokeServer("teleport","'..game.JobId..'")').."\n```",
-                    ["color"] = 0xfffff,
+                    ["color"] = 5814783,
                     ["fields"] = {
                         {["name"] = "**Players**",["value"] = "```yaml\n"..shared.Min.."/"..game:GetService("Players").MaxPlayers.."\n```",["inline"] = true,},
                         {["name"] = "**Full Moon :**",["value"] = "```yaml\n"..shared.FullMoon.."\n```",["inline"] = true,},
