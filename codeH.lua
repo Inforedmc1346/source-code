@@ -3736,6 +3736,7 @@ ItemTab:AddParagraph("Legendary Sword","SEA 2")
 
 spawn(function()
 pcall(function()
+while wait() do
 if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1") then
 LegendSwordsSet("Shisui")
 elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer","2") then
@@ -3744,6 +3745,7 @@ elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Legenda
 LegendSwords:Set("Saddi")
 else
 LegendSwords:Set("NOT FOUND SWORD")
+end
 end
 end)
 end)
@@ -5799,6 +5801,33 @@ SettingTab:AddToggle({
 	end    
 }) 
 
+function CheckAntiCheatBypass()
+    for i,v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+        if v:IsA("LocalScript") then
+            if v.Name == "General" or v.Name == "Shiftlock"  or v.Name == "FallDamage" or v.Name == "4444" or v.Name == "CamBob" or v.Name == "JumpCD" or v.Name == "Looking" or v.Name == "Run" then
+                v:Destroy()
+            end
+        end
+     end
+     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerScripts:GetDescendants()) do
+        if v:IsA("LocalScript") then
+            if v.Name == "RobloxMotor6DBugFix" or v.Name == "Clans"  or v.Name == "Codes" or v.Name == "CustomForceField" or v.Name == "MenuBloodSp"  or v.Name == "PlayerList" then
+                v:Destroy()
+            end
+        end
+     end
+    end
+
+CheckAntiCheatBypass()
+
+SettingTab:AddToggle({
+	Name = "Anti Cheat Bypass",
+	Default = true,
+	Callback = function(Value)
+		_G.AntiCheat = Value
+		CheckAntiCheatBypass()
+	end    
+})
 
 SettingTab:AddToggle({
 	Name = "Auto Click",
