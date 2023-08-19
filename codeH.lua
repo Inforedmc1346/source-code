@@ -5481,6 +5481,8 @@ BoneCheck = MainTab:AddLabel("Your Bone : Third World ")
 local BoneFarm = MainTab:AddToggle({
 	Name = "Farm Bone",
 	Default = false,
+	Flag = "FarmBone",
+	Save = true,
 	Callback = function(Value)
 		_G.Auto_Bone = Value
 		StopTween(_G.Auto_Bone)
