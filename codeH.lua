@@ -2129,6 +2129,8 @@ MainTab:AddParagraph("Main Farm","GENARAL FARM")
 MainTab:AddToggle({
 	Name = "Farm Level",
 	Default = false,
+	Flag = "FarmLevel",
+	Save = true,
 	Callback = function(Value)
 		_G.AutoFarm = Value
 		StopTween(_G.AutoFarm)
@@ -2198,6 +2200,8 @@ MainTab:AddToggle({
 MainTab:AddToggle({
 	Name = "Farm Nearest",
 	Default = false,
+	Flag = "FarmNearest",
+	Save = true,
 	Callback = function(Value)
 		_G.AutoFarmNearest = Value
 		StopTween(_G.AutoFarmNearest)
@@ -2239,6 +2243,8 @@ spawn(function()
 MainTab:AddToggle({
 	Name = "Farm Mastery Fruit",
 	Default = false,
+	Flag = "MasteryFruit",
+	Save = true,
 	Callback = function(Value)
 		_G.AutoFarmFruitMastery = Value
 		StopTween(_G.AutoFarmFruitMastery)
@@ -2500,6 +2506,8 @@ MainTab:AddToggle({
 MainTab:AddToggle({
 	Name = "Farm Mastery Gun",
 	Default = false,
+	Flag = "MasteryGun",
+	Save = true,
 	Callback = function(Value)
 		_G.AutoFarmGunMastery = Value
         StopTween(_G.AutoFarmGunMastery)
@@ -2890,6 +2898,8 @@ ItemTab:AddButton({
 ItemTab:AddToggle({
 	Name = "Summon&Kill Cake Prince",
 	Default = false,
+	Flag = "KillCakePrince",
+	Save = true,
 	Callback = function(Value)
 		_G.AutoDoughtBoss = Value
 		StopTween(_G.AutoDoughtBoss)
@@ -2997,6 +3007,8 @@ spawn(function()
 ItemTab:AddToggle({
 	Name = "Summon&Kill Dough King",
 	Default = false,
+	Flag = "KillDoughKing",
+	Save = true,
 	Callback = function(Value)
 		_G.Autodoughking = Value
 		StopTween(_G.Autodoughking)
@@ -3006,6 +3018,8 @@ ItemTab:AddToggle({
 ItemTab:AddToggle({
 	Name = "Summon&Kill Dough King Hop",
 	Default = false,
+	Flag = "HopDoughKing",
+	Save = true,
 	Callback = function(Value)
 		_G.AutodoughkingHop = Value
 	end    
@@ -3078,6 +3092,8 @@ ItemTab:AddToggle({
 ItemTab:AddToggle({
 	Name = "Kill Elite",
 	Default = false,
+	Flag = "KillElite",
+	Save = true,
 	Callback = function(Value)
 		_G.AutoElitehunter = Value
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
@@ -3144,6 +3160,8 @@ ItemTab:AddParagraph("Fully Melee","TAKEN GOD HUMAN")
 ItemTab:AddToggle({
 	Name = "Taken Superhuman",
 	Default = false,
+	Flag = "Superhuman",
+	Save = true,
 	Callback = function(Value)
 		_G.AutoSuperhuman = Value
 	end    
@@ -3225,6 +3243,8 @@ ItemTab:AddToggle({
 ItemTab:AddToggle({
 	Name = "Taken DeathStep",
 	Default = false,
+	Flag = "DeathStep",
+	Save = true,
 	Callback = function(Value)
 		_G.AutoDeathStep = Value
 	end    
@@ -3255,6 +3275,8 @@ ItemTab:AddToggle({
 ItemTab:AddToggle({
 	Name = "Taken Sharkman Karate",
 	Default = false,
+	Flag = "Sharkman",
+	Save = true,
 	Callback = function(Value)
 		_G.AutoSharkman = Value
 	end    
@@ -3307,6 +3329,8 @@ ItemTab:AddToggle({
 ItemTab:AddToggle({
 	Name = "Taken Electric Claw",
 	Default = false,
+	Flag = "ElectricClaw",
+	Save = true,
 	Callback = function(Value)
 		_G.AutoElectricClaw = Value
 		StopTween(_G.AutoElectricClaw)
@@ -3382,6 +3406,8 @@ ItemTab:AddToggle({
 ItemTab:AddToggle({
 	Name = "Taken Dragon Talon",
 	Default = false,
+	Flag = "DragonTalon",
+	Save = true,
 	Callback = function(Value)
 		_G.AutoDragonTalon = Value
 	end    
@@ -3412,6 +3438,8 @@ ItemTab:AddToggle({
 ItemTab:AddToggle({
 	Name = "Taken GodHuman",
 	Default = false,
+	Flag = "GodHuman",
+	Save = true,
 	Callback = function(Value)
 		_G.Auto_God_Human = Value
 	end    
@@ -3503,6 +3531,8 @@ ItemTab:AddParagraph("Farm Meterials","METERIALS")
 ItemTab:AddToggle({
 	Name = "Farm Mystic Droplet",
 	Default = false,
+	Flag = "MysticDrop",
+	Save = true,
 	Callback = function(Value)
 		_G.Makori_gay = Value
         StopTween(_G.Makori_gay)
@@ -3551,6 +3581,8 @@ spawn(function()
 ItemTab:AddToggle({
 	Name = "Farm Magma Ore",
 	Default = false,
+	Flag = "MagmaOre",
+	Save = true,
 	Callback = function(Value)
 		_G.Umm = Value
 		StopTween(_G.Umm)
@@ -3639,6 +3671,8 @@ spawn(function()
 ItemTab:AddToggle({
 	Name = "Farm Ectoplasm",
 	Default = false,
+	Flag = "FarmEctoplasm",
+	Save = true,
 	Callback = function(Value)
 		_G.AutoEctoplasm = Value
 		StopTween(_G.AutoEctoplasm)
@@ -3685,6 +3719,8 @@ spawn(function()
 ItemTab:AddToggle({
 	Name = "Farm Conjured Cocoa",
 	Default = false,
+	Flag = "CocoaConjured",
+	Save = true,
 	Callback = function(Value)
 		Cocoafarm = Value
 		StopTween(Cocoafarm)
@@ -3733,6 +3769,8 @@ spawn(function()
 ItemTab:AddToggle({
 	Name = "Farm Dragon Scale",
 	Default = false,
+	Flag = "DragonScale",
+	Save = true,
 	Callback = function(Value)
 		Dragon_Scale = Value
 		StopTween(Dragon_Scale)
@@ -3767,6 +3805,56 @@ spawn(function()
                     topos(CFrame.new(5824.06982421875, 51.38640213012695, -1106.694580078125))
                         if game:GetService("ReplicatedStorage"):FindFirstChild("Dragon Crew Warrior [Lv. 1575]") then
                             topos(game:GetService("ReplicatedStorage"):FindFirstChild("Dragon Crew Warrior [Lv. 1575]").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                        else
+                            if _G.StardHop then
+                                Hop()
+                            end
+                        end
+                    end
+                end)
+            end
+        end
+    end)
+    
+ItemTab:AddToggle({
+	Name = "Farm Fish Tail [Zou]",
+	Default = false,
+	Flag = "FishTail",
+	Save = true,
+	Callback = function(Value)
+		Fish = Value
+		StopTween(Fish)
+	end    
+})
+
+spawn(function()
+        while wait() do
+            if Fish and World3 then
+                pcall(function()
+                    if game:GetService("Workspace").Enemies:FindFirstChild("Fishman Captain [Lv. 1800]") then
+                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if v.Name == "Fishman Captain [Lv. 1800]" then
+                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat task.wait()
+                                        AutoHaki()
+                                        EquipWeapon(_G.SelectWeapon)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid.WalkSpeed = 0
+                                        v.Head.CanCollide = false 
+                                        MakoriGayMag = true
+                                        PosGay = v.HumanoidRootPart.CFrame
+                                        topos(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
+                                        game:GetService("VirtualUser"):CaptureController()
+                                        game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                                    until not Fish or not v.Parent or v.Humanoid.Health <= 0
+                                    MakoriGayMag = false
+                                end
+                            end
+                        end
+                    else
+                    topos(CFrame.new(-10961.0126953125, 331.7977600097656, -8914.29296875))
+                        if game:GetService("ReplicatedStorage"):FindFirstChild("Fishman Captain [Lv. 1800]") then
+                            topos(game:GetService("ReplicatedStorage"):FindFirstChild("Fishman Captain [Lv. 1800]").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
                         else
                             if _G.StardHop then
                                 Hop()
