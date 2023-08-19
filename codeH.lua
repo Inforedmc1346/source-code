@@ -3737,18 +3737,18 @@ ItemTab:AddParagraph("Legendary Sword","SEA 2")
 spawn(function()
 pcall(function()
 if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1") then
-legendsword:Set("Shisui")
+LegendSwordsSet("Shisui")
 elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer","2") then
-legendsword:Set("Wando")
+LegendSwords:Set("Wando")
 elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer","3") then
-legendsword:Set("Saddi")
+LegendSwords:Set("Saddi")
 else
-legendsword:Set("NOT FOUND SWORD")
+LegendSwords:Set("NOT FOUND SWORD")
 end
 end)
 end)
 
-local legendsword = ItemTab:AddLabel("...")
+local LegendSwords = ItemTab:AddLabel("...")
 
 ItemTab:AddToggle({
 	Name = "Buy Legendary Sword",
@@ -6827,9 +6827,7 @@ spawn(function()
 					end
 				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
 					for i,v in pairs(game:GetService("Workspace").Map.SkyTrial.Model:GetDescendants()) do
-						if v.Name ==  "snowisland_Cylinder.081" then
 							topos(game.Workspace.Map.SkyTrial.Model.FinishPart.CFrame)
-						end
 					end
 				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
 					for i,v in pairs(game:GetService("Workspace").SeaBeasts.SeaBeast1:GetDescendants()) do
@@ -6849,6 +6847,8 @@ spawn(function()
 							game:GetService("VirtualInputManager"):SendKeyEvent(false,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
 							wait(.2)
 							game:GetService("VirtualInputManager"):SendKeyEvent(true,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							wait(.2)
 							game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
 							for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 								if v:IsA("Tool") then
