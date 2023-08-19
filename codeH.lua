@@ -3637,6 +3637,52 @@ spawn(function()
     end)
     
 ItemTab:AddToggle({
+	Name = "Farm Ectoplasm",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoEctoplasm = Value
+		StopTween(_G.AutoEctoplasm)
+	end    
+})
+
+spawn(function()
+        while wait() do
+            if _G.AutoEctoplasm and World2 then
+                pcall(function()
+                    if game:GetService("Workspace").Enemies:FindFirstChild("Ship Deckhand [Lv. 1250]") or game:GetService("Workspace").Enemies:FindFirstChild("Ship Engineer [Lv. 1275]") or game:GetService("Workspace").Enemies:FindFirstChild("Ship Steward [Lv. 1300]") or game:GetService("Workspace").Enemies:FindFirstChild("Ship Officer [Lv. 1325]") then
+                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if v.Name == "Ship Officer [Lv. 1325]" or v.Name == "Ship Steward [Lv. 1300]" or "Ship Engineer [Lv. 1275]" or "Ship Deckhand [Lv. 1250]" then
+                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat task.wait()
+                                        AutoHaki()
+                                        EquipWeapon(_G.SelectWeapon)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid.WalkSpeed = 0
+                                        v.Head.CanCollide = false 
+                                        StartEctoplasmMagnet = true
+                                        EctoplasmMon = v.HumanoidRootPart.CFrame
+                                        topos(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
+                                        game:GetService("VirtualUser"):CaptureController()
+                                        game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                                    until not _G.AutoEctoplasm or not v.Parent or v.Humanoid.Health <= 0
+                                    StartEctoplasmMagnet = false
+                                end
+                            end
+                        end
+                    else
+                        StartEctoplasmMagnet = false
+                        local Distance = (Vector3.new(911.35827636719, 125.95812988281, 33159.5390625) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+                        if Distance > 18000 then
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+                        end
+                        topos(CFrame.new(911.35827636719, 125.95812988281, 33159.5390625))
+                    end
+                end)
+            end
+        end
+    end)
+    
+ItemTab:AddToggle({
 	Name = "Farm Conjured Cocoa",
 	Default = false,
 	Callback = function(Value)
