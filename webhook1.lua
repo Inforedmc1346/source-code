@@ -46,12 +46,12 @@ for i,v in pairs(P) do
 						{["name"] = "**Mirage Island :**",["value"] = "```lua\n"..tostring(shared.Mystic).."\n```",["inline"] = true,}
 					},
 					["footer"] = {
-						["text"] = "HirimiHub",
+						["text"] = "Webhook",
 						["icon_url"] = ""
 					},
 					["timestamp"] = DateTime.now():ToIsoDate(),
 					["thumbnail"] = {
-						["url"] = "rbxassetid://14161592006"
+						["url"] = "https://tr.rbxcdn.com/9b78e73ecff59b92a0d23e0cf4b40292/150/150/Image/Png"
 					}
 				}
 			},
@@ -66,4 +66,3 @@ for i,v in pairs(P) do
 		request(R)
 	end
 end
-
