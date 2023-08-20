@@ -43,9 +43,10 @@ for i,v in pairs(P) do
 						{["name"] = "**Players**",["value"] = "```yaml\n"..shared.Min.."/"..game:GetService("Players").MaxPlayers.."\n```",["inline"] = true,},
 						{["name"] = "**Job Id**",["value"] = "```yaml\n"..game.JobId.."\n```",["inline"] = true,},
 						{["name"] = "**Full Moon :**",["value"] = "```yaml\n"..shared.FullMoon.."\n```",["inline"] = true,},
+						{["name"] = "**Mirage Island :**",["value"] = "```lua\n"..tostring(shared.Mystic).."\n```",["inline"] = true,}
 					},
 					["footer"] = {
-						["text"] = "HIRIMI HUB",
+						["text"] = "HirimiHub",
 						["icon_url"] = ""
 					},
 					["timestamp"] = DateTime.now():ToIsoDate(),
@@ -65,3 +66,4 @@ for i,v in pairs(P) do
 		request(R)
 	end
 end
+
