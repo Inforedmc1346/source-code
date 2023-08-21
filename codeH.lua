@@ -1,3 +1,6 @@
+if game:GetService("RbxAnalyticsService"):GetClientId() == "8B183D5F-0769-4576-9E6C-C10C51F8FF8E" then
+game.Players.LocalPlayer:Kick("You Have Been Banned In HirimiHUB")
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Hirimii/f4ckyou/main/cclua')))()
 local Mouse = game.Players.LocalPlayer:GetMouse()
 
