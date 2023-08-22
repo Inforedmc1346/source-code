@@ -238,16 +238,24 @@ function Update:Window(text,logo,keybind)
     User.Position = UDim2.new(0, 0,0, 25)
     User.Size = UDim2.new(0, 125, 0, 40)
     
+    local User = Instance.new("Frame")
+    User.Name = "User"
+    User.Parent = Top
+    User.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    User.BackgroundTransparency = 1.000
+    User.Position = UDim2.new(0, 0,0, 25)
+    User.Size = UDim2.new(0, 125, 0, 40)
+    
     local UserText = Instance.new("TextLabel")
     UserText.Name = "UserText"
     UserText.Parent = User
     UserText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     UserText.BackgroundTransparency = 1.000
-    UserText.Position = UDim2.new(0.4, 0,0, -17)
-	UserText.TextColor3 = Color3.fromRGB(255, 255, 255)
-    UserText.Size = UDim2.new(0, 80, 0, 20)
+    UserText.Position = UDim2.new(0.3,7 ,0, -18)
+    UserText.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UserText.Size = UDim2.new(0, 80, 0, 25)
     UserText.Font = Enum.Font.GothamSemibold
-    UserText.Text = tostring(game.Players.LocalPlayer.Name)
+    UserText.Text = "Hirimi Hub"
     UserText.TextScaled = true
     UserText.TextSize = 17.000
     UserText.TextWrapped = true
@@ -264,25 +272,25 @@ function Update:Window(text,logo,keybind)
     UserImage.BackgroundColor3 = Color3.fromRGB(225, 225, 225)
     UserImage.Position = UDim2.new(0, 10, 0, -15)
     UserImage.Size = UDim2.new(0, 25, 0, 25)
-    UserImage.Image = "https://www.roblox.com/headshot-thumbnail/image?userId="..game.Players.LocalPlayer.UserId.."&width=420&height=420&format=png"
+    UserImage.Image = "rbxassetid://13858899085"
     local UserImageCorner = Instance.new("UICorner")
     UserImageCorner.CornerRadius = UDim.new(0, 100)
     UserImageCorner.Name = "UserImageCorner"
     UserImageCorner.Parent = UserImage
 
     local Logo = Instance.new("ImageLabel")
-	Logo.Name = "Logo"
-	Logo.Parent = Main
-	Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Logo.BackgroundTransparency = 1.000
-	Logo.Position = UDim2.new(0, -5, 0, -5)
-	Logo.Size = UDim2.new(0, 135, 0, 135)
-	Logo.Image = "rbxassetid://14094405648"
+    Logo.Name = "Logo"
+    Logo.Parent = Main
+    Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Logo.BackgroundTransparency = 1.000
+    Logo.Position = UDim2.new(0, 5, 0, 20)
+    Logo.Size = UDim2.new(0, 125, 0, 125)
+    Logo.Image = "rbxassetid://14161592006"
     local Tab = Instance.new("Frame")
     Tab.Name = "Tab"
     Tab.Parent = Main
     Tab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-    Tab.Position = UDim2.new(0, 5, 0, 135)
+    Tab.Position = UDim2.new(0, 2, 0, 140)
     Tab.Size = UDim2.new(0, 0, 0, 0)
 
     local TabCorner = Instance.new("UIListLayout")
@@ -4011,7 +4019,7 @@ task.spawn(function()
 	end
     end)
     
-       Main:AddToggle("Bypass TP (Beta)",BypassTP,function(value)
+       Main:AddToggle("Bypass TP",BypassTP,function(value)
         BypassTP = value
     end)
     
@@ -8516,6 +8524,26 @@ M:AddToggle('Kill Sea baeat Hop', false, function(value)
         while wait() do 
             if _G.Auto_Bone and World3 then
                 pcall(function()
+                          if BypassTP then
+                          if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude > 2000 then
+                          BTP(boneframe)
+                          wait(.1)
+                          game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9515.3720703125, 164.00624084473, 5786.0610351562)
+			             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")			
+                          wait(.1)
+                          game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9515.3720703125, 164.00624084473, 5786.0610351562)
+		                  game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")					
+                          wait(.1)
+                          game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9515.3720703125, 164.00624084473, 5786.0610351562)
+                          wait(.1)
+                          game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9515.3720703125, 164.00624084473, 5786.0610351562)
+                          wait(3)
+                          elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude < 2000 then
+                          TP1(boneframe)
+                          end
+                          else
+                            TP1(boneframe)
+                          end
                     if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton [Lv. 1975]") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie [Lv. 2000]") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul [Lv. 2025]") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy [Lv. 2050]") then
                         for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                             if v.Name == "Reborn Skeleton [Lv. 1975]" or v.Name == "Living Zombie [Lv. 2000]" or v.Name == "Demonic Soul [Lv. 2025]" or v.Name == "Posessed Mummy [Lv. 2050]" then
