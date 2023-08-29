@@ -3659,7 +3659,7 @@ H:AddSeperator("Developer")
 H:AddLabel("Code By Hirimii")
 
 H:AddLabel("Hirimi Hub Discord")
-H:AddLabel("https://discord.gg/rUKWhEJHf2")
+H:AddLabel("https://discord.gg/T7edk64xMR")
 H:AddLabel("Discord: t_hirimii")
  
 
