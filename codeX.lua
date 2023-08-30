@@ -1,3 +1,12 @@
+notis = require(game.ReplicatedStorage:WaitForChild("Notification"))
+notis.new("<Color=White>HIRIMI HUB<Color=/>"):Display()
+wait()
+notis.new("<Color=Blue>Founder: t_hirimii<Color=/>"):Display() 
+wait()
+notis.new("<Color=Red>Discord: https://discord.gg/T7edk64xMR<Color=/>"):Display() 
+wait()
+notis.new("<Color=Yellow>Exploit Use:<Color=/>".. identifyexecutor()):Display() 
+
 local ScreenGui1 = Instance.new("ScreenGui")
 local ImageButton1 = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
