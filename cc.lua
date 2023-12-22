@@ -2151,11 +2151,9 @@ spawn(function()
                                 if WS.Flower1.Transparency ~= 1 then
                                     Notify("Hirimi Hub", "Collecting Flower 1", 10)
                                     if (WS.Flower1.Position - LP.Character.HumanoidRootPart.Position).magnitude > 300 then
-                                        Farmtween = ToTween(WS.Flower1.CFrame)
+                                        ToTween(WS.Flower1.CFrame)
                                     elseif (WS.Flower1.Position - LP.Character.HumanoidRootPart.Position).magnitude <= 300 then
-                                        if Farmtween then
-                                            StopTween()
-                                        end
+                                        StopTween()
                                         LP.Character.HumanoidRootPart.CFrame = WS.Flower1.CFrame * CFrame.new(20, 0, 20)
                                         LP.Character.HumanoidRootPart.CFrame = WS.Flower1.CFrame
                                         wait(1)
@@ -2170,11 +2168,9 @@ spawn(function()
                                 if WS.Flower2.Transparency ~= 1 then
                                     Notify("Hirimi Hub", "Collecting Flower 2", 10)
                                     if (WS.Flower2.Position - LP.Character.HumanoidRootPart.Position).magnitude > 300 then
-                                        Farmtween = ToTween(WS.Flower2.CFrame)
+                                        ToTween(WS.Flower2.CFrame)
                                     elseif (WS.Flower2.Position - LP.Character.HumanoidRootPart.Position).magnitude <= 300 then
-                                        if Farmtween then
-                                            StopTween()
-                                        end
+                                        StopTween()
                                         LP.Character.HumanoidRootPart.CFrame = WS.Flower2.CFrame * CFrame.new(20, 0, 20)
                                         LP.Character.HumanoidRootPart.CFrame = WS.Flower2.CFrame
                                         wait(1)
@@ -2198,11 +2194,9 @@ spawn(function()
                                     end
                                 else
                                     if (CFrame.new(1057.92761, 137.614319, 1242.08069).Position - LP.Character.HumanoidRootPart.Position).magnitude > 300 then
-                                        Farmtween = Tweento(CFrame.new(1057.92761, 137.614319, 1242.08069))
+                                        Tweento(CFrame.new(1057.92761, 137.614319, 1242.08069))
                                     elseif (CFrame.new(1057.92761, 137.614319, 1242.08069).Position - LP.Character.HumanoidRootPart.Position).magnitude <= 300 then
-                                        if Farmtween then
-                                            StopTween()
-                                        end
+                                        StopTween()
                                         LP.Character.HumanoidRootPart.CFrame = CFrame.new(1057.92761, 137.614319, 1242.08069)
                                     end
                                 end
