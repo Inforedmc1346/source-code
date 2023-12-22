@@ -1,4 +1,4 @@
---Memaylonbeosassss
+--Memaylonbeosas
 notis = require(game.ReplicatedStorage:WaitForChild("Notification"))
 notis.new("<Color=White>HIRIMI HUB MAIN<Color=/>"):Display()
 notis.new("<Color=Blue>Founder: t_hirimii<Color=/>"):Display() 
@@ -2150,13 +2150,10 @@ spawn(function()
                             if not LP.Backpack:FindFirstChild("Flower 1") and not LP.Character:FindFirstChild("Flower 1")then
                                 if WS.Flower1.Transparency ~= 1 then
                                     Notify("Hirimi Hub", "Collecting Flower 1", 10)
-                                    if (WS.Flower1.Position - LP.Character.HumanoidRootPart.Position).magnitude > 300 then
-                                        ToTween(WS.Flower1.CFrame)
-                                    elseif (WS.Flower1.Position - LP.Character.HumanoidRootPart.Position).magnitude <= 300 then
+                                    if not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Flower 1") and not game:GetService("Players").LocalPlayer.Character:FindFirstChild("Flower 1") then
+                                        ToTween(game:GetService("Workspace").Flower1.CFrame)
+                                    else
                                         StopTween()
-                                        LP.Character.HumanoidRootPart.CFrame = WS.Flower1.CFrame * CFrame.new(20, 0, 20)
-                                        LP.Character.HumanoidRootPart.CFrame = WS.Flower1.CFrame
-                                        wait(1)
                                     end
                                 else
                                     if game.Lighting.ClockTime > 3 and game.Lighting.ClockTime < 16 then
@@ -2167,14 +2164,11 @@ spawn(function()
                             elseif not LP.Backpack:FindFirstChild("Flower 2") and not LP.Character:FindFirstChild("Flower 2") then
                                 if WS.Flower2.Transparency ~= 1 then
                                     Notify("Hirimi Hub", "Collecting Flower 2", 10)
-                                    if (WS.Flower2.Position - LP.Character.HumanoidRootPart.Position).magnitude > 300 then
-                                        ToTween(WS.Flower2.CFrame)
-                                    elseif (WS.Flower2.Position - LP.Character.HumanoidRootPart.Position).magnitude <= 300 then
-                                        StopTween()
-                                        LP.Character.HumanoidRootPart.CFrame = WS.Flower2.CFrame * CFrame.new(20, 0, 20)
-                                        LP.Character.HumanoidRootPart.CFrame = WS.Flower2.CFrame
-                                        wait(1)
-                                    end
+                                end
+                                if not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Flower 2") and not game:GetService("Players").LocalPlayer.Character:FindFirstChild("Flower 2") then
+                                    ToTween(game:GetService("Workspace").Flower2.CFrame)
+                                else
+                                    StopTween()
                                 end
                             elseif not LP.Backpack:FindFirstChild("Flower 3") and not LP.Character:FindFirstChild("Flower 3") then
                                 Notify("Hirimi Hub", "Collecting Flower 3", 10)
