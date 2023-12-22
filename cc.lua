@@ -1,4 +1,4 @@
---Memaylonbeosas
+--Memaylonbeosass
 notis = require(game.ReplicatedStorage:WaitForChild("Notification"))
 notis.new("<Color=White>HIRIMI HUB MAIN<Color=/>"):Display()
 notis.new("<Color=Blue>Founder: t_hirimii<Color=/>"):Display() 
@@ -598,7 +598,6 @@ function ReturnB(vl)
     return false
 end
 function UpV3NoTween()
-    Arowe = CFrame.new(-1988.55322,124.841248,-70.4718018,0.173624337,0,0.984811902,0,1,0,-0.984811902,0,0.173624337) * CFrame.new(0, 3, 0)
     local args = {[1] = "Wenlocktoad", [2] = "3"}
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end
