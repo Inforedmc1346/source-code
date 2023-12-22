@@ -1,4 +1,4 @@
---Memaylonbeosass
+--Memaylonbeosas
 notis = require(game.ReplicatedStorage:WaitForChild("Notification"))
 notis.new("<Color=White>HIRIMI HUB MAIN<Color=/>"):Display()
 notis.new("<Color=Blue>Founder: t_hirimii<Color=/>"):Display() 
@@ -466,21 +466,12 @@ function CheckElite()
     end
 end
 function BDistanceElite()
-    if RS:FindFirstChild("Deandre") or RS:FindFirstChild("Deandre") or RS:FindFirstChild("Diablo") then
-        if GetDistance(RS:FindFirstChild("Deandre").HumanoidRootPart.Position) > 2000 then
-            BypassTele(RS:FindFirstChild("Deandre").HumanoidRootPart.CFrame)
-        elseif GetDistance(RS:FindFirstChild("Deandre").HumanoidRootPart.Position) < 2000 then
-            ToTween(RS:FindFirstChild("Deandre").HumanoidRootPart.CFrame * CFrame.new(0,30,0))
-        end
-        if GetDistance(RS:FindFirstChild("Urban").HumanoidRootPart.Position) > 2000 then
-            BypassTele(RS:FindFirstChild("Urban").HumanoidRootPart.CFrame)
-        elseif GetDistance(RS:FindFirstChild("Urban").HumanoidRootPart.Position) < 2000 then
-            ToTween(RS:FindFirstChild("Urban").HumanoidRootPart.CFrame * CFrame.new(0,30,0))
-        end
-        if GetDistance(RS:FindFirstChild("Diablo").HumanoidRootPart.Position) > 2000 then
-            BypassTele(RS:FindFirstChild("Diablo").HumanoidRootPart.CFrame)
-        elseif GetDistance(RS:FindFirstChild("Diablo").HumanoidRootPart.Position) < 2000 then
-            ToTween(RS:FindFirstChild("Diablo").HumanoidRootPart.CFrame * CFrame.new(0,30,0))
+    if RS:FindFirstChild("Deandre") or RS:FindFirstChild("Urban") or RS:FindFirstChild("Diablo") then
+        local v = RS:FindFirstChild("Deandre") or RS:FindFirstChild("Urban") or RS:FindFirstChild("Diablo")
+        if GetDistance(RS:FindFirstChild("Deandre").HumanoidRootPart.Position) > 2000 or GetDistance(RS:FindFirstChild("Urban").HumanoidRootPart.Position) > 2000 or GetDistance(RS:FindFirstChild("Diablo").HumanoidRootPart.Position) > 2000 then
+            BypassTele(v.HumanoidRootPart.CFrame)
+        elseif GetDistance(v.HumanoidRootPart.Position) < 2000 then
+            ToTween(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
         end
     end
 end
@@ -560,7 +551,7 @@ end)
 function CheckSwan()
     for r, v in pairs(Enemies:GetChildren()) do
         if v.Name == "Swan Pirate" and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-            return v
+            return true
         end
     end
 end
@@ -598,6 +589,7 @@ function ReturnB(vl)
     return false
 end
 function UpV3NoTween()
+    Arowe = CFrame.new(-1988.55322,124.841248,-70.4718018,0.173624337,0,0.984811902,0,1,0,-0.984811902,0,0.173624337) * CFrame.new(0, 3, 0)
     local args = {[1] = "Wenlocktoad", [2] = "3"}
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end
@@ -1736,6 +1728,7 @@ end
 spawn(function()
     while task.wait() do
         if sword600mas then
+            NoClip = true
             if CheckMasSelect("Sword") == 600 then
                 for i,v in pairs(RS.Remotes.CommF_:InvokeServer("getInventory")) do
                     if type(v) == "table" then
@@ -1755,6 +1748,8 @@ spawn(function()
                 Farmop:Set(true)
                 selectttolll:Set("Sword")
             end
+        else
+            NoClip = false
         end
     end
 end)
@@ -2061,16 +2056,131 @@ local UpgradeRaceToggle = F:AddToggle({Name = "Upgrade Race V2-V3", Default = fa
 end    
 })
 spawn(function()
-    while task.wait() do
-        pcall(function()
-            if Upgraderace23 then
-                CheckR = CheckVerRace()
-                if string.find(CheckR, "V1") then
-                    if RS.Remotes.CommF_:InvokeServer("BartiloQuestProgress", "Bartilo") == 0 then
-                        if string.find(PG.Main.Quest.Container.QuestTitle.Title.Text, "Swan Pirates") and string.find(PG.Main.Quest.Container.QuestTitle.Title.Text, "50") and PG.Main.Quest.Visible == true then
+    while wait() do
+        if Upgraderace23 then
+            UpV3NoTween()
+        end
+        if Upgraderace23 then
+            CheckR = CheckVerRace()
+            if string.find(CheckR, "V1") then
+                if RS.Remotes.CommF_:InvokeServer("BartiloQuestProgress", "Bartilo") == 0 then
+                    if string.find(PG.Main.Quest.Container.QuestTitle.Title.Text, "Swan Pirates") and string.find(PG.Main.Quest.Container.QuestTitle.Title.Text, "50") and PG.Main.Quest.Visible == true then
+                        if CheckSwan() then
+                            for i,v in pairs(Enemies:GetChildren()) do
+                                if v.Name == "Swan Pirate" and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat task.wait()
+                                        EWeapon(Selecttool)
+                                        EBuso()
+                                        ToTween(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
+                                        EClick()
+                                        v.HumanoidRootPart.CanCollide = false
+                                        NoClip = true
+                                    until not Upgraderace23 or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0
+                                    NoClip = false
+                                end
+                            end
+                        else
+                            Questtween = ToTween(CFrame.new(1057.92761, 137.614319, 1242.08069))
+                        end
+                    else
+                        Bartilotween = ToTween(CFrame.new(-456.28952, 73.0200958, 299.895966))
+                        local args = {[1] = "StartQuest", [2] = "BartiloQuest", [3] = 1}
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                    end
+                elseif RS.Remotes.CommF_:InvokeServer("BartiloQuestProgress", "Bartilo") == 1 then
+                    Jeremy = CheckBoss("Jeremy")
+                    if Jeremy then
+                        Target = ReturnB("Jeremy")
+                        if Enemies:FindFirstChild("Jeremy") and Target:FindFirstChild("Humanoid") and Target.Humanoid.Health > 0 then
+                            repeat task.wait()
+                                EWeapon(Selecttool)
+                                EBuso()
+                                ToTween(Target.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
+                                EClick()
+                                Target.HumanoidRootPart.CanCollide = false
+                                NoClip = true
+                            until not Upgraderace23 or not Target:FindFirstChild("Humanoid") or not Target:FindFirstChild("HumanoidRootPart") or Target.Humanoid.Health <= 0
+                            NoClip = false
+                        else
+                            EBuso()
+                            EWeapon(Selecttool)
+                            ToTween(Target.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
+                        end
+                    else
+                        Notify("Hirimi Hub", "Not Found Boss, Start Hop", 10)
+                        HopServer()
+                    end
+                elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress", "Bartilo") == 2 then
+                    StartCFrame = CFrame.new(-1837.46155,44.2921753,1656.19873,0.999881566,-1.03885048e-22,-0.0153914848,1.07805858e-22,1,2.53909284e-22,0.0153914848,-2.55538502e-22,0.999881566)
+                    if (StartCFrame.Position - LP.Character.HumanoidRootPart.Position).Magnitude > 500 then
+                        ToTween(StartCFrame)
+                    else
+                        LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1836, 11, 1714)
+                        wait(.5)
+                        LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1850.49329, 13.1789551, 1750.89685)
+                        wait(1)
+                        LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1858.87305, 19.3777466, 1712.01807)
+                        wait(1)
+                        LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1803.94324, 16.5789185, 1750.89685)
+                        wait(1)
+                        LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1858.55835, 16.8604317, 1724.79541)
+                        wait(1)
+                        LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1869.54224, 15.987854, 1681.00659)
+                        wait(1)
+                        LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1800.0979, 16.4978027, 1684.52368)
+                        wait(1)
+                        LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1819.26343, 14.795166, 1717.90625)
+                        wait(1)
+                        LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1813.51843, 14.8604736, 1724.79541)
+                    end
+                elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress", "Bartilo") == 3 then
+                    if LP.Backpack:FindFirstChild("Flower 1") and LP.Backpack:FindFirstChild("Flower 2") and LP.Backpack:FindFirstChild("Flower 3") then
+                        if (CFrame.new(-2777.6001, 72.9661407, -3571.42285).Position - LP.Character.HumanoidRootPart.Position).magnitude > 3 then
+                            Farmtween = ToTween(CFrame.new(-2777.6001, 72.9661407, -3571.42285))
+                        elseif (CFrame.new(-2777.6001, 72.9661407, -3571.42285).Position - LP.Character.HumanoidRootPart.Position).magnitude <= 3 then
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist", "3")
+                        end
+                    else
+                        RS.Remotes.CommF_:InvokeServer("Alchemist", "1")
+                        RS.Remotes.CommF_:InvokeServer("Alchemist", "2")
+                        if not LP.Backpack:FindFirstChild("Flower 1") and not LP.Character:FindFirstChild("Flower 1")then
+                            if WS.Flower1.Transparency ~= 1 then
+                                Notify("Hirimi Hub", "Collecting Flower 1", 10)
+                                if (WS.Flower1.Position - LP.Character.HumanoidRootPart.Position).magnitude > 300 then
+                                    Farmtween = ToTween(WS.Flower1.CFrame)
+                                elseif (WS.Flower1.Position - LP.Character.HumanoidRootPart.Position).magnitude <= 300 then
+                                    if Farmtween then
+                                        StopTween()
+                                    end
+                                    LP.Character.HumanoidRootPart.CFrame = WS.Flower1.CFrame * CFrame.new(20, 0, 20)
+                                    LP.Character.HumanoidRootPart.CFrame = WS.Flower1.CFrame
+                                    wait(1)
+                                end
+                            else
+                                if game.Lighting.ClockTime > 3 and game.Lighting.ClockTime < 16 then
+                                    Notify("Hirimi Hub", "Hop Night", 10)
+                                    HopServer()
+                                end
+                            end
+                        elseif not LP.Backpack:FindFirstChild("Flower 2") and not LP.Character:FindFirstChild("Flower 2") then
+                            if WS.Flower2.Transparency ~= 1 then
+                                Notify("Hirimi Hub", "Collecting Flower 2", 10)
+                                if (WS.Flower2.Position - LP.Character.HumanoidRootPart.Position).magnitude > 300 then
+                                    Farmtween = ToTween(WS.Flower2.CFrame)
+                                elseif (WS.Flower2.Position - LP.Character.HumanoidRootPart.Position).magnitude <= 300 then
+                                    if Farmtween then
+                                        StopTween()
+                                    end
+                                    LP.Character.HumanoidRootPart.CFrame = WS.Flower2.CFrame * CFrame.new(20, 0, 20)
+                                    LP.Character.HumanoidRootPart.CFrame = WS.Flower2.CFrame
+                                    wait(1)
+                                end
+                            end
+                        elseif not LP.Backpack:FindFirstChild("Flower 3") and not LP.Character:FindFirstChild("Flower 3") then
+                            Notify("Hirimi Hub", "Collecting Flower 3", 10)
                             if CheckSwan() then
                                 for i,v in pairs(Enemies:GetChildren()) do
-                                    if v.Name == "Swan Pirate" and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    if v.Name == "Swan Pirate" and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                                         repeat task.wait()
                                             EWeapon(Selecttool)
                                             EBuso()
@@ -2078,243 +2188,141 @@ spawn(function()
                                             EClick()
                                             v.HumanoidRootPart.CanCollide = false
                                             NoClip = true
-                                        until not Upgraderace23 or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0
+                                        until not Upgraderace23 or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 or LP.Backpack:FindFirstChild("Flower 3") or LP.Character:FindFirstChild("Flower 3")
                                         NoClip = false
                                     end
                                 end
                             else
-                                Questtween = ToTween(CFrame.new(1057.92761, 137.614319, 1242.08069))
-                            end
-                        else
-                            Bartilotween = ToTween(CFrame.new(-456.28952, 73.0200958, 299.895966))
-                            local args = {[1] = "StartQuest", [2] = "BartiloQuest", [3] = 1}
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        end
-                    elseif RS.Remotes.CommF_:InvokeServer("BartiloQuestProgress", "Bartilo") == 1 then
-                        Jeremy = CheckBoss("Jeremy")
-                        if Jeremy then
-                            Target = ReturnB("Jeremy")
-                            if Enemies:FindFirstChild("Jeremy") and Target:FindFirstChild("Humanoid") and Target.Humanoid.Health > 0 then
-                                repeat task.wait()
-                                    EWeapon(Selecttool)
-                                    EBuso()
-                                    ToTween(Target.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
-                                    EClick()
-                                    Target.HumanoidRootPart.CanCollide = false
-                                    NoClip = true
-                                until not Upgraderace23 or not Target:FindFirstChild("Humanoid") or not Target:FindFirstChild("HumanoidRootPart") or Target.Humanoid.Health <= 0
-                                NoClip = false
-                            else
-                                EBuso()
-                                EWeapon(Selecttool)
-                                ToTween(Target.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
-                            end
-                        else
-                            Notify("Hirimi Hub", "Not Found Boss, Start Hop", 10)
-                            HopServer()
-                        end
-                    elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress", "Bartilo") == 2 then
-                        StartCFrame = CFrame.new(-1837.46155,44.2921753,1656.19873,0.999881566,-1.03885048e-22,-0.0153914848,1.07805858e-22,1,2.53909284e-22,0.0153914848,-2.55538502e-22,0.999881566)
-                        if (StartCFrame.Position - LP.Character.HumanoidRootPart.Position).Magnitude > 500 then
-                            ToTween(StartCFrame)
-                        else
-                            LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1836, 11, 1714)
-                            wait(.5)
-                            LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1850.49329, 13.1789551, 1750.89685)
-                            wait(1)
-                            LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1858.87305, 19.3777466, 1712.01807)
-                            wait(1)
-                            LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1803.94324, 16.5789185, 1750.89685)
-                            wait(1)
-                            LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1858.55835, 16.8604317, 1724.79541)
-                            wait(1)
-                            LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1869.54224, 15.987854, 1681.00659)
-                            wait(1)
-                            LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1800.0979, 16.4978027, 1684.52368)
-                            wait(1)
-                            LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1819.26343, 14.795166, 1717.90625)
-                            wait(1)
-                            LP.Character.HumanoidRootPart.CFrame = CFrame.new(-1813.51843, 14.8604736, 1724.79541)
-                        end
-                    elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress", "Bartilo") == 3 then
-                        if LP.Backpack:FindFirstChild("Flower 1") and LP.Backpack:FindFirstChild("Flower 2") and LP.Backpack:FindFirstChild("Flower 3") then
-                            if (CFrame.new(-2777.6001, 72.9661407, -3571.42285).Position - LP.Character.HumanoidRootPart.Position).magnitude > 3 then
-                                ToTween(CFrame.new(-2777.6001, 72.9661407, -3571.42285))
-                            elseif (CFrame.new(-2777.6001, 72.9661407, -3571.42285).Position - LP.Character.HumanoidRootPart.Position).magnitude <= 3 then
-                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist", "3")
-                            end
-                        else
-                            RS.Remotes.CommF_:InvokeServer("Alchemist", "1")
-                            RS.Remotes.CommF_:InvokeServer("Alchemist", "2")
-                            if not LP.Backpack:FindFirstChild("Flower 1") and not LP.Character:FindFirstChild("Flower 1")then
-                                if WS.Flower1.Transparency ~= 1 then
-                                    Notify("Hirimi Hub", "Collecting Flower 1", 10)
-                                    if not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Flower 1") and not game:GetService("Players").LocalPlayer.Character:FindFirstChild("Flower 1") then
-                                        ToTween(game:GetService("Workspace").Flower1.CFrame)
-                                    else
+                                if (CFrame.new(1057.92761, 137.614319, 1242.08069).Position - LP.Character.HumanoidRootPart.Position).magnitude > 300 then
+                                    Farmtween = Tweento(CFrame.new(1057.92761, 137.614319, 1242.08069))
+                                elseif (CFrame.new(1057.92761, 137.614319, 1242.08069).Position - LP.Character.HumanoidRootPart.Position).magnitude <= 300 then
+                                    if Farmtween then
                                         StopTween()
                                     end
-                                else
-                                    if game.Lighting.ClockTime > 3 and game.Lighting.ClockTime < 16 then
-                                        Notify("Hirimi Hub", "Hop Night", 10)
-                                        HopServer()
-                                    end
-                                end
-                            elseif not LP.Backpack:FindFirstChild("Flower 2") and not LP.Character:FindFirstChild("Flower 2") then
-                                if WS.Flower2.Transparency ~= 1 then
-                                    Notify("Hirimi Hub", "Collecting Flower 2", 10)
-                                end
-                                if not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Flower 2") and not game:GetService("Players").LocalPlayer.Character:FindFirstChild("Flower 2") then
-                                    ToTween(game:GetService("Workspace").Flower2.CFrame)
-                                else
-                                    StopTween()
-                                end
-                            elseif not LP.Backpack:FindFirstChild("Flower 3") and not LP.Character:FindFirstChild("Flower 3") then
-                                Notify("Hirimi Hub", "Collecting Flower 3", 10)
-                                if CheckSwan() then
-                                    for i,v in pairs(Enemies:GetChildren()) do
-                                        if v.Name == "Swan Pirate" and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-                                            repeat task.wait()
-                                                EWeapon(Selecttool)
-                                                EBuso()
-                                                ToTween(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
-                                                EClick()
-                                                v.HumanoidRootPart.CanCollide = false
-                                                NoClip = true
-                                            until not Upgraderace23 or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 or LP.Backpack:FindFirstChild("Flower 3") or LP.Character:FindFirstChild("Flower 3")
-                                            NoClip = false
-                                        end
-                                    end
-                                else
-                                    if (CFrame.new(1057.92761, 137.614319, 1242.08069).Position - LP.Character.HumanoidRootPart.Position).magnitude > 300 then
-                                        Tweento(CFrame.new(1057.92761, 137.614319, 1242.08069))
-                                    elseif (CFrame.new(1057.92761, 137.614319, 1242.08069).Position - LP.Character.HumanoidRootPart.Position).magnitude <= 300 then
-                                        StopTween()
-                                        LP.Character.HumanoidRootPart.CFrame = CFrame.new(1057.92761, 137.614319, 1242.08069)
-                                    end
+                                    LP.Character.HumanoidRootPart.CFrame = CFrame.new(1057.92761, 137.614319, 1242.08069)
                                 end
                             end
                         end
-                    end
-                else
-                    if CheckR == "Human V2" then
-                        GetQuestV3()
-                        BossQuest = {
-                            ["Diamond"] = CheckBoss("Diamond"),
-                            ["Fajita"] = CheckBoss("Fajita"),
-                            ["Jeremy"] = CheckBoss("Jeremy")
-                        }
-                        sk = {}
-                        for r,v in pairs(BossQuest) do
-                            if v then
-                                table.insert(sk, r)
-                            end
-                        end
-                        sk2 = "Server Have Boss: "
-                        for r, v in pairs(sk) do
-                            sk2 = sk2 .. v .. ","
-                        end
-                        Notify("Hirimi Hub", sk2, 15)
-                        if #sk < 3 and CheckVerRace() == "Human V2" then
-                            Notify("Hirimi Hub", "Hop Server Have 3 Boss", 15)
-                            task.wait(1)
-                            HopServer()
-                        end
-                        if #sk >= 3 then
-                            for aq, cg in pairs(BossQuest) do
-                                Notify("Race: ", CheckVerRace())
-                                if cg and CheckVerRace() == "Human V2" then
-                                    Notify("Hirimi Hub", "Start Killing " .. aq .. " Boss To Up Human V3")
-                                    Target = ReturnBosses(aq)
-                                    repeat wait()
-                                        if Target and Enemies:FindFirstChild(Target.Name) and Target:FindFirstChild("Humanoid") and Target:FindFirstChild("HumanoidRootPart") and Target.Humanoid.Health > 0 then
-                                            EWeapon(Selecttool)
-                                            EBuso()
-                                            ToTween(Target.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
-                                            EClick()
-                                            Target.HumanoidRootPart.CanCollide = false
-                                            NoClip = true
-                                        elseif Target then
-                                            EWeapon(Selecttool)
-                                            EBuso()
-                                            ToTween(Target.HumanoidRootPart.CFrame * CFrame.new(0, 50, 0))
-                                        end
-                                    until not Upgraderace23 or not Target or not Target:FindFirstChild("Humanoid") or not Target:FindFirstChild("HumanoidRootPart") or Target.Humanoid.Health <= 0
-                                    NoClip = false
-                                end
-                            end
-                        end
-                    elseif CheckR == "Skypiea V2" then
-                        GetQuestV3()
-                        SkypieaPlayers = {}
-                        for r, v in pairs(game.Players:GetChildren()) do
-                            if v.Name ~= LP.Name and WS.Characters:FindFirstChild(v.Name) and v:FindFirstChild("Data") and v.Data:FindFirstChild("Race") and v.Data.Race.Value == "Skypiea" and v.Character:FindFirstChild("Humanoid") then
-                                table.insert(SkypieaPlayers, v)
-                            end
-                        end
-                        if #SkypieaPlayers > 0 then
-                            for r, v in pairs(SkypieaPlayers) do
-                                repeat wait()
-                                    TargetedPlayer = v.Name
-                                    KillStart = true
-                                until not v or not Upgraderace23 or Data.Race.Value ~= "Skypiea" or string.find(CheckVerRace(), "V3")
-                                KillStart = false
-                                TargetedPlayer = nil
-                            end
-                        else
-                            Notify("Hirimi Hub", "Not Found Player, Start Hop", 15)
-                            HopServer()
-                        end
-                    elseif CheckR == "Fishman V2" then
-                        GetQuestV3()
-                        repeat wait()
-                            BoatToggle:Set("PirateGrandBrigade")
-                            SeaEvenToggle:Set(true)
-                            wait(1)
-                        until not Upgraderace23 or not CheckVerRace() == "Fishman V2" or not string.find(CheckVerRace(), "Fish")
-                        SeaEvenToggle:Set(false)
-                        BoatToggle:Set("")
-                    elseif CheckR == "Ghoul V2" then
-                        GetQuestV3()
-                        repeat wait()
-                            KillStart = true
-                            wait(1)
-                        until not Upgraderace23 or game.Players.LocalPlayer.Data.Race.Value ~= "Ghoul" or string.find(CheckVerRace(), "V3")
-                        KillStart = false
-                    elseif CheckR == "Cyborg V2" then
-                        GetQuestV3()
-                        if not DFinBP() then
-                            repeat wait()
-                                frr = GetFruitBelow1M()
-                                if frr then
-                                    LoadFruit(frr)
-                                end
-                            until DFinBP()
-                            UpV3NoTween()
-                        end
-                    elseif CheckR == "Mink V2" then
-                        GetQuestV3()
-                        local ch = ChestNearF()
-                        if ch and CheckR ~= "Mink V3" then
-                            ToTween(ch)
-                            CountChest = CountChest + 1
-                            Notify("Hirimi Hub", "Remaning " .. 30 - CountChest .. " Chest", 7.5)
-                            if CountChest >= 30 then
-                                UpV3NoTween()
-                                Notify("Hirimi Hub", "Race Status: " .. tostring(RS.Remotes.CommF_:InvokeServer("Wenlocktoad", "info")))
-                            end
-                        elseif ch == nil then
-                            repeat wait()
-                                local ch = ChestNearF()
-                            until ch ~= nil
-                        end
-                    end
-                    if string.find(CheckR, "V3") or string.find(CheckR, "V4") then
-                        UpgradeRaceToggle:Set(false)
                     end
                 end
+            else
+                if CheckR == "Human V2" then
+                    GetQuestV3()
+                    BossQuest = {
+                        ["Diamond"] = CheckBoss("Diamond"),
+                        ["Fajita"] = CheckBoss("Fajita"),
+                        ["Jeremy"] = CheckBoss("Jeremy")
+                    }
+                    sk = {}
+                    for r,v in pairs(BossQuest) do
+                        if v then
+                            table.insert(sk, r)
+                        end
+                    end
+                    sk2 = "Server Have Boss: "
+                    for r, v in pairs(sk) do
+                        sk2 = sk2 .. v .. ","
+                    end
+                    Notify("Hirimi Hub", sk2, 15)
+                    if #sk < 3 and CheckVerRace() == "Human V2" then
+                        Notify("Hirimi Hub", "Hop Server Have 3 Boss", 15)
+                        task.wait(1)
+                        HopServer()
+                    end
+                    if #sk >= 3 then
+                        for aq, cg in pairs(BossQuest) do
+                            Notify("Race: ", CheckVerRace())
+                            if cg and CheckVerRace() == "Human V2" then
+                                Notify("Hirimi Hub", "Start Killing " .. aq .. " Boss To Up Human V3")
+                                Target = ReturnBosses(aq)
+                                repeat wait()
+                                    if Target and Enemies:FindFirstChild(Target.Name) and Target:FindFirstChild("Humanoid") and Target:FindFirstChild("HumanoidRootPart") and Target.Humanoid.Health > 0 then
+                                        EWeapon(Selecttool)
+                                        EBuso()
+                                        ToTween(Target.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
+                                        EClick()
+                                        Target.HumanoidRootPart.CanCollide = false
+                                        NoClip = true
+                                    elseif Target then
+                                        EWeapon(Selecttool)
+                                        EBuso()
+                                        ToTween(Target.HumanoidRootPart.CFrame * CFrame.new(0, 50, 0))
+                                    end
+                                until not Upgraderace23 or not Target or not Target:FindFirstChild("Humanoid") or not Target:FindFirstChild("HumanoidRootPart") or Target.Humanoid.Health <= 0
+                                NoClip = false
+                            end
+                        end
+                    end
+                elseif CheckR == "Skypiea V2" then
+                    GetQuestV3()
+                    SkypieaPlayers = {}
+                    for r, v in pairs(game.Players:GetChildren()) do
+                        if v.Name ~= LP.Name and WS.Characters:FindFirstChild(v.Name) and v:FindFirstChild("Data") and v.Data:FindFirstChild("Race") and v.Data.Race.Value == "Skypiea" and v.Character:FindFirstChild("Humanoid") then
+                            table.insert(SkypieaPlayers, v)
+                        end
+                    end
+                    if #SkypieaPlayers > 0 then
+                        for r, v in pairs(SkypieaPlayers) do
+                            repeat wait()
+                                TargetedPlayer = v.Name
+                                KillStart = true
+                            until not v or not Upgraderace23 or Data.Race.Value ~= "Skypiea" or string.find(CheckVerRace(), "V3")
+                            KillStart = false
+                            TargetedPlayer = nil
+                        end
+                    else
+                        Notify("Hirimi Hub", "Not Found Player, Start Hop", 15)
+                        HopServer()
+                    end
+                elseif CheckR == "Fishman V2" then
+                    GetQuestV3()
+                    repeat wait()
+                        BoatToggle:Set("PirateGrandBrigade")
+                        SeaEvenToggle:Set(true)
+                        wait(1)
+                    until not Upgraderace23 or not CheckVerRace() == "Fishman V2" or not string.find(CheckVerRace(), "Fish")
+                    SeaEvenToggle:Set(false)
+                    BoatToggle:Set("")
+                elseif CheckR == "Ghoul V2" then
+                    GetQuestV3()
+                    repeat wait()
+                        KillStart = true
+                        wait(1)
+                    until not Upgraderace23 or game.Players.LocalPlayer.Data.Race.Value ~= "Ghoul" or string.find(CheckVerRace(), "V3")
+                    KillStart = false
+                elseif CheckR == "Cyborg V2" then
+                    GetQuestV3()
+                    if not DFinBP() then
+                        repeat wait()
+                            frr = GetFruitBelow1M()
+                            if frr then
+                                LoadFruit(frr)
+                            end
+                        until DFinBP()
+                        UpV3NoTween()
+                    end
+                elseif CheckR == "Mink V2" then
+                    GetQuestV3()
+                    local ch = ChestNearF()
+                    if ch and CheckR ~= "Mink V3" then
+                        ToTween(ch)
+                        CountChest = CountChest + 1
+                        Notify("Hirimi Hub", "Remaning " .. 30 - CountChest .. " Chest", 7.5)
+                        if CountChest >= 30 then
+                            UpV3NoTween()
+                            Notify("Hirimi Hub", "Race Status: " .. tostring(RS.Remotes.CommF_:InvokeServer("Wenlocktoad", "info")))
+                        end
+                    elseif ch == nil then
+                        repeat wait()
+                            local ch = ChestNearF()
+                        until ch ~= nil
+                    end
+                end
+                if string.find(CheckR, "V3") or string.find(CheckR, "V4") then
+                    UpgradeRaceToggle:Set(false)
+                end
             end
-        end)
+        end
     end         
 end)
 F:AddSection({Name = "Race V4"})
@@ -2526,17 +2534,18 @@ spawn(function()
                 end
             end
         end
+        if AzuEmber then
+            for i,v in pairs(WS.EmberTemplate:GetChildren()) do
+                if v.Name == "Part" then
+                    LP.Character.HumanoidRootPart.CFrame = v.CFrame
+                end
+            end
+        end
     end
 end)
 local FarmAzure = D:AddToggle({Name = "Farm Azure Ember", Default = false, Callback = function(vAzuEmber)
     AzuEmber = vAzuEmber
-    if AzuEmber then
-        for i,v in pairs(WS.EmberTemplate:GetChildren()) do
-            if v.Name == "Part" then
-                LP.Character.HumanoidRootPart.CFrame = v.CFrame
-            end
-        end
-    end
+    DisableTween(AzuEmber)
 end    
 })
 if Dressora then
