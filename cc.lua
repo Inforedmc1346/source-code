@@ -1,4 +1,4 @@
---Memaylonbeosas
+--Memaylonbeosas11
 notis = require(game.ReplicatedStorage:WaitForChild("Notification"))
 notis.new("<Color=White>HIRIMI HUB MAIN<Color=/>"):Display()
 notis.new("<Color=Blue>Founder: t_hirimii<Color=/>"):Display() 
@@ -2062,7 +2062,7 @@ local UpgradeRaceToggle = F:AddToggle({Name = "Upgrade Race V2-V3", Default = fa
 end    
 })
 spawn(function()
-    while wait() do
+    while task.wait() do
         pcall(function()
             if Upgraderace23 then
                 CheckR = CheckVerRace()
