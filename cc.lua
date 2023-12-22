@@ -1,4 +1,4 @@
---Memaylonbeosas11
+--Memaylonbeosas
 notis = require(game.ReplicatedStorage:WaitForChild("Notification"))
 notis.new("<Color=White>HIRIMI HUB MAIN<Color=/>"):Display()
 notis.new("<Color=Blue>Founder: t_hirimii<Color=/>"):Display() 
@@ -2140,7 +2140,7 @@ spawn(function()
                     elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress", "Bartilo") == 3 then
                         if LP.Backpack:FindFirstChild("Flower 1") and LP.Backpack:FindFirstChild("Flower 2") and LP.Backpack:FindFirstChild("Flower 3") then
                             if (CFrame.new(-2777.6001, 72.9661407, -3571.42285).Position - LP.Character.HumanoidRootPart.Position).magnitude > 3 then
-                                Farmtween = ToTween(CFrame.new(-2777.6001, 72.9661407, -3571.42285))
+                                ToTween(CFrame.new(-2777.6001, 72.9661407, -3571.42285))
                             elseif (CFrame.new(-2777.6001, 72.9661407, -3571.42285).Position - LP.Character.HumanoidRootPart.Position).magnitude <= 3 then
                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist", "3")
                             end
