@@ -1,4 +1,4 @@
---Memaylonbeosas
+--Memaylonbeosassss
 notis = require(game.ReplicatedStorage:WaitForChild("Notification"))
 notis.new("<Color=White>HIRIMI HUB MAIN<Color=/>"):Display()
 notis.new("<Color=Blue>Founder: t_hirimii<Color=/>"):Display() 
