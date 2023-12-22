@@ -468,7 +468,7 @@ end
 function BDistanceElite()
     if RS:FindFirstChild("Deandre") or RS:FindFirstChild("Urban") or RS:FindFirstChild("Diablo") then
         local v = RS:FindFirstChild("Deandre") or RS:FindFirstChild("Urban") or RS:FindFirstChild("Diablo")
-        if GetDistance(RS:FindFirstChild("Deandre").HumanoidRootPart.Position) > 2000 or GetDistance(RS:FindFirstChild("Urban").HumanoidRootPart.Position) > 2000 or GetDistance(RS:FindFirstChild("Diablo").HumanoidRootPart.Position) > 2000 then
+        if GetDistance(v.HumanoidRootPart.Position) > 2000 then
             BypassTele(v.HumanoidRootPart.CFrame)
         elseif GetDistance(v.HumanoidRootPart.Position) < 2000 then
             ToTween(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
@@ -539,15 +539,6 @@ function CheckMasSkill()
         return SMasWeapon, nil
     end
 end
-spawn(function()
-    while wait() do
-        if StartFarms or SaberQ or Eliten then
-            NoClip = true
-        else
-            StopTween()
-        end
-    end
-end)
 function CheckSwan()
     for r, v in pairs(Enemies:GetChildren()) do
         if v.Name == "Swan Pirate" and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
@@ -1424,6 +1415,11 @@ end
 spawn(function()
     while wait() do
         pcall(function()
+            if StartFarms then
+                NoClip = true
+            else
+                NoClip = false
+            end
             if StartFarms and SelectFarm == "Level" then         
                 local Quest = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
                 if Quest.Visible == true then
@@ -1443,9 +1439,11 @@ spawn(function()
                                             v.HumanoidRootPart.CanCollide = false
                                             PosMon = v.HumanoidRootPart.CFrame
                                             EClick()
+                                            NoClip = true
                                             StartBring = true
                                         until not StartFarms or not SelectFarm == "Level" or v.Humanoid.Health <= 0 or not v:FindFirstChild("HumanoidRootPart")
                                         StartBring = false
+                                        NoClip = false
                                     else
                                         Healthb = v.Humanoid.MaxHealth * HealthStop/100
                                         repeat task.wait()
@@ -1457,12 +1455,14 @@ spawn(function()
                                                 v.HumanoidRootPart.CanCollide = false
                                                 PosMon = v.HumanoidRootPart.CFrame
                                                 EClick()
+                                                NoClip = true
                                                 StartBring = true
                                             else
                                                 KillAtMas()
                                             end
                                         until not StartFarms or not SelectFarm == "Level" or v.Humanoid.Health <= 0 or not v:FindFirstChild("HumanoidRootPart")
                                         StartBring = false
+                                        NoClip = false
                                     end
                                 end
                             end
@@ -1529,8 +1529,10 @@ spawn(function()
                             v.HumanoidRootPart.Size = Vector3.new(50,50,50)  
                             v.HumanoidRootPart.CanCollide = false
                             PosMon = v.HumanoidRootPart.CFrame
+                            NoClip = true
                             StartBring = true
                         until not StartFarms or not SelectFarm == "Bone" or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0
+                        NoClip = false
                         StartBring = false
                     end
                 else
@@ -1599,8 +1601,10 @@ spawn(function()
                             v.HumanoidRootPart.Size = Vector3.new(50,50,50)  
                             v.HumanoidRootPart.CanCollide = false
                             PosMon = v.HumanoidRootPart.CFrame
+                            NoClip = true
                             StartBring = true
                         until not StartFarms or not SelectFarm == "Cake Prince" or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0
+                        NoClip = false
                         StartBring = false
                     end
                 elseif CheckBossCake() then
@@ -1623,9 +1627,11 @@ spawn(function()
                             BypassTele(CFrameCI)
                         elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameCI.Position).Magnitude < 2000 then
                             ToTween(CFrameCI)
+                            NoClip = true
                         end
                     else
                         ToTween(CFrameCI)
+                        NoClip = true
                     end
                 end
             end
@@ -1872,7 +1878,7 @@ spawn(function()
                                     if va and ve then
                                         EWeapon(va)
                                         SendKeyEvents(ve)
-
+                                        NoClip = true
                                         task.wait(.2)
                                     end
                                     SkillAim = true
@@ -1886,6 +1892,7 @@ spawn(function()
                         else
                             EClick()
                         end
+                        NoClip = true
                     until not Elite or not v or not v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health <= 0
                 else
                     BDistanceElite()
