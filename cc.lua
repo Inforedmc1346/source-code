@@ -865,7 +865,7 @@ function NameMelee()
 end
 spawn(function()
     game:GetService("RunService").Stepped:Connect(function()
-        if StartFarms then
+        if StartFarms or Upgraderace23 then
             NoClip = true
         end
     end)
@@ -2047,7 +2047,7 @@ task.spawn(function()
 end)
 F:AddSection({Name = "Race V2-V3"})
 CountChest = 0
-local UpgradeRaceToggle = F:AddToggle({Name = "Upgrade Race V2-V3", Default = false, Callback = function(vUpgraderace23)
+local UpgradeRaceToggle = F:AddToggle({Name = "Upgrade Race V2-V3s", Default = false, Callback = function(vUpgraderace23)
     Upgraderace23 = vUpgraderace23
     DisableTween(Upgraderace23)
 end    
@@ -2170,9 +2170,9 @@ spawn(function()
                                 end
                             elseif not LP.Backpack:FindFirstChild("Flower 3") and not LP.Character:FindFirstChild("Flower 3") then
                                 Notify("Hirimi Hub", "Collecting Flower 3", 10)
-                                if CheckSwan() then
+                                if Enemies:FindFirstChild("Zombie") then
                                     for i,v in pairs(Enemies:GetChildren()) do
-                                        if v.Name == "Swan Pirate" and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                                        if v.Name == "Zombie" then
                                             repeat task.wait()
                                                 EWeapon(Selecttool)
                                                 EBuso()
@@ -2180,21 +2180,11 @@ spawn(function()
                                                 EClick()
                                                 v.HumanoidRootPart.CanCollide = false
                                                 NoClip = true
-                                            until not Upgraderace23 or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 or LP.Backpack:FindFirstChild("Flower 3") or LP.Character:FindFirstChild("Flower 3")
-                                            NoClip = false
-                                        else
-                                            if RS:FindFirstChild("Swan Pirate") then
-                                                ToTween(RS:FindFirstChild("Swan Pirate").HumanoidRootPart.CFrame * CFrame.new(0,30,0))
-                                            end
+                                            until not Upgraderace23 or LP.Backpack:FindFirstChild("Flower 3") or v.Humanoid.Health <= 0
                                         end
                                     end
                                 else
-                                    if (CFrame.new(1057.92761, 137.614319, 1242.08069).Position - LP.Character.HumanoidRootPart.Position).magnitude > 300 then
-                                        Tweento(CFrame.new(1057.92761, 137.614319, 1242.08069))
-                                    elseif (CFrame.new(1057.92761, 137.614319, 1242.08069).Position - LP.Character.HumanoidRootPart.Position).magnitude <= 300 then
-                                        StopTween()
-                                        LP.Character.HumanoidRootPart.CFrame = CFrame.new(1057.92761, 137.614319, 1242.08069)
-                                    end
+                                    ToTween(CFrame.new(-5685.9233398438, 48.480125427246, -853.23724365234))
                                 end
                             end
                         end
