@@ -16,7 +16,6 @@ notis.new("<Color=Red>Discord: https://discord.gg/T7edk64xMR<Color=/>"):Display(
 notis.new("<Color=Yellow>Exploit Use:<Color=/> ".. identifyexecutor()):Display() 
 local memaythangskidocnguloz = "\104\116\116\112\115://\114\97\119.\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116.\99\111\109/\72\105\114\105\109\105\105/\102\52\99\107\121\111\117/\109\97\105\110\47\99\99\108\117\97"
 local OrionLib = loadstring(game:HttpGet((memaythangskidocnguloz)))()
-local Mouse = LP:GetMouse()
 local Toggle = Instance.new("ScreenGui")
 local LoadF = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
