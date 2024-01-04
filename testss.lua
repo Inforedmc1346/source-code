@@ -21,7 +21,7 @@ local LoadF = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
 local MainStroke = Instance.new("UIStroke")
 Toggle.Name = "Toggle"
-Toggle.Parent = LP:WaitForChild("PlayerGui")
+Toggle.Parent = game.CoreGui
 Toggle.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 LoadF.Name = "LoadF"
