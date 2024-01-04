@@ -1,14 +1,4 @@
---// Flagss
-_G.setfflag = true
-
-spawn(function()
-    while wait() do
-        if _G.setfflag then
-            setfflag("AbuseReportScreenshot", "False")
-            setfflag("AbuseReportScreenshotPercentage", "0")
-        end
-    end
-end)
+repeat wait() until game:IsLoaded()
 notis = require(game.ReplicatedStorage:WaitForChild("Notification"))
 notis.new("<Color=White>HIRIMI HUB HYPER<Color=/>"):Display()
 notis.new("<Color=Blue>Founder: t_hirimii<Color=/>"):Display() 
@@ -17,6 +7,24 @@ notis.new("<Color=Yellow>Exploit Use:<Color=/> ".. identifyexecutor()):Display()
 local memaythangskidocnguloz = "\104\116\116\112\115://\114\97\119.\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116.\99\111\109/\72\105\114\105\109\105\105/\102\52\99\107\121\111\117/\109\97\105\110\47\99\99\108\117\97"
 local OrionLib = loadstring(game:HttpGet((memaythangskidocnguloz)))()
 local Mouse = game.Players.LocalPlayer:GetMouse()
+local P = game:GetService("Players")
+local LP = P.LocalPlayer
+local PG = LP.PlayerGui
+local RS = game:GetService("ReplicatedStorage")
+local Remotes = RS:WaitForChild("Remotes")
+local Remote = Remotes:WaitForChild("CommF_")
+local RunS = game:GetService("RunService")
+local Loop = RunS.RenderStepped
+local Data = LP.Data
+local WS = game:GetService("Workspace")
+local WO = WS["_WorldOrigin"]
+local VU = game:GetService("VirtualUser")
+local EnemySpawns = WO.EnemySpawns
+local Enemies = WS.Enemies
+local CameraShaker = require(RS.Util.CameraShaker)
+local GuideModule = require(RS.GuideModule)
+local Quests = require(RS.Quests)
+local VIM = game:service("VirtualInputManager")
 local Toggle = Instance.new("ScreenGui")
 local LoadF = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
@@ -52,25 +60,6 @@ MainStroke.Archivable = true
 
 UICorner.CornerRadius = UDim.new(0, 15)
 UICorner.Parent = LoadF
-local P = game:GetService("Players")
-local LP = P.LocalPlayer
-local PG = LP.PlayerGui
-local RS = game:GetService("ReplicatedStorage")
-local Remotes = RS:WaitForChild("Remotes")
-local Remote = Remotes:WaitForChild("CommF_")
-local RunS = game:GetService("RunService")
-local Loop = RunS.RenderStepped
-local Data = LP.Data
-local WS = game:GetService("Workspace")
-local WO = WS["_WorldOrigin"]
-local VU = game:GetService("VirtualUser")
-local EnemySpawns = WO.EnemySpawns
-local Enemies = WS.Enemies
-local CameraShaker = require(RS.Util.CameraShaker)
-local GuideModule = require(RS.GuideModule)
-local Quests = require(RS.Quests)
-local VIM = game:service("VirtualInputManager")
-repeat wait() until game:IsLoaded()
 if game.PlaceId == 2753915549 then
     Main = true
 elseif game.PlaceId == 4442272183 then
